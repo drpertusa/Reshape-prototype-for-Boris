@@ -1,24 +1,12 @@
 @import 'tailwindcss';
 
 @theme {
-  /* LoveFrom minimalism: 2 colors only */
-  --color-*: initial;
-  --color-cream: #f9f9f9;
-  --color-black: #000000;
-  --color-gray: #707070;
-  
-  /* System mappings */
-  --color-background: var(--color-cream);
-  --color-foreground: var(--color-black);
-  --color-muted-foreground: var(--color-gray);
-  
   /* Remove all rounded corners */
   --radius: 0rem;
 }
 
 @layer base {
   body {
-    @apply bg-cream text-black;
     font-family: 'Helvetica Neue', -apple-system, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
