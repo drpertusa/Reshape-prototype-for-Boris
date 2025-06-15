@@ -25,7 +25,7 @@ export function Navigation() {
     <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo - Always left */}
-        <Link href="/" className="font-fraunces text-2xl">
+        <Link href="/" className="font-display text-2xl">
           {SITE_CONFIG.name}
         </Link>
 
@@ -59,7 +59,7 @@ export function Navigation() {
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px]">
             <SheetHeader>
-              <SheetTitle className="font-fraunces text-xl">Menu</SheetTitle>
+              <SheetTitle className="font-display text-xl">Menu</SheetTitle>
             </SheetHeader>
             <nav className="flex flex-col space-y-1 mt-8">
               {NAVIGATION_ITEMS.map((item) => (

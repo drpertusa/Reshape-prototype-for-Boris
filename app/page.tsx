@@ -12,10 +12,10 @@ export default function Home() {
       {/* Hero Section */}
       <Section className="pt-32 pb-20" containerSize="lg">
         <div className="text-center">
-          <h2 className="font-fraunces text-5xl md:text-7xl mb-6 tracking-tight">
+          <h2 className="font-display text-5xl md:text-7xl mb-6 tracking-tight">
             Where Science Meets
             <br />
-            <span className="italic">Transformation</span>
+            Transformation
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
             Medical precision. Aesthetic excellence. Your journey to authentic transformation begins with a consultation.
@@ -30,7 +30,7 @@ export default function Home() {
       <Section id="philosophy" variant="muted">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h3 className="font-fraunces text-3xl mb-4">Our Philosophy</h3>
+            <h3 className="font-display text-3xl mb-4">Our Philosophy</h3>
             <p className="text-muted-foreground leading-relaxed">
               At Reshape, we believe in the inevitability of excellence through constraint. 
               Every treatment is precisely calibrated, every outcome thoughtfully considered. 
@@ -56,7 +56,7 @@ export default function Home() {
 
       {/* Services Section */}
       <Section id="services">
-        <h3 className="font-fraunces text-3xl text-center mb-12">Services</h3>
+        <h3 className="font-display text-3xl text-center mb-12">Services</h3>
         <div className="grid md:grid-cols-3 gap-8">
           {SERVICES.map((service) => (
             <div key={service.title} className="text-center">
@@ -70,7 +70,7 @@ export default function Home() {
       {/* CTA Section */}
       <Section className="border-t" containerSize="sm">
         <div className="text-center">
-          <h3 className="font-fraunces text-3xl mb-4">Begin Your Transformation</h3>
+          <h3 className="font-display text-3xl mb-4">Begin Your Transformation</h3>
           <p className="text-muted-foreground mb-8">
             Excellence is not an accident. It is the result of intention, precision, and commitment.
           </p>

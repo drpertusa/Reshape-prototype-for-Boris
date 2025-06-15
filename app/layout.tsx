@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
 import { ThemeProvider } from "next-themes"
-import { fraunces, inter } from "@/lib/fonts"
+import { lovefromSerif } from "@/lib/fonts"
 
 import { SITE_CONFIG } from "@/lib/constants"
 
@@ -24,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${fraunces.variable} ${inter.variable}`}>
-      <body className="font-inter antialiased">
+    <html lang="en" suppressHydrationWarning className={lovefromSerif.variable}>
+      <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>

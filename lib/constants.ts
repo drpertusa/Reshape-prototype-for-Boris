@@ -9,13 +9,13 @@ export const SITE_CONFIG = {
   description: "Where science meets transformation. Medical precision, aesthetic excellence, and authentic transformation through evidence-based treatments.",
   domain: "reshape.clinic", // Update when deployed
   email: "hello@reshape.clinic",
-  phone: "+1 (555) 123-4567",
+  phone: "+44 (0)20 1234 5678",
   address: {
-    street: "123 Medical Plaza",
-    city: "San Francisco",
-    state: "CA",
-    zip: "94111",
-    country: "USA"
+    street: "20 Fitzroy Street",
+    city: "London",
+    state: "",
+    zip: "W1T 6EJ",
+    country: "UK"
   }
 } as const
 
