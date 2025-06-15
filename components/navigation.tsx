@@ -4,9 +4,17 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { 
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { cn } from "@/lib/utils"
+import { useState } from "react"
 
 const routes = [
   { href: "/", label: "Home" },
@@ -17,6 +25,7 @@ const routes = [
 
 export function Navigation() {
   const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b">
@@ -26,23 +35,20 @@ export function Navigation() {
           Reshape
         </Link>
 
-        {/* Desktop Navigation - Center */}
-        <div className="hidden md:flex items-center space-x-8">
-          {routes.map((route) => (
-            <Link
-              key={route.href}
-              href={route.href}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
-                pathname === route.href
-                  ? "text-foreground"
-                  : "text-muted-foreground"
-              )}
-            >
-              {route.label}
-            </Link>
-          ))}
-        </div>
+        {/* Desktop Navigation with NavigationMenu */}
+        <NavigationMenu className="hidden md:block">
+          <NavigationMenuList>
+            {routes.map((route) => (
+              <NavigationMenuItem key={route.href}>
+                <Link href={route.href} legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    {route.label}
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
 
         {/* Desktop Theme Toggle - Right */}
         <div className="hidden md:block">
@@ -50,7 +56,7 @@ export function Navigation() {
         </div>
 
         {/* Mobile Menu - Right */}
-        <Sheet>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="ghost" size="icon">
               <Menu className="h-5 w-5" />
@@ -58,11 +64,15 @@ export function Navigation() {
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetHeader>
+              <SheetTitle className="font-fraunces text-xl">Menu</SheetTitle>
+            </SheetHeader>
             <nav className="flex flex-col space-y-1 mt-8">
               {routes.map((route) => (
                 <Link
                   key={route.href}
                   href={route.href}
+                  onClick={() => setIsOpen(false)}
                   className={cn(
                     "block px-4 py-3 text-lg font-medium transition-colors hover:text-primary",
                     pathname === route.href

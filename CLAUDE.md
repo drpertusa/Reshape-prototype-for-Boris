@@ -217,6 +217,37 @@
 - Component reuse over customization
 - Consistent naming conventions
 
+### Animation Philosophy (Ive-Inspired Microanimations)
+- **Native CSS only** - No animation libraries (Motion, Framer Motion, etc.)
+- **Tailwind utilities** - Use built-in transitions and animations
+- **Subtle & purposeful** - Every animation must have clear intent
+- **Timing**: 200-500ms max (Apple's sweet spot: 300ms)
+- **Easing**: ease-out for natural deceleration
+- **Never decorative** - Animations guide, inform, or acknowledge
+
+#### Approved Animation Patterns
+```css
+/* Hover states - barely noticeable but felt */
+hover:opacity-90 transition-opacity duration-200
+
+/* Focus states - gentle scale */
+focus:scale-[1.02] transition-transform duration-300
+
+/* State changes - smooth color shifts */
+hover:bg-primary/90 transition-colors duration-300
+
+/* Sheet/Dialog - slide with fade */
+data-[state=open]:animate-in data-[state=open]:slide-in-from-right
+data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right
+```
+
+#### Animation Principles
+1. **Inevitability** - Animations feel natural, not added
+2. **Restraint** - If unsure, don't animate
+3. **Performance** - CSS transforms only, no layout shifts
+4. **Accessibility** - Respect prefers-reduced-motion
+5. **Consistency** - Same timings across all interactions
+
 ---
 
 ## FORBIDDEN ELEMENTS
