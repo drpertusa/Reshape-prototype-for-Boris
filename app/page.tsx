@@ -1,16 +1,10 @@
 import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { Navigation } from "@/components/navigation"
 
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <h1 className="font-fraunces text-2xl">Reshape</h1>
-          <ThemeToggle />
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">
@@ -30,7 +24,7 @@ export default function Home() {
       </section>
 
       {/* Philosophy Section */}
-      <section className="py-20 px-6 bg-muted/30">
+      <section id="philosophy" className="py-20 px-6 bg-muted/30">
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -60,7 +54,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 px-6">
+      <section id="services" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <h3 className="font-fraunces text-3xl text-center mb-12">Services</h3>
           <div className="grid md:grid-cols-3 gap-8">
