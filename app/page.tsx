@@ -1,5 +1,8 @@
 import { Button } from "@/components/ui/button"
 import { Navigation } from "@/components/navigation"
+import { Footer } from "@/components/layout/footer"
+import { Section } from "@/components/layout/section"
+import { SERVICES } from "@/lib/constants"
 
 export default function Home() {
   return (
@@ -7,8 +10,8 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      <Section className="pt-32 pb-20" containerSize="lg">
+        <div className="text-center">
           <h2 className="font-fraunces text-5xl md:text-7xl mb-6 tracking-tight">
             Where Science Meets
             <br />
@@ -21,62 +24,52 @@ export default function Home() {
             Book Consultation
           </Button>
         </div>
-      </section>
+      </Section>
 
       {/* Philosophy Section */}
-      <section id="philosophy" className="py-20 px-6 bg-muted/30">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      <Section id="philosophy" variant="muted">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 className="font-fraunces text-3xl mb-4">Our Philosophy</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              At Reshape, we believe in the inevitability of excellence through constraint. 
+              Every treatment is precisely calibrated, every outcome thoughtfully considered. 
+              We don&apos;t add—we refine.
+            </p>
+          </div>
+          <div className="space-y-6">
             <div>
-              <h3 className="font-fraunces text-3xl mb-4">Our Philosophy</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                At Reshape, we believe in the inevitability of excellence through constraint. 
-                Every treatment is precisely calibrated, every outcome thoughtfully considered. 
-                We don&apos;t add—we refine.
-              </p>
+              <h4 className="font-semibold mb-2">Precision</h4>
+              <p className="text-sm text-muted-foreground">Evidence-based treatments tailored to your unique biology</p>
             </div>
-            <div className="space-y-6">
-              <div>
-                <h4 className="font-semibold mb-2">Precision</h4>
-                <p className="text-sm text-muted-foreground">Evidence-based treatments tailored to your unique biology</p>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2">Privacy</h4>
-                <p className="text-sm text-muted-foreground">Your journey remains confidential, secure, and entirely yours</p>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2">Purpose</h4>
-                <p className="text-sm text-muted-foreground">Transformation with intention, never mere enhancement</p>
-              </div>
+            <div>
+              <h4 className="font-semibold mb-2">Privacy</h4>
+              <p className="text-sm text-muted-foreground">Your journey remains confidential, secure, and entirely yours</p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-2">Purpose</h4>
+              <p className="text-sm text-muted-foreground">Transformation with intention, never mere enhancement</p>
             </div>
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h3 className="font-fraunces text-3xl text-center mb-12">Services</h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <h4 className="font-semibold mb-2">Regenerative Medicine</h4>
-              <p className="text-sm text-muted-foreground">Cellular optimization therapies</p>
+      <Section id="services">
+        <h3 className="font-fraunces text-3xl text-center mb-12">Services</h3>
+        <div className="grid md:grid-cols-3 gap-8">
+          {SERVICES.map((service) => (
+            <div key={service.title} className="text-center">
+              <h4 className="font-semibold mb-2">{service.title}</h4>
+              <p className="text-sm text-muted-foreground">{service.description}</p>
             </div>
-            <div className="text-center">
-              <h4 className="font-semibold mb-2">Aesthetic Surgery</h4>
-              <p className="text-sm text-muted-foreground">Minimalist surgical refinement</p>
-            </div>
-            <div className="text-center">
-              <h4 className="font-semibold mb-2">Longevity Programs</h4>
-              <p className="text-sm text-muted-foreground">Comprehensive age management</p>
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 border-t">
-        <div className="max-w-2xl mx-auto text-center">
+      <Section className="border-t" containerSize="sm">
+        <div className="text-center">
           <h3 className="font-fraunces text-3xl mb-4">Begin Your Transformation</h3>
           <p className="text-muted-foreground mb-8">
             Excellence is not an accident. It is the result of intention, precision, and commitment.
@@ -86,19 +79,9 @@ export default function Home() {
             <Button>Schedule Consultation</Button>
           </div>
         </div>
-      </section>
+      </Section>
 
-      {/* Footer */}
-      <footer className="py-8 px-6 border-t">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>&copy; 2024 Reshape. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-            <a href="#" className="hover:text-foreground transition-colors">Terms</a>
-            <a href="#" className="hover:text-foreground transition-colors">Contact</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

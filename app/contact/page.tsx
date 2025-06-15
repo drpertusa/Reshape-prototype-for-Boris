@@ -3,6 +3,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Navigation } from "@/components/navigation"
+import { Footer } from "@/components/layout/footer"
+import { Section } from "@/components/layout/section"
 
 export default function ContactPage() {
   return (
@@ -10,21 +12,18 @@ export default function ContactPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-12 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="font-fraunces text-4xl md:text-6xl mb-4">
-            Let&apos;s Begin
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            Your transformation starts with a conversation.
-          </p>
-        </div>
-      </section>
+      <Section className="pt-32 pb-12">
+        <h1 className="font-fraunces text-4xl md:text-6xl mb-4">
+          Let&apos;s Begin
+        </h1>
+        <p className="text-xl text-muted-foreground">
+          Your transformation starts with a conversation.
+        </p>
+      </Section>
 
       {/* Contact Form Section */}
-      <section className="pb-20 px-6">
-        <div className="max-w-2xl mx-auto">
-          <form className="space-y-6">
+      <Section className="pb-20 pt-0" containerSize="sm">
+        <form className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
               <Input
@@ -71,26 +70,16 @@ export default function ContactPage() {
             <Button type="submit" size="lg" className="w-full md:w-auto">
               Send Message
             </Button>
-          </form>
+        </form>
 
-          {/* Privacy Notice */}
-          <p className="mt-8 text-sm text-muted-foreground">
-            Your information is protected by end-to-end encryption and will never be shared.
-            We typically respond within 24 hours.
-          </p>
-        </div>
-      </section>
+        {/* Privacy Notice */}
+        <p className="mt-8 text-sm text-muted-foreground">
+          Your information is protected by end-to-end encryption and will never be shared.
+          We typically respond within 24 hours.
+        </p>
+      </Section>
 
-      {/* Footer */}
-      <footer className="py-8 px-6 border-t">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>&copy; 2024 Reshape. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-            <a href="#" className="hover:text-foreground transition-colors">Terms</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

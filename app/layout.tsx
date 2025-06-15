@@ -4,14 +4,16 @@ import "./globals.css"
 import { ThemeProvider } from "next-themes"
 import { fraunces, inter } from "@/lib/fonts"
 
+import { SITE_CONFIG } from "@/lib/constants"
+
 export const metadata: Metadata = {
-  title: "Reshape - Medical Excellence Through Precision",
-  description: "Where science meets transformation. Medical precision, aesthetic excellence, and authentic transformation through evidence-based treatments.",
+  title: `${SITE_CONFIG.name} - ${SITE_CONFIG.tagline}`,
+  description: SITE_CONFIG.description,
   keywords: "medical clinic, aesthetic surgery, regenerative medicine, longevity programs, transformation",
-  authors: [{ name: "Reshape Clinic" }],
+  authors: [{ name: SITE_CONFIG.name }],
   openGraph: {
-    title: "Reshape - Medical Excellence Through Precision",
-    description: "Where science meets transformation. Medical precision and aesthetic excellence.",
+    title: `${SITE_CONFIG.name} - ${SITE_CONFIG.tagline}`,
+    description: SITE_CONFIG.description,
     type: "website",
   },
 }

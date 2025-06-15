@@ -15,13 +15,7 @@ import {
 import { ThemeToggle } from "@/components/theme-toggle"
 import { cn } from "@/lib/utils"
 import { useState } from "react"
-
-const routes = [
-  { href: "/", label: "Home" },
-  { href: "/#services", label: "Services" },
-  { href: "/#philosophy", label: "Philosophy" },
-  { href: "/contact", label: "Contact" },
-]
+import { NAVIGATION_ITEMS, SITE_CONFIG } from "@/lib/constants"
 
 export function Navigation() {
   const pathname = usePathname()
@@ -32,17 +26,17 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo - Always left */}
         <Link href="/" className="font-fraunces text-2xl">
-          Reshape
+          {SITE_CONFIG.name}
         </Link>
 
         {/* Desktop Navigation with NavigationMenu */}
         <NavigationMenu className="hidden md:block">
           <NavigationMenuList>
-            {routes.map((route) => (
-              <NavigationMenuItem key={route.href}>
-                <Link href={route.href} legacyBehavior passHref>
+            {NAVIGATION_ITEMS.map((item) => (
+              <NavigationMenuItem key={item.href}>
+                <Link href={item.href} legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    {route.label}
+                    {item.label}
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -68,19 +62,19 @@ export function Navigation() {
               <SheetTitle className="font-fraunces text-xl">Menu</SheetTitle>
             </SheetHeader>
             <nav className="flex flex-col space-y-1 mt-8">
-              {routes.map((route) => (
+              {NAVIGATION_ITEMS.map((item) => (
                 <Link
-                  key={route.href}
-                  href={route.href}
+                  key={item.href}
+                  href={item.href}
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     "block px-4 py-3 text-lg font-medium transition-colors hover:text-primary",
-                    pathname === route.href
+                    pathname === item.href
                       ? "text-foreground bg-muted"
                       : "text-muted-foreground"
                   )}
                 >
-                  {route.label}
+                  {item.label}
                 </Link>
               ))}
             </nav>
