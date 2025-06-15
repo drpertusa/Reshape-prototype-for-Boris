@@ -3,6 +3,40 @@
 @theme {
   /* Remove all rounded corners */
   --radius: 0rem;
+  
+  /* Minimalist 2-color system mapped to shadcn/ui requirements */
+  --color-background: #ffffff;
+  --color-foreground: #000000;
+  --color-primary: #000000;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f9f9f9;
+  --color-secondary-foreground: #000000;
+  --color-muted: #f9f9f9;
+  --color-muted-foreground: #707070;
+  --color-accent: #f9f9f9;
+  --color-accent-foreground: #000000;
+  --color-destructive: #000000;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e5e5e5;
+  --color-input: #e5e5e5;
+  --color-ring: #000000;
+  
+  /* Dark mode - inverted */
+  --color-background-dark: #000000;
+  --color-foreground-dark: #ffffff;
+  --color-primary-dark: #ffffff;
+  --color-primary-foreground-dark: #000000;
+  --color-secondary-dark: #0a0a0a;
+  --color-secondary-foreground-dark: #ffffff;
+  --color-muted-dark: #0a0a0a;
+  --color-muted-foreground-dark: #a0a0a0;
+  --color-accent-dark: #0a0a0a;
+  --color-accent-foreground-dark: #ffffff;
+  --color-destructive-dark: #ffffff;
+  --color-destructive-foreground-dark: #000000;
+  --color-border-dark: #262626;
+  --color-input-dark: #262626;
+  --color-ring-dark: #ffffff;
 }
 
 @layer base {
@@ -47,6 +81,45 @@
 /* Display font */
 .font-display {
   font-family: 'LoveFrom Serif', Georgia, serif;
+}
+
+/* CSS Variables for shadcn/ui components */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 97.6%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 97.6%;
+    --muted-foreground: 0 0% 43.9%;
+    --accent: 0 0% 97.6%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 0% 0%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 0%;
+  }
+  
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 3.9%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 3.9%;
+    --muted-foreground: 0 0% 62.7%;
+    --accent: 0 0% 3.9%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 0% 100%;
+    --destructive-foreground: 0 0% 0%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 100%;
+  }
 }
 
 /* Tailwind animation utilities for Sheet/Dialog */
