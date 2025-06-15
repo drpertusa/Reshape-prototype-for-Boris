@@ -5,9 +5,15 @@ import { ThemeProvider } from "next-themes"
 import { fraunces, inter } from "@/lib/fonts"
 
 export const metadata: Metadata = {
-  title: "Next.js Community Starter",
-  description: "A modern Next.js starter with theme support",
-    generator: 'v0.dev'
+  title: "Reshape - Medical Excellence Through Precision",
+  description: "Where science meets transformation. Medical precision, aesthetic excellence, and authentic transformation through evidence-based treatments.",
+  keywords: "medical clinic, aesthetic surgery, regenerative medicine, longevity programs, transformation",
+  authors: [{ name: "Reshape Clinic" }],
+  openGraph: {
+    title: "Reshape - Medical Excellence Through Precision",
+    description: "Where science meets transformation. Medical precision and aesthetic excellence.",
+    type: "website",
+  },
 }
 
 export default function RootLayout({
