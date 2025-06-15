@@ -1,5 +1,9 @@
 # CLINIC STARTER - COMPLETE PROJECT DOCUMENTATION
 
+> **Living Document**: This file evolves with every development decision. Each pattern discovered, each principle refined, each lesson learned gets documented here. This is our single source of truth.
+>
+> *Last Updated: June 15, 2025 - Added Project Structure, Component Patterns, Development Rules*
+
 ## TECHNOLOGY STACK (Latest Stable)
 
 ### Core Framework
@@ -216,6 +220,7 @@
 - Delete code aggressively
 - Component reuse over customization
 - Consistent naming conventions
+- Single source of truth for all values
 
 ### Animation Philosophy (Ive-Inspired Microanimations)
 - **Native CSS only** - No animation libraries (Motion, Framer Motion, etc.)
@@ -248,6 +253,57 @@ data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right
 4. **Accessibility** - Respect prefers-reduced-motion
 5. **Consistency** - Same timings across all interactions
 
+### Project Structure (Skeleton Architecture)
+
+#### Directory Organization
+```
+/app              - Next.js app router pages
+/components       
+  /ui            - shadcn/ui components (11 max)
+  /layout        - Shared layout components (Footer, Section, Container)
+/lib             
+  /constants.ts  - Site config, navigation, services
+  /config.ts     - Dynamic utilities, helpers
+  /fonts.ts      - Font configuration
+  /utils.ts      - cn() and other utilities
+/types           - TypeScript interfaces
+/public          - Static assets
+```
+
+#### Key Architectural Decisions
+1. **No Code Duplication** - Extract shared components immediately
+2. **Configuration First** - All hardcoded values in `/lib/constants.ts`
+3. **Type Safety** - Define interfaces in `/types/index.ts`
+4. **Component Hierarchy**:
+   - `Section` → Handles spacing and backgrounds
+   - `Container` → Handles max-width and padding
+   - Never use raw `<section>` or `<div className="max-w-*">`
+5. **Dynamic Values** - Use utilities from `/lib/config.ts` (e.g., `getCurrentYear()`)
+
+#### Component Patterns
+```tsx
+// Always use Section for page sections
+<Section variant="muted" containerSize="lg">
+  <h2>Title</h2>
+  <p>Content</p>
+</Section>
+
+// Never hardcode values
+❌ <p>&copy; 2024 Reshape</p>
+✅ <p>&copy; {getCurrentYear()} {SITE_CONFIG.name}</p>
+
+// Use constants for repeated data
+❌ Multiple hardcoded service lists
+✅ SERVICES.map(service => ...)
+```
+
+#### Development Rules
+1. **Before creating any file**: Check if similar component exists
+2. **Before hardcoding any value**: Add to constants
+3. **Before duplicating any code**: Extract to shared component
+4. **Before adding inline styles**: Use Tailwind utilities
+5. **Before adding new dependencies**: Question if truly needed
+
 ---
 
 ## FORBIDDEN ELEMENTS
@@ -266,6 +322,27 @@ data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right
 - User testing over design opinions
 - Analytics-driven decisions
 - Question every addition
+
+---
+
+## DEVELOPMENT CHANGELOG & LESSONS LEARNED
+
+### June 15, 2025
+- **Structural Refactoring**: Extracted shared components (Footer, Section, Container)
+- **Configuration Management**: Created `/lib/constants.ts` as single source of truth
+- **Type Safety**: Added TypeScript interfaces in `/types/index.ts`
+- **Lesson**: Code duplication happens fast - extract immediately
+- **Lesson**: Hardcoded values multiply - centralize from day one
+- **Decision**: Use `getCurrentYear()` not hardcoded dates
+- **Pattern**: Section/Container composition for consistent spacing
+
+### Earlier Sessions
+- **Font Optimization**: Converted to WOFF2, need subsetting for <200KB target
+- **Animation Philosophy**: Native CSS only, no libraries needed
+- **Component Constraint**: 11 components max enforced
+- **Navigation Pattern**: NavigationMenu (desktop) + Sheet (mobile)
+- **Lesson**: Sheet better than Drawer for navigation menus
+- **Lesson**: Tailwind v4 animations need manual keyframes
 
 ---
 
