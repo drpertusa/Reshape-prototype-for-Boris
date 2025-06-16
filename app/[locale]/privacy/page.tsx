@@ -63,6 +63,14 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
               <li>{t.privacy_collect_item3}</li>
             </ul>
             
+            {/* Device Information */}
+            <h2 className="font-display text-2xl mt-12 mb-4">
+              {t.privacy_device_title}
+            </h2>
+            <p className="mb-6">
+              {t.privacy_device_text}
+            </p>
+            
             {/* Section 3: How We Use Information */}
             <h2 className="font-display text-2xl mt-12 mb-4">
               {t.privacy_use_title}
@@ -100,6 +108,14 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
               <li>{t.privacy_rights_item3}</li>
               <li>{t.privacy_rights_item4}</li>
             </ul>
+            
+            {/* Your Rights (GDPR) */}
+            <h2 className="font-display text-2xl mt-12 mb-4">
+              {t.privacy_your_rights_title}
+            </h2>
+            <p className="mb-6">
+              {t.privacy_your_rights_text}
+            </p>
             
             {/* Section 7: Cookies */}
             <h2 className="font-display text-2xl mt-12 mb-4">

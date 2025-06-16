@@ -42,6 +42,14 @@ export default async function TermsPage({ params }: TermsPageProps) {
               {t.terms_intro}
             </p>
             
+            {/* Who We Are */}
+            <h2 className="font-display text-2xl mt-12 mb-4">
+              {t.terms_who_title}
+            </h2>
+            <p className="mb-6">
+              {t.terms_who_text}
+            </p>
+            
             {/* Section 1: Our Promise */}
             <h2 className="font-display text-2xl mt-12 mb-4">
               {t.terms_promise_title}
@@ -56,6 +64,30 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </h2>
             <p className="mb-6">
               {t.terms_visit_text}
+            </p>
+            
+            {/* Appointments */}
+            <h2 className="font-display text-2xl mt-12 mb-4">
+              {t.terms_appointments_title}
+            </h2>
+            <p className="mb-6">
+              {t.terms_appointments_text}
+            </p>
+            
+            {/* Cancellations */}
+            <h2 className="font-display text-2xl mt-12 mb-4">
+              {t.terms_cancellation_title}
+            </h2>
+            <p className="mb-6">
+              {t.terms_cancellation_text}
+            </p>
+            
+            {/* Refunds */}
+            <h2 className="font-display text-2xl mt-12 mb-4">
+              {t.terms_refunds_title}
+            </h2>
+            <p className="mb-6">
+              {t.terms_refunds_text}
             </p>
             
             {/* Section 3: Medical Excellence */}
@@ -82,6 +114,22 @@ export default async function TermsPage({ params }: TermsPageProps) {
               {t.terms_investment_text}
             </p>
             
+            {/* General Terms */}
+            <h2 className="font-display text-2xl mt-12 mb-4">
+              {t.terms_general_title}
+            </h2>
+            <p className="mb-6">
+              {t.terms_general_text}
+            </p>
+            
+            {/* Children & Pets */}
+            <h2 className="font-display text-2xl mt-12 mb-4">
+              {t.terms_children_title}
+            </h2>
+            <p className="mb-6">
+              {t.terms_children_text}
+            </p>
+            
             {/* Section 6: Intellectual Property */}
             <h2 className="font-display text-2xl mt-12 mb-4">
               {t.terms_intellectual_title}
@@ -98,6 +146,14 @@ export default async function TermsPage({ params }: TermsPageProps) {
               {t.terms_liability_text}
             </p>
             
+            {/* Complaints */}
+            <h2 className="font-display text-2xl mt-12 mb-4">
+              {t.terms_complaints_title}
+            </h2>
+            <p className="mb-6">
+              {t.terms_complaints_text}
+            </p>
+            
             {/* Section 8: Changes */}
             <h2 className="font-display text-2xl mt-12 mb-4">
               {t.terms_changes_title}
@@ -106,16 +162,30 @@ export default async function TermsPage({ params }: TermsPageProps) {
               {t.terms_changes_text}
             </p>
             
+            {/* Governing Law */}
+            <h2 className="font-display text-2xl mt-12 mb-4">
+              {t.terms_laws_title}
+            </h2>
+            <p className="mb-6">
+              {t.terms_laws_text}
+            </p>
+            
             {/* Contact */}
             <div className="mt-16 pt-8 border-t border-muted">
               <p className="text-lg">
                 {t.terms_contact}
               </p>
-              <p className="mt-2">
-                <a href={`mailto:${t.site_email}`} className="hover:opacity-70 transition-opacity">
-                  {t.site_email}
-                </a>
-              </p>
+              <div className="mt-2 space-y-1">
+                <p>
+                  Phone: <a href={`tel:${t.site_phone}`} className="hover:opacity-70 transition-opacity">{t.site_phone}</a>
+                </p>
+                <p>
+                  Email: <a href={`mailto:bookings@reshape.clinic`} className="hover:opacity-70 transition-opacity">bookings@reshape.clinic</a>
+                </p>
+                <p>
+                  Post: {t.address_street}, {t.address_city} {t.address_zip}
+                </p>
+              </div>
             </div>
           </div>
         </Container>

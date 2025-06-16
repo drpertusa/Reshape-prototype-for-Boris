@@ -8,10 +8,10 @@ export const SITE_CONFIG = {
   tagline: "Medical Excellence Through Precision",
   description: "Where science meets transformation. Medical precision, aesthetic excellence, and authentic transformation through evidence-based treatments.",
   domain: "reshape.clinic", // Update when deployed
-  email: "hello@reshape.clinic",
-  phone: "+44 (0)20 1234 5678",
+  email: "media@reshape.clinic",
+  phone: "+44 (0)7909 843543",
   address: {
-    street: "20 Fitzroy Street",
+    street: "20 Fitzroy Square",
     city: "London",
     state: "",
     zip: "W1T 6EJ",
