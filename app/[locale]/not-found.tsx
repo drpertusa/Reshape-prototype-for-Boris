@@ -3,6 +3,17 @@
 import Link from "next/link"
 import { createLocalizedHref } from "@/i18n/navigation"
 import { useTranslations, useLocale } from "@/i18n/client"
+import type { Metadata } from "next"
+import { getTranslations } from "@/i18n/server"
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const translations = await getTranslations(params.locale)
+  return {
+    /* 404 cue visible in browser chrome, prevents indexing */
+    title: `404 – ${translations.site_name}`,
+    robots: { index: false },
+  }
+}
 
 export default function NotFound() {
   const t = useTranslations()
