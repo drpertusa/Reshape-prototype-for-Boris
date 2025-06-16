@@ -111,5 +111,9 @@
   "privacy_international_text": "Que vous soyez de Londres ou Los Angeles, Paris ou Tokyo, vos données reçoivent la même protection. Nous dépassons les normes RGPD et mondiales de confidentialité.",
   "privacy_changes_title": "Mises à Jour",
   "privacy_changes_text": "Les normes de confidentialité évoluent, et nous aussi. Tout changement à cette politique sera communiqué clairement, avec votre consentement demandé si nécessaire.",
-  "privacy_contact": "Les questions de confidentialité méritent des réponses immédiates :"
+  "privacy_contact": "Les questions de confidentialité méritent des réponses immédiates :",
+  
+  "cookie_consent_text": "Nous utilisons des cookies essentiels pour la sécurité et la fonctionnalité. Pas de suivi, pas de profilage.",
+  "cookie_consent_accept": "Accepter",
+  "cookie_consent_privacy": "Politique de Confidentialité"
 }

@@ -24,7 +24,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
   
   return (
     <PageLayout>
-      <Section className="min-h-[80vh]">
+      <Section className="pt-32 pb-20">
         <Container className="max-w-prose">
           {/* Title */}
           <h1 className="font-display text-3xl md:text-4xl lg:text-5xl mb-8">

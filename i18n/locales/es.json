@@ -111,5 +111,9 @@
   "privacy_international_text": "Ya sea de Londres o Los Ángeles, París o Tokio, sus datos reciben la misma protección. Superamos tanto el RGPD como los estándares globales de privacidad.",
   "privacy_changes_title": "Actualizaciones",
   "privacy_changes_text": "Los estándares de privacidad evolucionan, y nosotros también. Cualquier cambio en esta política se comunicará claramente, con su consentimiento solicitado cuando sea necesario.",
-  "privacy_contact": "Las preguntas de privacidad merecen respuestas inmediatas:"
+  "privacy_contact": "Las preguntas de privacidad merecen respuestas inmediatas:",
+  
+  "cookie_consent_text": "Utilizamos cookies esenciales para seguridad y funcionalidad. Sin seguimiento, sin perfilado.",
+  "cookie_consent_accept": "Aceptar",
+  "cookie_consent_privacy": "Política de Privacidad"
 }

@@ -133,5 +133,9 @@
   "privacy_device_title": "Device Information",
   "privacy_device_text": "We automatically collect device information including browser, IP address, time zone, and cookies. We use Google Analytics and Microsoft Clarity to understand how you use our site. You can opt-out of Google Analytics at https://tools.google.com/dlpage/gaoptout.",
   "privacy_your_rights_title": "Your Rights (GDPR)",
-  "privacy_your_rights_text": "European residents have the right to access, correct, update, or delete personal information we hold about you. Contact us to exercise these rights."
+  "privacy_your_rights_text": "European residents have the right to access, correct, update, or delete personal information we hold about you. Contact us to exercise these rights.",
+  
+  "cookie_consent_text": "We use essential cookies for security and functionality. No tracking, no profiling.",
+  "cookie_consent_accept": "Accept",
+  "cookie_consent_privacy": "Privacy Policy"
 }
