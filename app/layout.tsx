@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
 import { ThemeProvider } from "next-themes"
-import { lovefromSerif } from "@/lib/fonts"
+import { lavaChickenSerif, inter } from "@/lib/fonts"
 
 import { SITE_CONFIG } from "@/lib/constants"
 
@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={lovefromSerif.variable}>
+    <html lang="en" suppressHydrationWarning className={`${lavaChickenSerif.variable} ${inter.variable}`}>
       <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}

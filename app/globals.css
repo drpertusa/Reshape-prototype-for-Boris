@@ -8,7 +8,7 @@
 
 @layer base {
   body {
-    font-family: 'Helvetica Neue', -apple-system, system-ui, sans-serif;
+    font-family: var(--font-inter), -apple-system, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: hsl(var(--background));
@@ -49,12 +49,12 @@
 
 /* Display font */
 .font-display {
-  font-family: 'LoveFrom Serif', Georgia, serif;
+  font-family: var(--font-lavachicken), Georgia, serif;
 }
 
 /* CSS Variables for shadcn/ui components */
 :root {
-  --background: 0 0% 100%;
+  --background: 0 0% 98%; /* #f9f9f9 */
   --foreground: 0 0% 0%;
   --primary: 0 0% 0%;
   --primary-foreground: 0 0% 100%;
@@ -69,10 +69,13 @@
   --border: 0 0% 89.8%;
   --input: 0 0% 89.8%;
   --ring: 0 0% 0%;
+  --overlay: 0 0% 96%; /* Light grey overlay */
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 0%;
 }
 
 .dark {
-  --background: 0 0% 0%;
+  --background: 0 0% 2%; /* Reciprocal of 98% light mode */
   --foreground: 0 0% 100%;
   --primary: 0 0% 100%;
   --primary-foreground: 0 0% 0%;
@@ -87,4 +90,7 @@
   --border: 0 0% 14.9%;
   --input: 0 0% 14.9%;
   --ring: 0 0% 100%;
+  --overlay: 0 0% 15%; /* Dark grey overlay */
+  --popover: 0 0% 0%;
+  --popover-foreground: 0 0% 100%;
 }

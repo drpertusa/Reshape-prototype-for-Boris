@@ -17,8 +17,8 @@
 - **shadcn/ui**: 2.6.3 (11 components strictly enforced)
 
 ### Typography
-- **LoveFrom Serif**: Custom display font (334KB total)
-- **Helvetica Neue**: System body font
+- **LavaChicken Serif**: Custom display font (334KB total)
+- **Inter**: Body font (106KB subset)
 
 ### Forms & Icons
 - **React Hook Form**: 7.57.0 + Zod validation
@@ -50,14 +50,12 @@
 10. label
 11. sonner
 
-**CI Check**: `ls components/ui/*.tsx | wc -l` must equal 11
-
 ---
 
 ## COLOR SYSTEM
 
 ### LoveFrom-Inspired Minimalism
-- **Light Mode**: White (#ffffff) background, Black (#000000) text
+- **Light Mode**: White background, Black (#000000) text
 - **Dark Mode**: Black background, White text
 - **Muted**: Gray (#707070) for secondary text
 - **Borders**: Light gray (#e5e5e5) in light mode
@@ -121,7 +119,9 @@ a:hover::after {
 
 ### Key Patterns
 - **Section/Container**: Consistent spacing and layout
-- **Constants**: All hardcoded values in `/lib/constants.ts`
+- **Constants**: Site-wide configuration, navigation links, and static content in `/lib/constants.ts`
+  - ✅ Site config, navigation items, static service lists
+  - ❌ Component props, derived state, or dynamic values
 - **No duplication**: Extract shared code immediately
 - **Type safety**: Interfaces in `/types/index.ts`
 
@@ -136,7 +136,9 @@ a:hover::after {
 5. **SEO**: schema.org/MedicalClinic structured data
 6. **Component Governance**: 11 shadcn/ui components max
 7. **Progressive Enhancement**: Mobile-first, 360px minimum
-8. **Internationalization**: Next.js i18n ready (not implemented)
+8. **Internationalization**: Not implemented (would require significant refactoring)
+   - Current code concatenates strings and lacks i18n patterns
+   - True i18n readiness requires planning from day one
 9. **Typography**: Two fonts maximum, <400KB total
 10. **Analytics**: Real User Monitoring for vitals
 
