@@ -2,25 +2,15 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { defaultLocale, isValidLocale, LOCALE_COOKIE, locales } from './i18n/config';
 
-// Get locale from URL, cookie, or headers
+// Get locale from cookie or headers (not from URL)
 function getLocale(request: NextRequest): string {
-  const pathname = request.nextUrl.pathname;
-  
-  // 1. Check if URL already has a valid locale
-  const segments = pathname.split('/');
-  const potentialLocale = segments[1];
-  
-  if (potentialLocale && isValidLocale(potentialLocale)) {
-    return potentialLocale;
-  }
-  
-  // 2. Check cookie
+  // 1. Check cookie
   const cookieLocale = request.cookies.get(LOCALE_COOKIE)?.value;
   if (cookieLocale && isValidLocale(cookieLocale)) {
     return cookieLocale;
   }
 
-  // 3. Check Accept-Language header
+  // 2. Check Accept-Language header
   const acceptLanguage = request.headers.get('accept-language');
   if (acceptLanguage) {
     const browserLocale = acceptLanguage
@@ -33,7 +23,7 @@ function getLocale(request: NextRequest): string {
     }
   }
 
-  // 4. Default locale
+  // 3. Default locale
   return defaultLocale;
 }
 

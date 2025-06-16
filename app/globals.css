@@ -28,8 +28,7 @@
 
 @layer base {
   html {
-    /* Prevent layout shift when scrollbar appears/disappears */
-    scrollbar-gutter: stable both-edges;
+    /* Removed automatic scrollbar-gutter reservation.  We now handle classic scrollbars dynamically in JS to avoid a permanent gutter. */
   }
   
   body {
