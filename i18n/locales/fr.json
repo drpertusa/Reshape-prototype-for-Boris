@@ -1,0 +1,56 @@
+{
+  "site_name": "Reshape",
+  "site_tagline": "Excellence Médicale par la Précision",
+  "site_description": "Où la science rencontre la transformation. Précision médicale, excellence esthétique et transformation authentique par des traitements fondés sur des preuves.",
+  "site_email": "hello@reshape.clinic",
+  "site_phone": "+44 (0)20 1234 5678",
+  "site_copyright": "© {year} {name}. Tous droits réservés.",
+  
+  "address_street": "20 Fitzroy Street",
+  "address_city": "London",
+  "address_zip": "W1T 6EJ",
+  "address_country": "United Kingdom",
+  
+  "nav_home": "Accueil",
+  "nav_services": "Services",
+  "nav_philosophy": "Philosophie",
+  "nav_contact": "Contact",
+  "nav_privacy": "Confidentialité",
+  "nav_terms": "Conditions",
+  "nav_menu": "Menu",
+  "nav_toggle_menu": "Basculer le menu",
+  "nav_toggle_theme": "Basculer le thème",
+  
+  "home_hero_title": "Où la Science Rencontre",
+  "home_hero_title_accent": "la Transformation",
+  "home_hero_subtitle": "Précision médicale. Excellence esthétique. Votre parcours vers une transformation authentique commence par une consultation.",
+  "home_hero_cta": "Réserver une Consultation",
+  
+  "philosophy_title": "Notre Philosophie",
+  "philosophy_intro": "Chez Reshape, nous croyons en l'inévitabilité de l'excellence par la contrainte. Chaque traitement est précisément calibré, chaque résultat soigneusement considéré. Nous n'ajoutons pas—nous raffinons.",
+  "philosophy_precision_title": "Précision",
+  "philosophy_precision_desc": "Traitements fondés sur des preuves adaptés à votre biologie unique",
+  "philosophy_privacy_title": "Confidentialité",
+  "philosophy_privacy_desc": "Votre parcours reste confidentiel, sécurisé et entièrement le vôtre",
+  "philosophy_purpose_title": "Objectif",
+  "philosophy_purpose_desc": "Transformation avec intention, jamais simple amélioration",
+  
+  "services_title": "Services",
+  "services_regenerative_title": "Médecine Régénérative",
+  "services_regenerative_desc": "Thérapies d'optimisation cellulaire",
+  "services_aesthetic_title": "Chirurgie Esthétique",
+  "services_aesthetic_desc": "Raffinement chirurgical minimaliste",
+  "services_longevity_title": "Programmes de Longévité",
+  "services_longevity_desc": "Gestion complète du vieillissement",
+  
+  "cta_title": "Commencez Votre Transformation",
+  "cta_subtitle": "L'excellence n'est pas un accident. C'est le résultat de l'intention, de la précision et de l'engagement.",
+  "cta_learn_more": "En Savoir Plus",
+  "cta_schedule": "Planifier une Consultation",
+  
+  "contact_hero_title": "Commençons",
+  "contact_hero_subtitle": "Votre transformation commence par une conversation.",
+  "contact_visit_title": "Nous Rendre Visite",
+  "contact_call_title": "Nous Appeler",
+  "contact_email_title": "Nous Écrire"
+}

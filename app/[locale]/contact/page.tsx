@@ -1,9 +1,12 @@
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/layout/footer"
 import { Section } from "@/components/layout/section"
-import { SITE_CONFIG } from "@/lib/constants"
+import { T } from "@/i18n/components"
+import { getTranslations } from "@/i18n/server"
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const t = await getTranslations()
+  
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -11,10 +14,10 @@ export default function ContactPage() {
       {/* Hero Section */}
       <Section className="pt-32 pb-12">
         <h1 className="font-display text-4xl md:text-6xl mb-4">
-          Let&apos;s Begin
+          <T id="contact_hero_title" />
         </h1>
         <p className="text-xl text-muted-foreground">
-          Your transformation starts with a conversation.
+          <T id="contact_hero_subtitle" />
         </p>
       </Section>
 
@@ -22,28 +25,28 @@ export default function ContactPage() {
       <Section className="pb-20 pt-0" containerSize="sm">
         <div className="space-y-8">
           <div>
-            <h3 className="font-semibold mb-2">Visit Us</h3>
+            <h3 className="font-semibold mb-2"><T id="contact_visit_title" /></h3>
             <p className="text-muted-foreground">
-              {SITE_CONFIG.address.street}<br />
-              {SITE_CONFIG.address.city} {SITE_CONFIG.address.zip}<br />
-              {SITE_CONFIG.address.country}
+              {t.address_street}<br />
+              {t.address_city} {t.address_zip}<br />
+              {t.address_country}
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-2">Call Us</h3>
+            <h3 className="font-semibold mb-2"><T id="contact_call_title" /></h3>
             <p className="text-muted-foreground">
-              <a href={`tel:${SITE_CONFIG.phone}`} className="hover:text-foreground transition-colors">
-                {SITE_CONFIG.phone}
+              <a href={`tel:${t.site_phone}`} className="hover:text-foreground transition-colors">
+                {t.site_phone}
               </a>
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-2">Email Us</h3>
+            <h3 className="font-semibold mb-2"><T id="contact_email_title" /></h3>
             <p className="text-muted-foreground">
-              <a href={`mailto:${SITE_CONFIG.email}`} className="hover:text-foreground transition-colors">
-                {SITE_CONFIG.email}
+              <a href={`mailto:${t.site_email}`} className="hover:text-foreground transition-colors">
+                {t.site_email}
               </a>
             </p>
           </div>

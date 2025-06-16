@@ -146,34 +146,6 @@ This starter represents a different path:
 - **No decoration**: Every pixel must serve a purpose
 - **No compromise**: Performance and accessibility are non-negotiable
 
-## Future Roadmap
-
-> "You can't connect the dots looking forward; you can only connect them looking backwards." - Steve Jobs
-
-### Phase 1: Internationalization (Q1 2025)
-- [ ] Implement next-intl for multi-language support
-- [ ] RTL layout support for Arabic/Hebrew
-- [ ] Medical terminology translation system
-- [ ] Locale-based date/time formatting
-
-### Phase 2: Advanced Features (Q2 2025)
-- [ ] Patient portal with authentication
-- [ ] Appointment booking system
-- [ ] Telemedicine integration
-- [ ] HIPAA-compliant data handling
-
-### Phase 3: AI Integration (Q3 2025)
-- [ ] Symptom checker with medical LLM
-- [ ] Intelligent appointment scheduling
-- [ ] Multi-language medical chatbot
-- [ ] Predictive health insights
-
-### Phase 4: Platform Expansion (Q4 2025)
-- [ ] Native mobile apps (React Native)
-- [ ] Offline-first PWA capabilities
-- [ ] Wearable device integration
-- [ ] Real-time health monitoring
-
 ## Development Philosophy
 
 > "I think there is a profound and enduring beauty in simplicity; in clarity, in efficiency. True simplicity is derived from so much more than just the absence of clutter and ornamentation. It's about bringing order to complexity." - Jony Ive

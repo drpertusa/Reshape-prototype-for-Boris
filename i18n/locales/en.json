@@ -1,0 +1,56 @@
+{
+  "site_name": "Reshape",
+  "site_tagline": "Medical Excellence Through Precision",
+  "site_description": "Where science meets transformation. Medical precision, aesthetic excellence, and authentic transformation through evidence-based treatments.",
+  "site_email": "hello@reshape.clinic",
+  "site_phone": "+44 (0)20 1234 5678",
+  "site_copyright": "© {year} {name}. All rights reserved.",
+  
+  "address_street": "20 Fitzroy Street",
+  "address_city": "London",
+  "address_zip": "W1T 6EJ",
+  "address_country": "United Kingdom",
+  
+  "nav_home": "Home",
+  "nav_services": "Services",
+  "nav_philosophy": "Philosophy",
+  "nav_contact": "Contact",
+  "nav_privacy": "Privacy",
+  "nav_terms": "Terms",
+  "nav_menu": "Menu",
+  "nav_toggle_menu": "Toggle menu",
+  "nav_toggle_theme": "Toggle theme",
+  
+  "home_hero_title": "Where Science Meets",
+  "home_hero_title_accent": "Transformation",
+  "home_hero_subtitle": "Medical precision. Aesthetic excellence. Your journey to authentic transformation begins with a consultation.",
+  "home_hero_cta": "Book Consultation",
+  
+  "philosophy_title": "Our Philosophy",
+  "philosophy_intro": "At Reshape, we believe in the inevitability of excellence through constraint. Every treatment is precisely calibrated, every outcome thoughtfully considered. We don't add—we refine.",
+  "philosophy_precision_title": "Precision",
+  "philosophy_precision_desc": "Evidence-based treatments tailored to your unique biology",
+  "philosophy_privacy_title": "Privacy",
+  "philosophy_privacy_desc": "Your journey remains confidential, secure, and entirely yours",
+  "philosophy_purpose_title": "Purpose",
+  "philosophy_purpose_desc": "Transformation with intention, never mere enhancement",
+  
+  "services_title": "Services",
+  "services_regenerative_title": "Regenerative Medicine",
+  "services_regenerative_desc": "Cellular optimization therapies",
+  "services_aesthetic_title": "Aesthetic Surgery",
+  "services_aesthetic_desc": "Minimalist surgical refinement",
+  "services_longevity_title": "Longevity Programs",
+  "services_longevity_desc": "Comprehensive age management",
+  
+  "cta_title": "Begin Your Transformation",
+  "cta_subtitle": "Excellence is not an accident. It is the result of intention, precision, and commitment.",
+  "cta_learn_more": "Learn More",
+  "cta_schedule": "Schedule Consultation",
+  
+  "contact_hero_title": "Let's Begin",
+  "contact_hero_subtitle": "Your transformation starts with a conversation.",
+  "contact_visit_title": "Visit Us",
+  "contact_call_title": "Call Us",
+  "contact_email_title": "Email Us"
+}

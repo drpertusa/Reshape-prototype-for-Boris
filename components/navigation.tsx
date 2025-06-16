@@ -13,20 +13,29 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { LanguageSwitcher } from "@/components/language-switcher"
 import { cn } from "@/lib/utils"
 import { useState } from "react"
-import { NAVIGATION_ITEMS, SITE_CONFIG } from "@/lib/constants"
+import { useTranslations } from "@/i18n/client"
+
+const NAVIGATION_ITEMS = [
+  { href: "/", labelKey: "nav_home" },
+  { href: "/#services", labelKey: "nav_services" },
+  { href: "/#philosophy", labelKey: "nav_philosophy" },
+  { href: "/contact", labelKey: "nav_contact" },
+]
 
 export function Navigation() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
+  const t = useTranslations()
 
   return (
     <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo - Always left */}
         <Link href="/" className="font-display text-2xl">
-          {SITE_CONFIG.name}
+          {t("site_name")}
         </Link>
 
         {/* Desktop Navigation with NavigationMenu */}
@@ -36,7 +45,7 @@ export function Navigation() {
               <NavigationMenuItem key={item.href}>
                 <Link href={item.href} legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    {item.label}
+                    {t(item.labelKey)}
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -44,8 +53,9 @@ export function Navigation() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        {/* Desktop Theme Toggle - Right */}
-        <div className="hidden md:block">
+        {/* Desktop Theme Toggle and Language Switcher - Right */}
+        <div className="hidden md:flex items-center gap-2">
+          <LanguageSwitcher />
           <ThemeToggle />
         </div>
 
@@ -54,12 +64,12 @@ export function Navigation() {
           <SheetTrigger asChild className="md:hidden">
             <Button variant="ghost" size="icon">
               <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle menu</span>
+              <span className="sr-only">{t("nav_toggle_menu")}</span>
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px]">
             <SheetHeader>
-              <SheetTitle className="font-display text-xl">Menu</SheetTitle>
+              <SheetTitle className="font-display text-xl">{t("nav_menu")}</SheetTitle>
             </SheetHeader>
             <nav className="flex flex-col space-y-1 mt-8">
               {NAVIGATION_ITEMS.map((item) => (
@@ -74,13 +84,14 @@ export function Navigation() {
                       : "text-muted-foreground"
                   )}
                 >
-                  {item.label}
+                  {t(item.labelKey)}
                 </Link>
               ))}
             </nav>
             
-            {/* Mobile Theme Toggle - Bottom of sheet */}
-            <div className="absolute bottom-8 left-6">
+            {/* Mobile Theme Toggle and Language Switcher - Bottom of sheet */}
+            <div className="absolute bottom-8 left-6 right-6 flex items-center justify-between">
+              <LanguageSwitcher />
               <ThemeToggle />
             </div>
           </SheetContent>
