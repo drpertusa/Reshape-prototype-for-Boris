@@ -2,7 +2,8 @@
 
 import { useRouter } from "next/navigation"
 import { useState, useTransition } from "react"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { SelectWithFallback as Select } from "@/components/ui/select-with-fallback"
 import { useLocale } from "@/i18n/client"
 import { locales, LOCALE_COOKIE, isValidLocale } from "@/i18n/config"
 import { usePathname } from "@/i18n/navigation"

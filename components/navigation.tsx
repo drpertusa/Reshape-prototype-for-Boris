@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils"
 import { useState } from "react"
 import { useTranslations, useLocale } from "@/i18n/client"
 import { createLocalizedHref, usePathname } from "@/i18n/navigation"
+import { applyScrollbarPadding } from "@/lib/scrollbar-gutter-fallback"
 
 const NAVIGATION_ITEMS = [
   { href: "/", labelKey: "nav_home" },
@@ -61,7 +62,10 @@ export function Navigation() {
         </div>
 
         {/* Mobile Menu - Right */}
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+        <Sheet open={isOpen} onOpenChange={(open) => {
+          setIsOpen(open)
+          applyScrollbarPadding(open)
+        }}>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="ghost" size="icon">
               <Menu className="h-5 w-5" />

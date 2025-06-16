@@ -29,7 +29,7 @@
 @layer base {
   html {
     /* Prevent layout shift when scrollbar appears/disappears */
-    scrollbar-gutter: stable;
+    scrollbar-gutter: stable both-edges;
   }
   
   body {
