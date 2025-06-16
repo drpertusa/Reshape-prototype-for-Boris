@@ -28,7 +28,7 @@
 ### "Simplicity is the ultimate sophistication"
 
 ### 1. **Constraint = Freedom**
-- **10 Components Maximum**: navigation-menu, sheet, button, dialog, drawer, form, input, textarea, select, label, sonner
+- **11 Components Maximum**: navigation-menu, sheet, button, dialog, drawer, form, input, textarea, select, label, sonner
 - No exceptions, no additions without explicit consent and double confirmation.
 - Every component must serve multiple purposes
 
