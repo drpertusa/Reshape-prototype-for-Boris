@@ -54,5 +54,7 @@
   "contact_call_title": "致电我们",
   "contact_email_title": "给我们发邮件",
   
-  "not_found_begin_here": "从这里开始"
+  "not_found_begin_here": "从这里开始",
+  "not_found_subtitle": "抱歉，找不到该页面。",
+  "not_found_hint": "看起来这个链接已过时。"
 }

@@ -54,5 +54,7 @@
   "contact_call_title": "Call Us",
   "contact_email_title": "Email Us",
   
-  "not_found_begin_here": "Begin here"
+  "not_found_begin_here": "Begin here",
+  "not_found_subtitle": "Sorry, that page can't be found.",
+  "not_found_hint": "Looks like that link is outdated."
 }

@@ -54,5 +54,7 @@
   "contact_call_title": "اتصل بنا",
   "contact_email_title": "راسلنا",
   
-  "not_found_begin_here": "ابدأ من هنا"
+  "not_found_begin_here": "ابدأ من هنا",
+  "not_found_subtitle": "عذرًا، لا يمكن العثور على هذه الصفحة.",
+  "not_found_hint": "يبدو أن هذا الرابط قديم."
 }

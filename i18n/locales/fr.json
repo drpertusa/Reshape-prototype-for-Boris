@@ -54,5 +54,7 @@
   "contact_call_title": "Nous Appeler",
   "contact_email_title": "Nous Écrire",
   
-  "not_found_begin_here": "Commencer ici"
+  "not_found_begin_here": "Commencer ici",
+  "not_found_subtitle": "Désolé, cette page est introuvable.",
+  "not_found_hint": "Il semble que ce lien soit obsolète."
 }

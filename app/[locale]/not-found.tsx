@@ -14,6 +14,11 @@ export default function NotFound() {
       <h1 className="font-display text-4xl md:text-6xl">
         {t("site_name")}
       </h1>
+      
+      {/* Screen reader only - for accessibility and SEO */}
+      <h2 className="sr-only">
+        {t("not_found_subtitle")}
+      </h2>
 
       {/* "Begin here →" */}
       <Link
@@ -23,6 +28,11 @@ export default function NotFound() {
         <span>{t("not_found_begin_here")}</span>
         <span className="animate-subtle-pulse">→</span>
       </Link>
+      
+      {/* Subtle hint that fades in after delay */}
+      <p className="mt-2 text-sm text-muted-foreground fade-in-delay">
+        {t("not_found_hint")}
+      </p>
     </main>
   )
 }

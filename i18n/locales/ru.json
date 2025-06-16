@@ -54,5 +54,7 @@
   "contact_call_title": "Позвоните нам",
   "contact_email_title": "Напишите нам",
   
-  "not_found_begin_here": "Начать здесь"
+  "not_found_begin_here": "Начать здесь",
+  "not_found_subtitle": "Извините, эта страница не найдена.",
+  "not_found_hint": "Похоже, эта ссылка устарела."
 }
