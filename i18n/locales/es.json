@@ -1,0 +1,60 @@
+{
+  "site_name": "Reshape",
+  "site_tagline": "Excelencia Médica a Través de la Precisión",
+  "site_description": "Donde la ciencia se encuentra con la transformación. Precisión médica, excelencia estética y transformación auténtica a través de tratamientos basados en evidencia.",
+  "site_email": "hello@reshape.clinic",
+  "site_phone": "+44 (0)20 1234 5678",
+  "site_copyright": "© {year} {name}. Todos los derechos reservados.",
+  
+  "address_street": "20 Fitzroy Street",
+  "address_city": "London",
+  "address_zip": "W1T 6EJ",
+  "address_country": "United Kingdom",
+  
+  "nav_home": "Inicio",
+  "nav_services": "Servicios",
+  "nav_philosophy": "Filosofía",
+  "nav_contact": "Contacto",
+  "nav_privacy": "Privacidad",
+  "nav_terms": "Términos",
+  "nav_menu": "Menú",
+  "nav_toggle_menu": "Alternar menú",
+  "nav_toggle_theme": "Cambiar tema",
+  
+  "home_hero_title": "Donde la Ciencia se Encuentra con la",
+  "home_hero_title_accent": "Transformación",
+  "home_hero_subtitle": "Precisión médica. Excelencia estética. Su viaje hacia la transformación auténtica comienza con una consulta.",
+  "home_hero_cta": "Reservar Consulta",
+  
+  "philosophy_title": "Nuestra Filosofía",
+  "philosophy_intro": "En Reshape, creemos en la inevitabilidad de la excelencia a través de la restricción. Cada tratamiento está calibrado con precisión, cada resultado considerado cuidadosamente. No agregamos—refinamos.",
+  "philosophy_precision_title": "Precisión",
+  "philosophy_precision_desc": "Tratamientos basados en evidencia adaptados a su biología única",
+  "philosophy_privacy_title": "Privacidad",
+  "philosophy_privacy_desc": "Su viaje permanece confidencial, seguro y completamente suyo",
+  "philosophy_purpose_title": "Propósito",
+  "philosophy_purpose_desc": "Transformación con intención, nunca simple mejora",
+  
+  "services_title": "Servicios",
+  "services_regenerative_title": "Medicina Regenerativa",
+  "services_regenerative_desc": "Terapias de optimización celular",
+  "services_aesthetic_title": "Cirugía Estética",
+  "services_aesthetic_desc": "Refinamiento quirúrgico minimalista",
+  "services_longevity_title": "Programas de Longevidad",
+  "services_longevity_desc": "Gestión integral de la edad",
+  
+  "cta_title": "Comience Su Transformación",
+  "cta_subtitle": "La excelencia no es un accidente. Es el resultado de la intención, la precisión y el compromiso.",
+  "cta_learn_more": "Aprender Más",
+  "cta_schedule": "Programar Consulta",
+  
+  "contact_hero_title": "Comencemos",
+  "contact_hero_subtitle": "Su transformación comienza con una conversación.",
+  "contact_visit_title": "Visítenos",
+  "contact_call_title": "Llámenos",
+  "contact_email_title": "Escríbanos",
+  
+  "not_found_begin_here": "Comenzar aquí",
+  "not_found_subtitle": "Lo sentimos, no se puede encontrar esa página.",
+  "not_found_hint": "Parece que ese enlace está desactualizado."
+}

@@ -1,5 +1,5 @@
 // Minimal i18n configuration
-export const locales = ['en', 'fr', 'zh', 'ru', 'ar'] as const;
+export const locales = ['en', 'fr', 'es', 'zh', 'ru', 'ar'] as const;
 export const defaultLocale = 'en' as const;
 export type Locale = (typeof locales)[number];
 

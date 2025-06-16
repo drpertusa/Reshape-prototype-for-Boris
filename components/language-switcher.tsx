@@ -11,6 +11,7 @@ import { usePathname } from "@/i18n/navigation"
 const LOCALE_NAMES = {
   en: "English",
   fr: "Français",
+  es: "Español",
   zh: "中文",
   ru: "Русский",
   ar: "العربية",
