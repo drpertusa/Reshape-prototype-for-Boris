@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/layout/footer"
+import { PageLayout } from "@/components/layout/page-layout"
 import { Section } from "@/components/layout/section"
 import { getTranslations } from "@/i18n/server"
 import { locales } from "@/i18n/config"
@@ -29,8 +28,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const { locale } = await params
   const t = await getTranslations(locale)
   return (
-    <div className="min-h-screen">
-      <Navigation />
+    <PageLayout>
 
       {/* Hero Section */}
       <Section className="pt-32 pb-20" containerSize="lg">
@@ -108,7 +106,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </div>
       </Section>
 
-      <Footer />
-    </div>
+    </PageLayout>
   )
 }

@@ -62,7 +62,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       suppressHydrationWarning 
       className={`${lavaChickenSerif.variable} ${inter.variable}`}
     >
-      <body className="antialiased">
+      <body className="antialiased flex flex-col min-h-screen">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <I18nProvider locale={locale as Locale} translations={translations}>
             {children}

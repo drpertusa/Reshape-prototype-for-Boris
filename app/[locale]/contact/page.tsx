@@ -1,5 +1,4 @@
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/layout/footer"
+import { PageLayout } from "@/components/layout/page-layout"
 import { Section } from "@/components/layout/section"
 import { getTranslations } from "@/i18n/server"
 import { locales } from "@/i18n/config"
@@ -29,8 +28,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   const t = await getTranslations(locale)
   
   return (
-    <div className="min-h-screen">
-      <Navigation />
+    <PageLayout>
 
       {/* Hero Section */}
       <Section className="pt-32 pb-12">
@@ -74,7 +72,6 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         </div>
       </Section>
 
-      <Footer />
-    </div>
+    </PageLayout>
   )
 }
