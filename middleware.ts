@@ -51,22 +51,39 @@ export function middleware(request: NextRequest) {
   ) {
     return NextResponse.next();
   }
+  
+  // Check for redirect loop protection
+  const redirectCount = parseInt(request.headers.get('x-redirect-count') || '0');
+  if (redirectCount > 2) {
+    console.error('Redirect loop detected!', {
+      pathname,
+      redirectCount,
+      url: request.url
+    });
+    // Break the loop by accepting the current URL
+    return NextResponse.next();
+  }
 
-  // Normalize pathname (remove trailing slash except for root)
-  const normalizedPathname = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
+  // Normalize pathname (remove trailing slash except for root and handle double slashes)
+  let normalizedPathname = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
+  // Remove any double slashes
+  normalizedPathname = normalizedPathname.replace(/\/+/g, '/');
 
   // Extract locale from pathname
-  const segments = normalizedPathname.split('/');
-  const potentialLocale = segments[1];
+  const segments = normalizedPathname.split('/').filter(Boolean); // filter(Boolean) removes empty strings
+  const potentialLocale = segments[0]; // After filtering, first segment is locale if present
   const pathnameHasValidLocale = potentialLocale && isValidLocale(potentialLocale);
 
   // Handle multiple locale segments (e.g., /en/fr/page)
-  if (segments.length > 2 && segments.slice(1).some(seg => locales.includes(seg as any))) {
-    // Remove all locale segments and redirect to proper URL
-    const cleanPath = '/' + segments.filter(seg => !locales.includes(seg as any)).slice(1).join('/');
-    const locale = getLocale(request);
-    const newUrl = new URL(`/${locale}${cleanPath || ''}${search}${hash}`, request.url);
-    return NextResponse.redirect(newUrl);
+  if (segments.length > 1 && segments.filter(seg => locales.includes(seg as any)).length > 1) {
+    // Keep only the first locale and remove others
+    const firstLocale = segments.find(seg => locales.includes(seg as any));
+    const cleanSegments = [firstLocale, ...segments.filter(seg => !locales.includes(seg as any))];
+    const cleanPath = '/' + cleanSegments.join('/');
+    const newUrl = new URL(`${cleanPath}${search}${hash}`, request.url);
+    const response = NextResponse.redirect(newUrl);
+    response.headers.set('x-redirect-count', String(redirectCount + 1));
+    return response;
   }
 
   if (pathnameHasValidLocale) {
@@ -94,6 +111,9 @@ export function middleware(request: NextRequest) {
   const newUrl = new URL(`/${locale}${pathWithoutLeadingSlash}${search}${hash}`, request.url);
   
   const response = NextResponse.redirect(newUrl);
+  
+  // Add redirect count header for loop protection
+  response.headers.set('x-redirect-count', String(redirectCount + 1));
   
   // Set cookie to persist choice
   response.cookies.set(LOCALE_COOKIE, locale, {
