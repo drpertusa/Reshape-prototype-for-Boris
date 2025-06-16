@@ -12,7 +12,7 @@ interface SectionProps {
 
 const sectionVariants = {
   default: "bg-background",
-  muted: "bg-muted/30",
+  muted: "bg-muted bg-opacity-30",
   transparent: "bg-transparent",
 } as const
 

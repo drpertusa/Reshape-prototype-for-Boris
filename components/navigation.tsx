@@ -32,7 +32,7 @@ export function Navigation() {
   const locale = useLocale()
 
   return (
-    <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b">
+    <nav className="fixed top-0 w-full bg-background bg-opacity-80 backdrop-blur-md z-50 border-b">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo - Always left */}
         <Link href={createLocalizedHref("/", locale)} className="font-display text-2xl">
