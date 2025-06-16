@@ -1,7 +1,8 @@
 import { redirect } from 'next/navigation'
-import { getLocale } from '@/i18n/server'
+import { defaultLocale } from '@/i18n/config'
 
-export default async function RootPage() {
-  const locale = await getLocale()
-  redirect(`/${locale}`)
+// This page should never be reached due to middleware redirects
+// But we keep it as a fallback
+export default function RootPage() {
+  redirect(`/${defaultLocale}`)
 }

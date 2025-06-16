@@ -1,13 +1,18 @@
-import { getTranslations } from './server'
-import { translate } from './server'
-
 interface TProps {
   id: string
   values?: Record<string, string | number>
+  translations?: Record<string, string>
 }
 
-// Server component for translations
-export async function T({ id, values }: TProps) {
-  const translations = await getTranslations()
-  return <>{translate(translations, id, values)}</>
+// Simple translation component that receives translations via props
+export function T({ id, values, translations = {} }: TProps) {
+  let text = translations[id] || id;
+  
+  if (values) {
+    Object.entries(values).forEach(([k, v]) => {
+      text = text.replace(`{${k}}`, String(v));
+    });
+  }
+  
+  return <>{text}</>;
 }

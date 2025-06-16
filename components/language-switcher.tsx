@@ -1,9 +1,11 @@
 "use client"
 
 import { useRouter } from "next/navigation"
+import { useState, useTransition } from "react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useLocale } from "@/i18n/client"
-import { locales, LOCALE_COOKIE } from "@/i18n/config"
+import { locales, LOCALE_COOKIE, isValidLocale } from "@/i18n/config"
+import { usePathname } from "@/i18n/navigation"
 
 const LOCALE_NAMES = {
   en: "English",
@@ -16,17 +18,43 @@ const LOCALE_NAMES = {
 export function LanguageSwitcher() {
   const locale = useLocale()
   const router = useRouter()
+  const pathname = usePathname() // Get pathname without locale
+  const [isPending, startTransition] = useTransition()
+  const [isChanging, setIsChanging] = useState(false)
   
   const handleLocaleChange = (newLocale: string) => {
-    // Set cookie
+    // Validate locale
+    if (!isValidLocale(newLocale)) return
+    
+    // Prevent multiple clicks
+    if (isChanging || isPending) return
+    
+    setIsChanging(true)
+    
+    // Set cookie to persist choice (accessible from client)
     document.cookie = `${LOCALE_COOKIE}=${newLocale};path=/;max-age=31536000;SameSite=Lax`
     
-    // Refresh the page to apply new locale
-    router.refresh()
+    // Preserve query params and hash
+    const url = new URL(window.location.href)
+    const search = url.search
+    const hash = url.hash
+    
+    // Navigate to the new locale URL
+    const newPath = `/${newLocale}${pathname === '/' ? '' : pathname}${search}${hash}`
+    
+    startTransition(() => {
+      router.push(newPath)
+      // Reset changing state after navigation
+      setTimeout(() => setIsChanging(false), 500)
+    })
   }
   
   return (
-    <Select value={locale} onValueChange={handleLocaleChange}>
+    <Select 
+      value={locale} 
+      onValueChange={handleLocaleChange}
+      disabled={isChanging || isPending}
+    >
       <SelectTrigger className="w-[140px]">
         <SelectValue />
       </SelectTrigger>

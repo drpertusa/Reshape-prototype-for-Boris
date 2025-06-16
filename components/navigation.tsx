@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
@@ -16,7 +15,8 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { cn } from "@/lib/utils"
 import { useState } from "react"
-import { useTranslations } from "@/i18n/client"
+import { useTranslations, useLocale } from "@/i18n/client"
+import { createLocalizedHref, usePathname } from "@/i18n/navigation"
 
 const NAVIGATION_ITEMS = [
   { href: "/", labelKey: "nav_home" },
@@ -29,12 +29,13 @@ export function Navigation() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const t = useTranslations()
+  const locale = useLocale()
 
   return (
     <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo - Always left */}
-        <Link href="/" className="font-display text-2xl">
+        <Link href={createLocalizedHref("/", locale)} className="font-display text-2xl">
           {t("site_name")}
         </Link>
 
@@ -43,7 +44,7 @@ export function Navigation() {
           <NavigationMenuList>
             {NAVIGATION_ITEMS.map((item) => (
               <NavigationMenuItem key={item.href}>
-                <Link href={item.href} legacyBehavior passHref>
+                <Link href={createLocalizedHref(item.href, locale)} legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     {t(item.labelKey)}
                   </NavigationMenuLink>
@@ -75,7 +76,7 @@ export function Navigation() {
               {NAVIGATION_ITEMS.map((item) => (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={createLocalizedHref(item.href, locale)}
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     "block px-4 py-3 text-lg font-medium transition-colors hover:text-primary",

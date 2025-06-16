@@ -24,8 +24,14 @@ export async function loadTranslations(locale: Locale): Promise<Record<string, s
   }
 }
 
-// Get current locale from cookies or headers
-export async function getLocale(): Promise<Locale> {
+// Get current locale from URL (via params) or cookies as fallback
+export async function getLocale(locale?: string): Promise<Locale> {
+  // If locale is provided (from URL params), validate and use it
+  if (locale && isValidLocale(locale)) {
+    return locale;
+  }
+  
+  // Fallback to cookie (shouldn't happen with proper routing)
   const cookieStore = await cookies();
   const cookieLocale = cookieStore.get(LOCALE_COOKIE)?.value;
   
@@ -36,10 +42,10 @@ export async function getLocale(): Promise<Locale> {
   return defaultLocale;
 }
 
-// Get translations for current locale
-export async function getTranslations(): Promise<Record<string, string>> {
-  const locale = await getLocale();
-  return loadTranslations(locale);
+// Get translations for specific locale
+export async function getTranslations(locale?: string): Promise<Record<string, string>> {
+  const currentLocale = await getLocale(locale);
+  return loadTranslations(currentLocale);
 }
 
 // Simple translation function with interpolation

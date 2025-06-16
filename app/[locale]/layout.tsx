@@ -17,8 +17,14 @@ interface LocaleLayoutProps {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  await params // We don't need the locale for metadata in this case
-  const translations = await getTranslations()
+  const { locale } = await params
+  const translations = await getTranslations(locale)
+  
+  // Generate alternate language links for SEO
+  const languages: Record<string, string> = {};
+  locales.forEach((loc) => {
+    languages[loc] = `/${loc}`;
+  });
   
   return {
     title: `${translations.site_name} - ${translations.site_tagline}`,
@@ -29,6 +35,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: `${translations.site_name} - ${translations.site_tagline}`,
       description: translations.site_description,
       type: "website",
+      locale: locale,
+      alternateLocale: locales.filter(l => l !== locale),
+    },
+    alternates: {
+      languages,
     },
   }
 }
@@ -41,7 +52,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     notFound()
   }
   
-  const translations = await getTranslations()
+  const translations = await getTranslations(locale)
   const direction = getDirection(locale as Locale)
   
   return (
