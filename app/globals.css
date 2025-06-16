@@ -4,23 +4,6 @@
 @theme {
   /* Remove all rounded corners */
   --radius: 0rem;
-  
-  /* Minimalist 2-color system mapped to shadcn/ui requirements */
-  --color-background: #ffffff;
-  --color-foreground: #000000;
-  --color-primary: #000000;
-  --color-primary-foreground: #ffffff;
-  --color-secondary: #f9f9f9;
-  --color-secondary-foreground: #000000;
-  --color-muted: #f9f9f9;
-  --color-muted-foreground: #707070;
-  --color-accent: #f9f9f9;
-  --color-accent-foreground: #000000;
-  --color-destructive: #000000;
-  --color-destructive-foreground: #ffffff;
-  --color-border: #e5e5e5;
-  --color-input: #e5e5e5;
-  --color-ring: #000000;
 }
 
 @layer base {
@@ -28,12 +11,8 @@
     font-family: 'Helvetica Neue', -apple-system, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    @apply bg-background text-foreground;
-  }
-  
-  /* Dark mode styles */
-  .dark body {
-    @apply bg-black text-white;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
   
   /* Steve Jobs Archive link hover - underline animation */
