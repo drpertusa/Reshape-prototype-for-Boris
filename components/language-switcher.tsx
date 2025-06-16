@@ -8,6 +8,9 @@ import { locales, LOCALE_COOKIE } from "@/i18n/config"
 const LOCALE_NAMES = {
   en: "English",
   fr: "Français",
+  zh: "中文",
+  ru: "Русский",
+  ar: "العربية",
 } as const
 
 export function LanguageSwitcher() {
@@ -24,7 +27,7 @@ export function LanguageSwitcher() {
   
   return (
     <Select value={locale} onValueChange={handleLocaleChange}>
-      <SelectTrigger className="w-[120px]">
+      <SelectTrigger className="w-[140px]">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

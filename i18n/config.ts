@@ -1,10 +1,9 @@
 // Minimal i18n configuration
-export const locales = ['en', 'fr'] as const;
+export const locales = ['en', 'fr', 'zh', 'ru', 'ar'] as const;
 export const defaultLocale = 'en' as const;
 export type Locale = (typeof locales)[number];
 
-// Future locales documented but not implemented
-export const plannedLocales = ['zh', 'ru', 'ar'] as const;
+// RTL locales
 export const rtlLocales = ['ar'] as const;
 
 // Cookie name for locale persistence

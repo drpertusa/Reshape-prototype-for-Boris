@@ -1,0 +1,56 @@
+{
+  "site_name": "Reshape",
+  "site_tagline": "Медицинское совершенство через точность",
+  "site_description": "Где наука встречается с трансформацией. Медицинская точность, эстетическое совершенство и подлинная трансформация через научно обоснованное лечение.",
+  "site_email": "hello@reshape.clinic",
+  "site_phone": "+44 (0)20 1234 5678",
+  "site_copyright": "© {year} {name}. Все права защищены.",
+  
+  "address_street": "20 Fitzroy Street",
+  "address_city": "London",
+  "address_zip": "W1T 6EJ",
+  "address_country": "United Kingdom",
+  
+  "nav_home": "Главная",
+  "nav_services": "Услуги",
+  "nav_philosophy": "Философия",
+  "nav_contact": "Контакты",
+  "nav_privacy": "Конфиденциальность",
+  "nav_terms": "Условия",
+  "nav_menu": "Меню",
+  "nav_toggle_menu": "Переключить меню",
+  "nav_toggle_theme": "Переключить тему",
+  
+  "home_hero_title": "Где наука встречается с",
+  "home_hero_title_accent": "Трансформацией",
+  "home_hero_subtitle": "Медицинская точность. Эстетическое совершенство. Ваш путь к подлинной трансформации начинается с консультации.",
+  "home_hero_cta": "Записаться на консультацию",
+  
+  "philosophy_title": "Наша философия",
+  "philosophy_intro": "В Reshape мы верим в неизбежность совершенства через ограничения. Каждое лечение точно откалибровано, каждый результат тщательно продуман. Мы не добавляем — мы совершенствуем.",
+  "philosophy_precision_title": "Точность",
+  "philosophy_precision_desc": "Научно обоснованное лечение, адаптированное к вашей уникальной биологии",
+  "philosophy_privacy_title": "Конфиденциальность",
+  "philosophy_privacy_desc": "Ваш путь остается конфиденциальным, безопасным и полностью вашим",
+  "philosophy_purpose_title": "Цель",
+  "philosophy_purpose_desc": "Трансформация с намерением, а не просто улучшение",
+  
+  "services_title": "Услуги",
+  "services_regenerative_title": "Регенеративная медицина",
+  "services_regenerative_desc": "Терапия клеточной оптимизации",
+  "services_aesthetic_title": "Эстетическая хирургия",
+  "services_aesthetic_desc": "Минималистическое хирургическое совершенствование",
+  "services_longevity_title": "Программы долголетия",
+  "services_longevity_desc": "Комплексное управление возрастом",
+  
+  "cta_title": "Начните вашу трансформацию",
+  "cta_subtitle": "Совершенство не случайность. Это результат намерения, точности и приверженности.",
+  "cta_learn_more": "Узнать больше",
+  "cta_schedule": "Запланировать консультацию",
+  
+  "contact_hero_title": "Давайте начнем",
+  "contact_hero_subtitle": "Ваша трансформация начинается с разговора.",
+  "contact_visit_title": "Посетите нас",
+  "contact_call_title": "Позвоните нам",
+  "contact_email_title": "Напишите нам"
+}

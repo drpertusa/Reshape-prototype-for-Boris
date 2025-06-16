@@ -1,0 +1,56 @@
+{
+  "site_name": "Reshape",
+  "site_tagline": "التميز الطبي من خلال الدقة",
+  "site_description": "حيث يلتقي العلم بالتحول. الدقة الطبية، التميز الجمالي، والتحول الحقيقي من خلال العلاجات المبنية على الأدلة.",
+  "site_email": "hello@reshape.clinic",
+  "site_phone": "+44 (0)20 1234 5678",
+  "site_copyright": "© {year} {name}. جميع الحقوق محفوظة.",
+  
+  "address_street": "20 Fitzroy Street",
+  "address_city": "London",
+  "address_zip": "W1T 6EJ",
+  "address_country": "United Kingdom",
+  
+  "nav_home": "الرئيسية",
+  "nav_services": "الخدمات",
+  "nav_philosophy": "الفلسفة",
+  "nav_contact": "اتصل بنا",
+  "nav_privacy": "الخصوصية",
+  "nav_terms": "الشروط",
+  "nav_menu": "القائمة",
+  "nav_toggle_menu": "تبديل القائمة",
+  "nav_toggle_theme": "تبديل السمة",
+  
+  "home_hero_title": "حيث يلتقي العلم",
+  "home_hero_title_accent": "بالتحول",
+  "home_hero_subtitle": "الدقة الطبية. التميز الجمالي. تبدأ رحلتك نحو التحول الحقيقي بالاستشارة.",
+  "home_hero_cta": "احجز استشارة",
+  
+  "philosophy_title": "فلسفتنا",
+  "philosophy_intro": "في Reshape، نؤمن بحتمية التميز من خلال القيود. كل علاج معايرة بدقة، وكل نتيجة مدروسة بعناية. نحن لا نضيف — نحن نصقل.",
+  "philosophy_precision_title": "الدقة",
+  "philosophy_precision_desc": "علاجات قائمة على الأدلة مصممة خصيصًا لبيولوجيتك الفريدة",
+  "philosophy_privacy_title": "الخصوصية",
+  "philosophy_privacy_desc": "تبقى رحلتك سرية وآمنة وملكك بالكامل",
+  "philosophy_purpose_title": "الهدف",
+  "philosophy_purpose_desc": "التحول بقصد، وليس مجرد تحسين",
+  
+  "services_title": "الخدمات",
+  "services_regenerative_title": "الطب التجديدي",
+  "services_regenerative_desc": "علاجات تحسين الخلايا",
+  "services_aesthetic_title": "الجراحة التجميلية",
+  "services_aesthetic_desc": "التنقيح الجراحي البسيط",
+  "services_longevity_title": "برامج طول العمر",
+  "services_longevity_desc": "إدارة شاملة للعمر",
+  
+  "cta_title": "ابدأ تحولك",
+  "cta_subtitle": "التميز ليس صدفة. إنه نتيجة النية والدقة والالتزام.",
+  "cta_learn_more": "تعلم المزيد",
+  "cta_schedule": "جدولة استشارة",
+  
+  "contact_hero_title": "لنبدأ",
+  "contact_hero_subtitle": "يبدأ تحولك بمحادثة.",
+  "contact_visit_title": "قم بزيارتنا",
+  "contact_call_title": "اتصل بنا",
+  "contact_email_title": "راسلنا"
+}

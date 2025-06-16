@@ -1,0 +1,56 @@
+{
+  "site_name": "Reshape",
+  "site_tagline": "精准医疗 卓越品质",
+  "site_description": "科学与转型的交汇点。医疗精准、美学卓越，通过循证治疗实现真正的转型。",
+  "site_email": "hello@reshape.clinic",
+  "site_phone": "+44 (0)20 1234 5678",
+  "site_copyright": "© {year} {name}. 保留所有权利。",
+  
+  "address_street": "20 Fitzroy Street",
+  "address_city": "London",
+  "address_zip": "W1T 6EJ",
+  "address_country": "United Kingdom",
+  
+  "nav_home": "首页",
+  "nav_services": "服务",
+  "nav_philosophy": "理念",
+  "nav_contact": "联系",
+  "nav_privacy": "隐私",
+  "nav_terms": "条款",
+  "nav_menu": "菜单",
+  "nav_toggle_menu": "切换菜单",
+  "nav_toggle_theme": "切换主题",
+  
+  "home_hero_title": "科学与",
+  "home_hero_title_accent": "转型的交汇",
+  "home_hero_subtitle": "医疗精准。美学卓越。您的真正转型之旅从咨询开始。",
+  "home_hero_cta": "预约咨询",
+  
+  "philosophy_title": "我们的理念",
+  "philosophy_intro": "在 Reshape，我们相信通过约束实现卓越的必然性。每一项治疗都经过精确校准，每一个结果都经过深思熟虑。我们不添加——我们精炼。",
+  "philosophy_precision_title": "精准",
+  "philosophy_precision_desc": "根据您独特的生物学特性量身定制的循证治疗",
+  "philosophy_privacy_title": "隐私",
+  "philosophy_privacy_desc": "您的旅程保持机密、安全，完全属于您",
+  "philosophy_purpose_title": "目标",
+  "philosophy_purpose_desc": "有意图的转型，而非简单的改善",
+  
+  "services_title": "服务",
+  "services_regenerative_title": "再生医学",
+  "services_regenerative_desc": "细胞优化疗法",
+  "services_aesthetic_title": "美容外科",
+  "services_aesthetic_desc": "极简主义外科精炼",
+  "services_longevity_title": "长寿计划",
+  "services_longevity_desc": "全面的年龄管理",
+  
+  "cta_title": "开始您的转型",
+  "cta_subtitle": "卓越不是偶然。它是意图、精准和承诺的结果。",
+  "cta_learn_more": "了解更多",
+  "cta_schedule": "安排咨询",
+  
+  "contact_hero_title": "让我们开始",
+  "contact_hero_subtitle": "您的转型从一次对话开始。",
+  "contact_visit_title": "拜访我们",
+  "contact_call_title": "致电我们",
+  "contact_email_title": "给我们发邮件"
+}
