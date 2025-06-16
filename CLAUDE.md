@@ -101,6 +101,88 @@ a:hover::after {
 
 ---
 
+## SPACING SYSTEM
+
+### 8pt Grid Foundation
+**Allowed values**: 8px • 16px • 24px • 32px • 48px • 64px • 96px  
+Tailwind classes: `p-2` • `p-4` • `p-6` • `p-8` • `p-12` • `p-16` • `p-24`
+
+### Three Section Gutters (Only)
+```typescript
+// Section component
+const gutters = {
+  sm: 'py-16',  // 64px - Standard (default)
+  md: 'py-24',  // 96px - Hero & dramatic breaks
+  xs: 'py-12',  // 48px - Footer & utility sections
+} as const;
+```
+
+### Container Padding
+```tsx
+className="px-6 md:px-8 lg:px-12"  // 24px → 32px → 48px
+```
+
+### Typography Spacing
+| Element | Margin | Tailwind |
+|---------|--------|----------|
+| h2      | 32px   | `mb-8`   |
+| h3      | 24px   | `mb-6`   |
+| h4      | 16px   | `mb-4`   |
+| p       | 16px   | `mb-4`   |
+
+**Use parent `space-y-*` instead of individual `mb-*` where possible**
+
+### Grid Gaps
+- **Two columns**: `gap-8` (32px)
+- **Three columns**: `gap-6` (24px)
+- Mobile: Everything stacks to single column
+
+### Special Cases
+
+#### Hero Section
+```tsx
+<section className="pt-[15vh] md:pt-[18vh]">
+  <h1 className="text-[clamp(2.5rem,6vw+1rem,4rem)] tracking-tight" />
+  <Button className="mt-8 md:mt-12">CTA</Button>
+</section>
+```
+
+#### Fixed Navigation Offset
+- All pages (except hero): `pt-20` (80px = nav 64px + breathing 16px)
+- Hero uses fluid vh padding as specified above
+
+### Micro-spacing
+Small adjustments (icon gaps, button padding): Use `8px` or `12px` only
+
+### Motion Restraint
+Animations limited to:
+- Hero CTA button
+- 404 page arrow
+- Navigation transitions
+- No new animations without explicit justification
+
+### Quick Reference
+```tsx
+// Standard page section
+<Section>content</Section>  // Gets py-16 by default
+
+// Dramatic section
+<Section gutter="md">content</Section>  // py-24
+
+// Compact section
+<Section gutter="xs">content</Section>  // py-12
+
+// Internal spacing
+<div className="space-y-6">
+  <h3>Title</h3>
+  <p>Content</p>
+</div>
+```
+
+**That's it. 7 spacing tokens, 3 gutters, 1 consistent system.**
+
+---
+
 ## PROJECT STRUCTURE
 
 ```
@@ -152,6 +234,8 @@ a:hover::after {
 - **Security**: Removed deprecated X-XSS-Protection header
 - **Typography**: Implemented LoveFrom Serif + Helvetica Neue
 - **Colors**: Simplified to 2-color system (black/white)
+- **Spacing System**: Established 8pt grid with 3 section gutters
+- **Documentation**: Added comprehensive spacing guide to CLAUDE.md
 
 ### June 15, 2025
 - **Structure**: Extracted Footer, Section, Container components

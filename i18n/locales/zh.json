@@ -111,5 +111,9 @@
   "privacy_international_text": "无论您来自伦敦还是洛杉矶、巴黎还是东京，您的数据都会得到同样的保护。我们超越了 GDPR 和全球隐私标准。",
   "privacy_changes_title": "更新",
   "privacy_changes_text": "隐私标准在演进，我们也是。本政策的任何更改都将清楚地传达，并在需要时征求您的同意。",
-  "privacy_contact": "隐私问题应得到立即回答："
+  "privacy_contact": "隐私问题应得到立即回答：",
+  
+  "cookie_consent_text": "我们使用必要的 cookie 以确保安全和功能。无跟踪，无分析。",
+  "cookie_consent_accept": "接受",
+  "cookie_consent_privacy": "隐私政策"
 }

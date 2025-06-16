@@ -6,6 +6,7 @@ import { lavaChickenSerif, inter } from "@/lib/fonts"
 import { I18nProvider } from "@/i18n/client"
 import { getTranslations } from "@/i18n/server"
 import { Locale, locales, getDirection } from "@/i18n/config"
+import { CookieConsent } from "@/components/cookie-consent"
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
@@ -66,6 +67,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <I18nProvider locale={locale as Locale} translations={translations}>
             {children}
+            <CookieConsent />
           </I18nProvider>
         </ThemeProvider>
       </body>
