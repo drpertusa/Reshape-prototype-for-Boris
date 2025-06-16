@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
 
 @theme {
   /* Remove all rounded corners */
@@ -20,23 +21,6 @@
   --color-border: #e5e5e5;
   --color-input: #e5e5e5;
   --color-ring: #000000;
-  
-  /* Dark mode - inverted */
-  --color-background-dark: #000000;
-  --color-foreground-dark: #ffffff;
-  --color-primary-dark: #ffffff;
-  --color-primary-foreground-dark: #000000;
-  --color-secondary-dark: #0a0a0a;
-  --color-secondary-foreground-dark: #ffffff;
-  --color-muted-dark: #0a0a0a;
-  --color-muted-foreground-dark: #a0a0a0;
-  --color-accent-dark: #0a0a0a;
-  --color-accent-foreground-dark: #ffffff;
-  --color-destructive-dark: #ffffff;
-  --color-destructive-foreground-dark: #000000;
-  --color-border-dark: #262626;
-  --color-input-dark: #262626;
-  --color-ring-dark: #ffffff;
 }
 
 @layer base {
@@ -44,6 +28,12 @@
     font-family: 'Helvetica Neue', -apple-system, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    @apply bg-background text-foreground;
+  }
+  
+  /* Dark mode styles */
+  .dark body {
+    @apply bg-black text-white;
   }
   
   /* Steve Jobs Archive link hover - underline animation */
@@ -84,125 +74,38 @@
 }
 
 /* CSS Variables for shadcn/ui components */
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
-    --primary: 0 0% 0%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 97.6%;
-    --secondary-foreground: 0 0% 0%;
-    --muted: 0 0% 97.6%;
-    --muted-foreground: 0 0% 43.9%;
-    --accent: 0 0% 97.6%;
-    --accent-foreground: 0 0% 0%;
-    --destructive: 0 0% 0%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 0%;
-  }
-  
-  .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 0 0% 3.9%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 3.9%;
-    --muted-foreground: 0 0% 62.7%;
-    --accent: 0 0% 3.9%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 0% 100%;
-    --destructive-foreground: 0 0% 0%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 100%;
-  }
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --primary: 0 0% 0%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 97.6%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 0 0% 97.6%;
+  --muted-foreground: 0 0% 43.9%;
+  --accent: 0 0% 97.6%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 0% 0%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 0%;
 }
 
-/* Tailwind animation utilities for Sheet/Dialog */
-@layer utilities {
-  /* Fade animations */
-  .animate-in {
-    animation-name: animate-in;
-    animation-duration: var(--animate-duration, 250ms);
-    animation-fill-mode: both;
-  }
-  
-  .animate-out {
-    animation-name: animate-out;
-    animation-duration: var(--animate-duration, 250ms);
-    animation-fill-mode: both;
-  }
-  
-  .fade-in-0 {
-    --animate-enter-opacity: 0;
-  }
-  
-  .fade-out-0 {
-    --animate-exit-opacity: 0;
-  }
-  
-  /* Slide animations */
-  .slide-in-from-right {
-    --animate-enter-transform: translateX(100%);
-  }
-  
-  .slide-out-to-right {
-    --animate-exit-transform: translateX(100%);
-  }
-  
-  .slide-in-from-left {
-    --animate-enter-transform: translateX(-100%);
-  }
-  
-  .slide-out-to-left {
-    --animate-exit-transform: translateX(-100%);
-  }
-  
-  .slide-in-from-top {
-    --animate-enter-transform: translateY(-100%);
-  }
-  
-  .slide-out-to-top {
-    --animate-exit-transform: translateY(-100%);
-  }
-  
-  .slide-in-from-bottom {
-    --animate-enter-transform: translateY(100%);
-  }
-  
-  .slide-out-to-bottom {
-    --animate-exit-transform: translateY(100%);
-  }
-  
-  /* Duration utilities */
-  .duration-250 {
-    --animate-duration: 250ms;
-  }
-  
-  /* Keyframes */
-  @keyframes animate-in {
-    from {
-      opacity: var(--animate-enter-opacity, 1);
-      transform: var(--animate-enter-transform, none);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-  
-  @keyframes animate-out {
-    from {
-      opacity: 1;
-      transform: none;
-    }
-    to {
-      opacity: var(--animate-exit-opacity, 1);
-      transform: var(--animate-exit-transform, none);
-    }
-  }
+.dark {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --primary: 0 0% 100%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 3.9%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 3.9%;
+  --muted-foreground: 0 0% 62.7%;
+  --accent: 0 0% 3.9%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 0% 100%;
+  --destructive-foreground: 0 0% 0%;
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 0 0% 100%;
 }
