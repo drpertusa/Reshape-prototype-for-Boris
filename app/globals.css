@@ -4,9 +4,17 @@
 @theme {
   /* Remove all rounded corners */
   --radius: 0rem;
+  
+  /* Custom colors from CSS variables */
+  --color-overlay: hsl(var(--overlay));
 }
 
 @layer base {
+  html {
+    /* Prevent layout shift when scrollbar appears/disappears */
+    scrollbar-gutter: stable;
+  }
+  
   body {
     font-family: var(--font-inter), -apple-system, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
