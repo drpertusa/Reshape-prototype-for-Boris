@@ -71,27 +71,44 @@
   }
 }
 
-/* Display font strategy - system fonts for non-Latin scripts */
+/* Display font strategy - LavaChicken for English only, beautiful serifs for others */
 .font-display {
   font-family: var(--font-lavachicken), Georgia, serif;
 }
 
-/* Chinese system fonts */
+/* French display serif */
+:lang(fr) .font-display {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+/* Spanish display serif */
+:lang(es) .font-display {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+/* Chinese display serif */
 :lang(zh) .font-display {
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
+  font-family: "Songti SC", "SimSun", "Noto Serif CJK SC", serif;
   font-weight: 500;
+  letter-spacing: 0.05em;
 }
 
-/* Russian system fonts - Inter supports Cyrillic well */
+/* Russian display serif */
 :lang(ru) .font-display {
-  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-weight: 600;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
-/* Arabic system fonts */
+/* Arabic display serif */
 :lang(ar) .font-display {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Geeza Pro", "Tahoma", sans-serif;
-  font-weight: 600;
+  font-family: "Amiri", "Noto Serif Arabic", "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: 0;
 }
 
 /* Ensure proper font rendering for all languages */

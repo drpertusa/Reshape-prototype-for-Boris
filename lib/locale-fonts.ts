@@ -13,11 +13,11 @@ export const localeFontStacks: Record<Locale, string> = {
 // Display font stacks for different locales  
 export const localeDisplayFontStacks: Record<Locale, string> = {
   en: 'var(--font-lava-chicken-serif), Georgia, serif',
-  fr: 'var(--font-lava-chicken-serif), Georgia, serif',
-  es: 'var(--font-lava-chicken-serif), Georgia, serif',
-  zh: 'var(--font-lava-chicken-serif), "Songti SC", "SimSun", serif',
-  ru: 'var(--font-lava-chicken-serif), Georgia, serif',
-  ar: 'var(--font-lava-chicken-serif), "Times New Roman", serif',
+  fr: 'Georgia, "Times New Roman", serif',
+  es: 'Georgia, "Times New Roman", serif',
+  zh: '"Songti SC", "SimSun", "Noto Serif CJK SC", serif',
+  ru: 'Georgia, "Times New Roman", serif',
+  ar: '"Amiri", "Noto Serif Arabic", "Times New Roman", serif',
 }
 
 // Get CSS variables for locale-specific fonts
