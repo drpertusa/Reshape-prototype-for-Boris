@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+
 import { defaultLocale, isValidLocale, LOCALE_COOKIE, locales } from './i18n/config';
 import { stripMarketingParams } from './lib/site';
 

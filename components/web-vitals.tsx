@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect } from 'react'
+
 import { onCLS, onFCP, onINP, onLCP, onTTFB } from 'web-vitals'
 
 interface WebVitalsData {

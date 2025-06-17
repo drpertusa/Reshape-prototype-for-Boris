@@ -1,11 +1,13 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import Link from "next/link"
+
+import { Home, Search, ArrowLeft } from "lucide-react"
+
+import { Container } from "@/components/layout/container"
 import { PageLayout } from "@/components/layout/page-layout"
 import { Section } from "@/components/layout/section"
-import { Container } from "@/components/layout/container"
-import Link from "next/link"
-import { Home, Search, ArrowLeft } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export default function NotFound() {
   return (

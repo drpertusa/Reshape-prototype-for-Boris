@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+
 import { site } from '@/lib/site'
 
 // IndexNow implementation for faster indexing on Bing, Yandex, Seznam, etc.

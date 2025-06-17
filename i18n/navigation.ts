@@ -1,4 +1,5 @@
 import { usePathname as useNextPathname } from 'next/navigation';
+
 import { locales } from './config';
 
 // Get pathname without locale prefix

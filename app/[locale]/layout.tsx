@@ -1,17 +1,21 @@
 import type React from "react"
-import type { Metadata } from "next"
+
 import { notFound } from "next/navigation"
+
 import { ThemeProvider } from "next-themes"
-import { lavaChickenSerif, inter } from "@/lib/fonts"
-import { I18nProvider } from "@/i18n/client"
-import { getTranslations } from "@/i18n/server"
-import { Locale, locales, getDirection } from "@/i18n/config"
+
 import { CookieConsent } from "@/components/cookie-consent"
-import { generateStructuredData } from "@/lib/structured-data"
 import { ResourceHints } from "@/components/resource-hints"
-import { WebVitals } from "@/components/web-vitals"
-import { generatePageMetadata } from "@/lib/seo-utils"
 import { AlternateLinks } from "@/components/seo/alternate-links"
+import { WebVitals } from "@/components/web-vitals"
+import { I18nProvider } from "@/i18n/client"
+import { Locale, locales, getDirection } from "@/i18n/config"
+import { getTranslations } from "@/i18n/server"
+import { lavaChickenSerif, inter } from "@/lib/fonts"
+import { generatePageMetadata } from "@/lib/seo-utils"
+import { generateStructuredData } from "@/lib/structured-data"
+
+import type { Metadata } from "next"
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }))

@@ -1,8 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useTheme } from "next-themes"
+
 import { Sun, Moon } from "lucide-react"
+import { useTheme } from "next-themes"
+
 import { Button } from "@/components/ui/button"
 import { useTranslations } from "@/i18n/client"
 

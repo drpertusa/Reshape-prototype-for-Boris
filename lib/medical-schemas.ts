@@ -1,8 +1,8 @@
 // Medical-specific schemas for healthcare SEO
 // Implements MedicalCondition, MedicalTherapy, and related schemas
 
-import { site } from './site'
 import { SITE_CONFIG } from './constants'
+import { site } from './site'
 
 interface MedicalConditionProps {
   name: string

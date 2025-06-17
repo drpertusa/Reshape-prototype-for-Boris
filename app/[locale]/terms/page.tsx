@@ -1,8 +1,10 @@
 import { Metadata } from "next"
-import { getTranslations } from "@/i18n/server"
+
 import { Container } from "@/components/layout/container"
-import { Section } from "@/components/layout/section"
 import { PageLayout } from "@/components/layout/page-layout"
+import { Prose } from "@/components/layout/prose"
+import { Section } from "@/components/layout/section"
+import { getTranslations } from "@/i18n/server"
 import { generatePageMetadata } from "@/lib/seo-utils"
 
 interface TermsPageProps {
@@ -42,7 +44,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
           </p>
           
           {/* Introduction */}
-          <div className="prose prose-lg max-w-none">
+          <Prose size="lg">
             <p className="text-lg leading-relaxed mb-8">
               {t.terms_intro}
             </p>
@@ -182,17 +184,17 @@ export default async function TermsPage({ params }: TermsPageProps) {
               </p>
               <div className="mt-2 space-y-1">
                 <p>
-                  Phone: <a href={`tel:${t.site_phone}`} className="hover:opacity-70 transition-opacity">{t.site_phone}</a>
+                  Phone: <a href={`tel:${t.site_phone}`} className="hover:opacity-70 transition-opacity duration-250">{t.site_phone}</a>
                 </p>
                 <p>
-                  Email: <a href={`mailto:bookings@reshape.clinic`} className="hover:opacity-70 transition-opacity">bookings@reshape.clinic</a>
+                  Email: <a href={`mailto:bookings@reshape.clinic`} className="hover:opacity-70 transition-opacity duration-250">bookings@reshape.clinic</a>
                 </p>
                 <p>
                   Post: {t.address_street}, {t.address_city} {t.address_zip}
                 </p>
               </div>
             </div>
-          </div>
+          </Prose>
         </Container>
       </Section>
     </PageLayout>

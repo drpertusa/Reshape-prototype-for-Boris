@@ -1,8 +1,10 @@
 import { Metadata } from "next"
-import { getTranslations } from "@/i18n/server"
+
 import { Container } from "@/components/layout/container"
-import { Section } from "@/components/layout/section"
 import { PageLayout } from "@/components/layout/page-layout"
+import { Prose } from "@/components/layout/prose"
+import { Section } from "@/components/layout/section"
+import { getTranslations } from "@/i18n/server"
 import { generatePageMetadata } from "@/lib/seo-utils"
 
 interface PrivacyPageProps {
@@ -42,7 +44,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
           </p>
           
           {/* Introduction */}
-          <div className="prose prose-lg max-w-none">
+          <Prose size="lg">
             <p className="text-lg leading-relaxed mb-8">
               {t.privacy_intro}
             </p>
@@ -160,12 +162,12 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
                 {t.privacy_contact}
               </p>
               <p className="mt-2">
-                <a href={`mailto:${t.site_email}`} className="hover:opacity-70 transition-opacity">
+                <a href={`mailto:${t.site_email}`} className="hover:opacity-70 transition-opacity duration-250">
                   {t.site_email}
                 </a>
               </p>
             </div>
-          </div>
+          </Prose>
         </Container>
       </Section>
     </PageLayout>

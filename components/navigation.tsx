@@ -1,9 +1,15 @@
 "use client"
 
+import { useState } from "react"
+
 import Link from "next/link"
+
 import { Menu } from "lucide-react"
+
+import { LanguageSwitcher } from "@/components/language-switcher"
+import { Container } from "@/components/layout/container"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { 
   NavigationMenu,
   NavigationMenuItem,
@@ -11,20 +17,12 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { LanguageSwitcher } from "@/components/language-switcher"
-import { cn } from "@/lib/utils"
-import { useState } from "react"
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { useTranslations, useLocale } from "@/i18n/client"
 import { createLocalizedHref, usePathname } from "@/i18n/navigation"
+import { NAVIGATION_ITEMS } from "@/lib/constants"
 import { applyScrollbarPadding } from "@/lib/scrollbar-gutter-fallback"
-
-const NAVIGATION_ITEMS = [
-  { href: "/", labelKey: "nav_home" },
-  { href: "/#services", labelKey: "nav_services" },
-  { href: "/#philosophy", labelKey: "nav_philosophy" },
-  { href: "/contact", labelKey: "nav_contact" },
-]
+import { cn } from "@/lib/utils"
 
 export function Navigation() {
   const pathname = usePathname()
@@ -34,7 +32,7 @@ export function Navigation() {
 
   return (
     <nav className="fixed top-0 w-screen bg-background bg-opacity-80 backdrop-blur-md z-50 border-b">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <Container className="h-16 flex items-center justify-between">
         {/* Logo - Always left */}
         <Link href={createLocalizedHref("/", locale)} className="font-display text-2xl">
           {t("site_name")}
@@ -101,7 +99,7 @@ export function Navigation() {
             </div>
           </SheetContent>
         </Sheet>
-      </div>
+      </Container>
     </nav>
   )
 }

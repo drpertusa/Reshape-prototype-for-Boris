@@ -1,6 +1,9 @@
 import Link from 'next/link'
+
 import { ArrowRight } from 'lucide-react'
+
 import { cn } from '@/lib/utils'
+
 import { getRelatedContent } from '../lib/internal-linking'
 
 interface RelatedContentProps {

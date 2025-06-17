@@ -22,16 +22,16 @@ export const SITE_CONFIG = {
 } as const
 
 export const NAVIGATION_ITEMS = [
-  { href: "/", label: "Home" },
-  { href: "/#services", label: "Services" },
-  { href: "/#philosophy", label: "Philosophy" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", labelKey: "nav_home" },
+  { href: "/#services", labelKey: "nav_services" },
+  { href: "/#philosophy", labelKey: "nav_philosophy" },
+  { href: "/contact", labelKey: "nav_contact" },
 ] as const
 
 export const FOOTER_LINKS = [
-  { href: "/privacy", label: "Privacy" },
-  { href: "/terms", label: "Terms" },
-  { href: "/contact", label: "Contact" },
+  { href: "/privacy", labelKey: "nav_privacy" },
+  { href: "/terms", labelKey: "nav_terms" },
+  { href: "/contact", labelKey: "nav_contact" },
 ] as const
 
 export const SERVICES = [
@@ -51,9 +51,9 @@ export const SERVICES = [
 
 export const ANIMATION_DURATION = {
   instant: 0,
-  fast: 200,
-  normal: 300,
-  slow: 500,
+  fast: 150,
+  normal: 250,
+  slow: 350,
 } as const
 
 export const BREAKPOINTS = {

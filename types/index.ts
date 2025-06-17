@@ -64,6 +64,7 @@ export interface SectionProps {
   containerSize?: "sm" | "md" | "lg" | "xl" | "full"
   id?: string
   variant?: "default" | "muted" | "transparent"
+  gutter?: "xs" | "sm" | "md"
 }
 
 export interface ContainerProps {

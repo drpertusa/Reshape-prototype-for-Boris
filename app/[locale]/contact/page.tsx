@@ -1,11 +1,12 @@
 import { PageLayout } from "@/components/layout/page-layout"
 import { Section } from "@/components/layout/section"
-import { getTranslations } from "@/i18n/server"
-import type { Metadata } from "next"
-import { generatePageMetadata } from "@/lib/seo-utils"
-import { generateStructuredData } from "@/lib/structured-data"
 import { JsonLd } from "@/components/seo/json-ld"
 import type { Locale } from "@/i18n/config"
+import { getTranslations } from "@/i18n/server"
+import { generatePageMetadata } from "@/lib/seo-utils"
+import { generateStructuredData } from "@/lib/structured-data"
+
+import type { Metadata } from "next"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params

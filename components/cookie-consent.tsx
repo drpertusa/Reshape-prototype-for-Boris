@@ -1,9 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Drawer, DrawerContent } from '@/components/ui/drawer'
-import { Button } from '@/components/ui/button'
+
 import Link from 'next/link'
+
+import { Button } from '@/components/ui/button'
+import { Drawer, DrawerContent } from '@/components/ui/drawer'
 import { useTranslations } from '@/i18n/client'
 
 export function CookieConsent() {

@@ -2,8 +2,9 @@
 // Includes multiple schema types for rich snippets and AI understanding
 
 import { Locale } from '@/i18n/config'
-import { generateHomeSpeakable, generateServiceSpeakable } from './speakable-schema'
+
 import { site } from './site'
+import { generateHomeSpeakable, generateServiceSpeakable } from './speakable-schema'
 
 interface StructuredDataProps {
   locale: Locale

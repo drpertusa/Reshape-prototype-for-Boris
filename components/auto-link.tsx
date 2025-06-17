@@ -1,7 +1,9 @@
 "use client"
 
-import Link from 'next/link'
 import React from 'react'
+
+import Link from 'next/link'
+
 import { findInternalLinks } from '../lib/internal-linking'
 
 interface AutoLinkProps {

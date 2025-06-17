@@ -1,5 +1,6 @@
-import { Locale, defaultLocale, isValidLocale, LOCALE_COOKIE } from './config';
 import { cookies } from 'next/headers';
+
+import { Locale, defaultLocale, isValidLocale, LOCALE_COOKIE } from './config';
 
 // Translation cache to avoid repeated imports
 const translationCache = new Map<Locale, Record<string, string>>();

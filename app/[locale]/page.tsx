@@ -1,10 +1,12 @@
-import { Button } from "@/components/ui/button"
+import Link from "next/link"
+
 import { PageLayout } from "@/components/layout/page-layout"
 import { Section } from "@/components/layout/section"
+import { Button } from "@/components/ui/button"
 import { getTranslations } from "@/i18n/server"
-import type { Metadata } from "next"
 import { generatePageMetadata } from "@/lib/seo-utils"
-import Link from "next/link"
+
+import type { Metadata } from "next"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params

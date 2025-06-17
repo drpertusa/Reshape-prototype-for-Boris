@@ -1,5 +1,5 @@
-import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/layout/footer"
+import { Navigation } from "@/components/navigation"
 
 interface PageLayoutProps {
   children: React.ReactNode

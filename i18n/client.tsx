@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext } from 'react';
+
 import { Locale, defaultLocale } from './config';
 
 interface I18nContextValue {

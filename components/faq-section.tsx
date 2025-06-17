@@ -1,7 +1,10 @@
 "use client"
 
 import { useState } from "react"
+
 import { ChevronDown } from "lucide-react"
+
+import { Prose } from "@/components/layout/prose"
 import { cn } from "@/lib/utils"
 
 interface FAQItem {
@@ -99,12 +102,14 @@ export function FAQSection({
                     itemProp="acceptedAnswer"
                     itemType="https://schema.org/Answer"
                   >
-                    <div 
-                      className="text-muted-foreground prose prose-sm max-w-none"
-                      itemProp="text"
+                    <Prose 
+                      size="sm"
+                      className="text-muted-foreground"
                     >
-                      {item.answer}
-                    </div>
+                      <div itemProp="text">
+                        {item.answer}
+                      </div>
+                    </Prose>
                   </div>
                 </div>
               ))}

@@ -1,7 +1,9 @@
 // Comprehensive SEO utilities for AI-era optimization
 
 import { Metadata } from 'next'
+
 import { locales } from '@/i18n/config'
+
 import { site } from './site'
 
 interface GenerateMetadataProps {

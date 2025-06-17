@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+
 import { locales } from '@/i18n/config'
 import { site } from '@/lib/site'
 

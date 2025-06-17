@@ -1,9 +1,12 @@
 "use client"
 
 import * as React from "react"
+
 import * as SelectPrimitive from "@radix-ui/react-select"
-import { Select } from "./select"
+
 import { applyScrollbarPadding } from "@/lib/scrollbar-gutter-fallback"
+
+import { Select } from "./select"
 
 type SelectWithFallbackProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>
 

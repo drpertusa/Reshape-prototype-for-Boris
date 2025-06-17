@@ -1,11 +1,13 @@
 "use client"
 
 import Link from "next/link"
+
 import { ChevronRight, Home } from "lucide-react"
-import { cn } from "@/lib/utils"
+
 import { useLocale } from "@/i18n/client"
 import { createLocalizedHref } from "@/i18n/navigation"
 import { site } from "@/lib/site"
+import { cn } from "@/lib/utils"
 
 export interface BreadcrumbItem {
   name: string
