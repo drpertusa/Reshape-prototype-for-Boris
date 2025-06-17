@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: TermsPageProps): Promise<Meta
   
   return {
     title: `${t.terms_title} - ${t.site_name}`,
-    description: t.terms_description,
+    description: t.terms_meta_description || t.terms_description,
     alternates: {
       canonical: `${baseUrl}/${locale}/terms`,
     },

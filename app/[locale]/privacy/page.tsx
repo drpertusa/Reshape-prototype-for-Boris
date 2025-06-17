@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: PrivacyPageProps): Promise<Me
   
   return {
     title: `${t.privacy_title} - ${t.site_name}`,
-    description: t.privacy_description,
+    description: t.privacy_meta_description || t.privacy_description,
     alternates: {
       canonical: `${baseUrl}/${locale}/privacy`,
     },

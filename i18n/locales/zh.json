@@ -53,6 +53,7 @@
   "contact_visit_title": "拜访我们",
   "contact_call_title": "致电我们",
   "contact_email_title": "给我们发邮件",
+  "contact_meta_description": "联系伦敦的 Reshape 诊所。预约医疗美容治疗咨询。访问我们位于 20 Fitzroy Square 的诊所或致电 +44 (0)7909 843543。",
   
   "not_found_begin_here": "从这里开始",
   "not_found_subtitle": "抱歉，找不到该页面。",
@@ -60,6 +61,7 @@
   
   "terms_title": "服务条款",
   "terms_description": "我们对医疗卓越和您转型之旅的承诺。",
+  "terms_meta_description": "Reshape 诊所的服务条款。我们对医疗卓越、透明定价和您转型之旅的承诺。所有治疗均基于循证医学。",
   "terms_last_updated": "最后更新：2025年6月16日",
   "terms_intro": "这些条款反映了我们对透明度、卓越和您福祉的承诺。我们相信清晰，而非复杂。",
   "terms_promise_title": "我们的承诺",
@@ -82,6 +84,7 @@
   
   "privacy_title": "隐私政策",
   "privacy_description": "我们如何以与护理相同的精准保护您的信息。",
+  "privacy_meta_description": "Reshape 诊所的隐私政策。了解我们如何通过军事级安全和严格的保密标准保护您的个人和医疗信息。",
   "privacy_last_updated": "最后更新：2025年6月16日",
   "privacy_intro": "您的隐私不仅仅是法律义务——它是您对我们信任的基础。本政策解释了我们如何尊重这种信任。",
   "privacy_commitment_title": "我们的承诺",

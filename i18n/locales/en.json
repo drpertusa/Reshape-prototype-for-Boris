@@ -53,6 +53,7 @@
   "contact_visit_title": "Visit Us",
   "contact_call_title": "Call Us",
   "contact_email_title": "Email Us",
+  "contact_meta_description": "Get in touch with Reshape Clinic in London. Book your consultation for medical aesthetic treatments. Visit us at 20 Fitzroy Square or call +44 (0)7909 843543.",
   
   "not_found_begin_here": "Begin here",
   "not_found_subtitle": "Sorry, that page can't be found.",
@@ -60,6 +61,7 @@
   
   "terms_title": "Terms of Service",
   "terms_description": "Our commitment to medical excellence and your transformation journey.",
+  "terms_meta_description": "Terms of service for Reshape Clinic. Our commitment to medical excellence, transparent pricing, and your transformation journey. All treatments are evidence-based.",
   "terms_last_updated": "Last updated: December 6, 2023",
   "terms_intro": "These terms tell you who we are, how we provide services to you, and what to do if you have a complaint. We believe in clarity, not complexity. The version that exists when you book governs your contract with us.",
   "terms_promise_title": "Our Promise",
@@ -82,6 +84,7 @@
   
   "privacy_title": "Privacy Policy",
   "privacy_description": "How we protect your information with the same precision we apply to your care.",
+  "privacy_meta_description": "Reshape Clinic's privacy policy. Learn how we protect your personal and medical information with military-grade security and strict confidentiality standards.",
   "privacy_last_updated": "Last updated: December 6, 2023",
   "privacy_intro": "This policy outlines how Reshape Clinic collects, uses, and discloses your information through our website https://www.reshape.clinic/. We may update this from time to time, so please check regularly.",
   "privacy_commitment_title": "Our Commitment",

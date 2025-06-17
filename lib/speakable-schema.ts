@@ -20,35 +20,28 @@ export function generateSpeakableSchema({
   headline,
   summary
 }: GenerateSpeakableProps) {
-  const schema: Record<string, any> = {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: headline,
-    url: url,
-    ...(summary && { description: summary }),
-    speakable: {
-      '@type': 'SpeakableSpecification',
-    }
+  const speakable: Record<string, unknown> = {
+    '@type': 'SpeakableSpecification',
   }
   
   // Add CSS selectors for voice-friendly content
   if (sections?.selector) {
-    schema.speakable.cssSelector = sections.selector
+    speakable.cssSelector = sections.selector
   }
   
   // Add XPath selectors
   if (sections?.xpath) {
-    schema.speakable.xpath = sections.xpath
+    speakable.xpath = sections.xpath
   }
   
   // Add direct content URLs
   if (sections?.content) {
-    schema.speakable.url = sections.content
+    speakable.url = sections.content
   }
   
   // If no specific sections, use default selectors
   if (!sections) {
-    schema.speakable.cssSelector = [
+    speakable.cssSelector = [
       'h1',                    // Main heading
       '.hero-content',         // Hero section
       '.quick-answer',         // Quick answer blocks
@@ -56,6 +49,15 @@ export function generateSpeakableSchema({
       'article > p:first-of-type',  // First paragraph
       '.faq-section'          // FAQ content
     ]
+  }
+  
+  const schema: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: headline,
+    url: url,
+    ...(summary && { description: summary }),
+    speakable
   }
   
   return schema
