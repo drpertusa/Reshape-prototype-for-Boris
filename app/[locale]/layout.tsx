@@ -8,6 +8,8 @@ import { getTranslations } from "@/i18n/server"
 import { Locale, locales, getDirection } from "@/i18n/config"
 import { CookieConsent } from "@/components/cookie-consent"
 import { generateStructuredData } from "@/lib/structured-data"
+import { ResourceHints } from "@/components/resource-hints"
+import { WebVitals } from "@/components/web-vitals"
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
@@ -102,6 +104,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       className={`${lavaChickenSerif.variable} ${inter.variable}`}
     >
       <head>
+        <ResourceHints />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -113,6 +116,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         </a>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <I18nProvider locale={locale as Locale} translations={translations}>
+            <WebVitals />
             {children}
             <CookieConsent />
           </I18nProvider>

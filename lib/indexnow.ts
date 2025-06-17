@@ -18,7 +18,8 @@ export async function submitToIndexNow(urls: string | string[]) {
     
     const result = await response.json()
     // Only log in development
-    if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+    if (typeof window !== 'undefined' && window.location.hostname === 'localhost' && process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
       console.log('IndexNow submission successful:', result)
     }
     return result

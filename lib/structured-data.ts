@@ -2,6 +2,7 @@
 // Includes multiple schema types for rich snippets and AI understanding
 
 import { Locale } from '@/i18n/config'
+import { generateHomeSpeakable, generateServiceSpeakable } from './speakable-schema'
 
 interface StructuredDataProps {
   locale: Locale
@@ -323,6 +324,16 @@ export function generateStructuredData({
     }
   }
   schemas.push(localBusinessSchema)
+  
+  // 9. Speakable Schema for voice assistants
+  if (page === 'home') {
+    schemas.push(generateHomeSpeakable(translations))
+  } else if (page === 'services') {
+    schemas.push(generateServiceSpeakable(
+      translations.services_title || 'Medical Services',
+      translations.services_description || 'Premium medical and aesthetic services'
+    ))
+  }
   
   // Return all schemas wrapped in @graph
   return {

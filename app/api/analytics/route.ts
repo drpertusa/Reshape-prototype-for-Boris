@@ -78,7 +78,8 @@ export async function POST(request: NextRequest) {
       crawlerStats[crawler].lastSeen = timestamp || new Date().toISOString()
       
       // Log to server console in development
-      if (process.env.NODE_ENV === 'development') {
+      if (process.env.NODE_ENV === 'development' && crawler && path) {
+        // eslint-disable-next-line no-console
         console.log(`AI Crawler detected: ${crawler} visiting ${path}`)
       }
     }
