@@ -7,6 +7,7 @@ import { I18nProvider } from "@/i18n/client"
 import { getTranslations } from "@/i18n/server"
 import { Locale, locales, getDirection } from "@/i18n/config"
 import { CookieConsent } from "@/components/cookie-consent"
+import { generateStructuredData } from "@/lib/structured-data"
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
@@ -86,57 +87,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const translations = await getTranslations(locale)
   const direction = getDirection(locale as Locale)
   
-  // Structured data for MedicalClinic
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'MedicalClinic',
-    '@id': 'https://reshape.clinic',
-    name: translations.site_name,
-    description: translations.site_description,
-    url: `https://reshape.clinic/${locale}`,
-    telephone: translations.site_phone,
-    email: translations.site_email,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: translations.address_street,
-      addressLocality: translations.address_city,
-      postalCode: translations.address_zip,
-      addressCountry: translations.address_country,
-    },
-    sameAs: [
-      'https://twitter.com/reshapeclinic',
-      'https://instagram.com/reshapeclinic',
-      'https://linkedin.com/company/reshape-clinic'
-    ],
-    medicalSpecialty: [
-      'RegenerativeMedicine',
-      'PlasticSurgery',
-      'AntiAging'
-    ],
-    availableService: [
-      {
-        '@type': 'MedicalProcedure',
-        name: translations.services_regenerative_title,
-        description: translations.services_regenerative_desc,
-      },
-      {
-        '@type': 'MedicalProcedure',
-        name: translations.services_aesthetic_title,
-        description: translations.services_aesthetic_desc,
-      },
-      {
-        '@type': 'MedicalProcedure',
-        name: translations.services_longevity_title,
-        description: translations.services_longevity_desc,
-      }
-    ],
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '09:00',
-      closes: '18:00'
-    }
-  }
+  // Generate comprehensive structured data for AI-era SEO
+  const jsonLd = generateStructuredData({
+    locale: locale as Locale,
+    translations,
+    page: 'home'
+  })
   
   return (
     <html 

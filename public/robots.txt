@@ -1,7 +1,48 @@
+# General crawlers
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /_next/
 Disallow: /static/
+Crawl-delay: 1
+
+# Google's AI training bot - ALLOW for AI visibility
+User-agent: Google-Extended
+Allow: /
+
+# OpenAI GPT Bot - ALLOW for ChatGPT visibility
+User-agent: GPTBot
+Allow: /
+
+# Common Crawl - ALLOW for general AI training
+User-agent: CCBot
+Allow: /
+
+# Anthropic AI Bot - ALLOW for Claude visibility
+User-agent: anthropic-ai
+Allow: /
+User-agent: Claude-Web
+Allow: /
+
+# Microsoft Bing Chat - ALLOW for Bing AI
+User-agent: bingbot
+Allow: /
+
+# Perplexity AI Bot - ALLOW
+User-agent: PerplexityBot
+Allow: /
+
+# Facebook/Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Other AI/Research crawlers
+User-agent: Applebot
+Allow: /
+User-agent: Bytespider
+Allow: /
 
 Sitemap: https://reshape.clinic/sitemap.xml
+
+# IndexNow
+IndexNow: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6

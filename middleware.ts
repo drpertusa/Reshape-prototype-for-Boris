@@ -27,10 +27,42 @@ function getLocale(request: NextRequest): string {
   return defaultLocale;
 }
 
+// AI crawler patterns for monitoring
+const AI_CRAWLER_PATTERNS = [
+  /GPTBot/i,
+  /ChatGPT-User/i,
+  /Google-Extended/i,
+  /anthropic-ai/i,
+  /Claude-Web/i,
+  /PerplexityBot/i,
+  /CCBot/i,
+  /Bytespider/i,
+];
+
+function isAICrawler(userAgent: string | null): boolean {
+  if (!userAgent) return false;
+  return AI_CRAWLER_PATTERNS.some(pattern => pattern.test(userAgent));
+}
+
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const search = request.nextUrl.search;
   const hash = request.nextUrl.hash;
+  
+  // Log AI crawler visits (non-blocking)
+  const userAgent = request.headers.get('user-agent');
+  if (userAgent && isAICrawler(userAgent) && !pathname.startsWith('/api')) {
+    // Fire and forget - don't await
+    fetch(new URL('/api/analytics', request.url), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userAgent,
+        path: pathname,
+        timestamp: new Date().toISOString()
+      })
+    }).catch(() => {}); // Ignore errors to not affect response
+  }
   
   // Skip internal paths and static files
   if (
