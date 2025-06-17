@@ -1,6 +1,5 @@
 import { generateFAQSchema, generateBreadcrumbSchema, generateArticleSchema } from '@/lib/seo-utils'
 import { site } from '@/lib/site'
-import { generateStructuredData } from '@/lib/structured-data'
 
 import { JsonLd } from './json-ld'
 
