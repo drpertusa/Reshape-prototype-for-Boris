@@ -3,6 +3,7 @@ import { getTranslations } from "@/i18n/server"
 import { Container } from "@/components/layout/container"
 import { Section } from "@/components/layout/section"
 import { PageLayout } from "@/components/layout/page-layout"
+import { generatePageMetadata } from "@/lib/seo-utils"
 
 interface TermsPageProps {
   params: Promise<{ locale: string }>
@@ -11,15 +12,15 @@ interface TermsPageProps {
 export async function generateMetadata({ params }: TermsPageProps): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations(locale)
-  const baseUrl = 'https://reshape.clinic'
   
-  return {
+  return generatePageMetadata({
     title: `${t.terms_title} - ${t.site_name}`,
     description: t.terms_meta_description || t.terms_description,
-    alternates: {
-      canonical: `${baseUrl}/${locale}/terms`,
-    },
-  }
+    locale,
+    path: '/terms',
+    keywords: ['terms of service', 'legal', 'medical services', 'clinic terms'],
+    noindex: false, // Terms pages should be indexed
+  })
 }
 
 export default async function TermsPage({ params }: TermsPageProps) {

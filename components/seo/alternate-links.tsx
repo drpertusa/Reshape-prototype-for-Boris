@@ -1,12 +1,11 @@
 import { locales } from '@/i18n/config'
+import { site } from '@/lib/site'
 
 interface AlternateLinksProps {
   pathname: string
 }
 
 export function AlternateLinks({ pathname }: AlternateLinksProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://reshape.clinic'
-  
   return (
     <>
       {locales.map(locale => (
@@ -14,13 +13,13 @@ export function AlternateLinks({ pathname }: AlternateLinksProps) {
           key={locale}
           rel="alternate"
           hrefLang={locale}
-          href={`${baseUrl}/${locale}${pathname === '/' ? '' : pathname}`}
+          href={site.absoluteUrl(pathname, locale)}
         />
       ))}
       <link
         rel="alternate"
         hrefLang="x-default"
-        href={`${baseUrl}/en${pathname === '/' ? '' : pathname}`}
+        href={site.absoluteUrl(pathname)} // Default to English
       />
     </>
   )

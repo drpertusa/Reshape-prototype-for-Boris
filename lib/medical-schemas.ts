@@ -1,6 +1,9 @@
 // Medical-specific schemas for healthcare SEO
 // Implements MedicalCondition, MedicalTherapy, and related schemas
 
+import { site } from './site'
+import { SITE_CONFIG } from './constants'
+
 interface MedicalConditionProps {
   name: string
   description: string
@@ -221,8 +224,8 @@ export function generateMedicalWebPageSchema({
     ...(aspect && { aspect }),
     isPartOf: {
       '@type': 'WebSite',
-      name: 'Reshape Clinic',
-      url: 'https://reshape.clinic'
+      name: SITE_CONFIG.name,
+      url: site.url
     }
   }
 }

@@ -3,6 +3,7 @@ import { getTranslations } from "@/i18n/server"
 import { Container } from "@/components/layout/container"
 import { Section } from "@/components/layout/section"
 import { PageLayout } from "@/components/layout/page-layout"
+import { generatePageMetadata } from "@/lib/seo-utils"
 
 interface PrivacyPageProps {
   params: Promise<{ locale: string }>
@@ -11,15 +12,15 @@ interface PrivacyPageProps {
 export async function generateMetadata({ params }: PrivacyPageProps): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations(locale)
-  const baseUrl = 'https://reshape.clinic'
   
-  return {
+  return generatePageMetadata({
     title: `${t.privacy_title} - ${t.site_name}`,
     description: t.privacy_meta_description || t.privacy_description,
-    alternates: {
-      canonical: `${baseUrl}/${locale}/privacy`,
-    },
-  }
+    locale,
+    path: '/privacy',
+    keywords: ['privacy policy', 'data protection', 'GDPR', 'medical privacy'],
+    noindex: false, // Privacy pages should be indexed
+  })
 }
 
 export default async function PrivacyPage({ params }: PrivacyPageProps) {

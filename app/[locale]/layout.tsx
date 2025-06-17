@@ -10,6 +10,8 @@ import { CookieConsent } from "@/components/cookie-consent"
 import { generateStructuredData } from "@/lib/structured-data"
 import { ResourceHints } from "@/components/resource-hints"
 import { WebVitals } from "@/components/web-vitals"
+import { generatePageMetadata } from "@/lib/seo-utils"
+import { AlternateLinks } from "@/components/seo/alternate-links"
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
@@ -23,59 +25,20 @@ interface LocaleLayoutProps {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   const translations = await getTranslations(locale)
-  const baseUrl = 'https://reshape.clinic'
   
-  // Generate alternate language links for SEO
-  const languages: Record<string, string> = {};
-  locales.forEach((loc) => {
-    languages[loc] = `/${loc}`;
-  });
-  
-  return {
+  return generatePageMetadata({
     title: `${translations.site_name} - ${translations.site_tagline}`,
     description: translations.site_description,
-    keywords: "medical clinic, aesthetic surgery, regenerative medicine, longevity programs, transformation",
-    authors: [{ name: translations.site_name }],
-    metadataBase: new URL(baseUrl),
-    openGraph: {
-      title: `${translations.site_name} - ${translations.site_tagline}`,
-      description: translations.site_description,
-      type: "website",
-      locale: locale,
-      alternateLocale: locales.filter(l => l !== locale),
-      url: `${baseUrl}/${locale}`,
-      siteName: translations.site_name,
-      images: [
-        {
-          url: '/og-image.png',
-          width: 1200,
-          height: 630,
-          alt: translations.site_name,
-        }
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${translations.site_name} - ${translations.site_tagline}`,
-      description: translations.site_description,
-      images: ['/og-image.png'],
-    },
-    alternates: {
-      canonical: `${baseUrl}/${locale}`,
-      languages,
-    },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
-  }
+    locale,
+    path: '',
+    keywords: [
+      'medical clinic',
+      'aesthetic surgery',
+      'regenerative medicine',
+      'longevity programs',
+      'transformation'
+    ],
+  })
 }
 
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
@@ -105,6 +68,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     >
       <head>
         <ResourceHints />
+        <AlternateLinks pathname="" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

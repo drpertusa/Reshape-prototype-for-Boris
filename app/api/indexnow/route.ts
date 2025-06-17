@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { site } from '@/lib/site'
 
 // IndexNow implementation for faster indexing on Bing, Yandex, Seznam, etc.
 // This endpoint will be called whenever we publish or update content
@@ -29,9 +30,9 @@ export async function POST(request: Request) {
     }
 
     const payload: IndexNowPayload = {
-      host: 'reshape.clinic',
+      host: site.config.domain,
       key: INDEXNOW_KEY,
-      keyLocation: `https://reshape.clinic/${INDEXNOW_KEY}.txt`,
+      keyLocation: `${site.url}/${INDEXNOW_KEY}.txt`,
       urlList: urls
     }
 
@@ -71,6 +72,6 @@ export async function POST(request: Request) {
 export async function GET() {
   return NextResponse.json({ 
     message: 'IndexNow API endpoint',
-    usage: 'POST /api/indexnow with { urls: ["https://reshape.clinic/..."] }'
+    usage: `POST /api/indexnow with { urls: ["${site.url}/..."] }`
   })
 }

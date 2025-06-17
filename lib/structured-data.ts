@@ -3,6 +3,7 @@
 
 import { Locale } from '@/i18n/config'
 import { generateHomeSpeakable, generateServiceSpeakable } from './speakable-schema'
+import { site } from './site'
 
 interface StructuredDataProps {
   locale: Locale
@@ -26,20 +27,19 @@ export function generateStructuredData({
   faq,
   author
 }: StructuredDataProps) {
-  const baseUrl = 'https://reshape.clinic'
   const schemas: Array<Record<string, unknown>> = []
   
   // 1. Organization Schema (enhanced with more details)
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    '@id': `${baseUrl}/#organization`,
+    '@id': `${site.url}/#organization`,
     name: translations.site_name,
-    alternateName: 'Reshape Medical Clinic',
-    url: baseUrl,
+    alternateName: site.config.brandName,
+    url: site.url,
     logo: {
       '@type': 'ImageObject',
-      url: `${baseUrl}/logo.png`,
+      url: site.absoluteUrl('/logo.png'),
       width: 512,
       height: 512
     },
@@ -72,13 +72,13 @@ export function generateStructuredData({
   const medicalClinicSchema = {
     '@context': 'https://schema.org',
     '@type': 'MedicalClinic',
-    '@id': `${baseUrl}/#medicalclinic`,
+    '@id': `${site.url}/#medicalclinic`,
     name: translations.site_name,
     description: translations.site_description,
-    url: `${baseUrl}/${locale}`,
+    url: site.absoluteUrl('', locale),
     telephone: translations.site_phone,
     email: translations.site_email,
-    image: `${baseUrl}/clinic-exterior.jpg`,
+    image: site.absoluteUrl('/clinic-exterior.jpg'),
     priceRange: '£££',
     currenciesAccepted: 'GBP, EUR, USD',
     paymentAccepted: 'Cash, Credit Card, Bank Transfer',
@@ -146,7 +146,7 @@ export function generateStructuredData({
       '@type': 'ReserveAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${baseUrl}/${locale}/contact`,
+        urlTemplate: site.absoluteUrl('/contact', locale),
         actionPlatform: [
           'http://schema.org/DesktopWebPlatform',
           'http://schema.org/MobileWebPlatform'
@@ -164,19 +164,19 @@ export function generateStructuredData({
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': `${baseUrl}/#website`,
-    url: baseUrl,
+    '@id': `${site.url}/#website`,
+    url: site.url,
     name: translations.site_name,
     description: translations.site_description,
     publisher: {
-      '@id': `${baseUrl}/#organization`
+      '@id': `${site.url}/#organization`
     },
     inLanguage: locale,
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${baseUrl}/search?q={search_term_string}`
+        urlTemplate: site.absoluteUrl('/search?q={search_term_string}')
       },
       'query-input': 'required name=search_term_string'
     }
@@ -219,18 +219,18 @@ export function generateStructuredData({
   const webPageSchema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${baseUrl}/${locale}${page === 'home' ? '' : `/${page}`}#webpage`,
-    url: `${baseUrl}/${locale}${page === 'home' ? '' : `/${page}`}`,
+    '@id': `${site.absoluteUrl(page === 'home' ? '' : `/${page}`, locale)}#webpage`,
+    url: site.absoluteUrl(page === 'home' ? '' : `/${page}`, locale),
     name: page === 'home' ? translations.site_name : `${translations[`${page}_title`]} - ${translations.site_name}`,
     isPartOf: {
-      '@id': `${baseUrl}/#website`
+      '@id': `${site.url}/#website`
     },
     about: {
-      '@id': `${baseUrl}/#medicalclinic`
+      '@id': `${site.url}/#medicalclinic`
     },
     primaryImageOfPage: {
       '@type': 'ImageObject',
-      url: `${baseUrl}/og-image.png`
+      url: site.absoluteUrl('/og-image.png')
     },
     datePublished: '2025-01-01T00:00:00+00:00',
     dateModified: new Date().toISOString(),
@@ -242,9 +242,9 @@ export function generateStructuredData({
       '@type': 'Person',
       name: author.name,
       jobTitle: author.title,
-      image: author.image || `${baseUrl}/team/${author.name.toLowerCase().replace(/\s+/g, '-')}.jpg`,
+      image: author.image || site.absoluteUrl(`/team/${author.name.toLowerCase().replace(/\s+/g, '-')}.jpg`),
       worksFor: {
-        '@id': `${baseUrl}/#organization`
+        '@id': `${site.url}/#organization`
       },
       ...(author.qualification && { honorificSuffix: author.qualification })
     }
@@ -260,7 +260,7 @@ export function generateStructuredData({
       '@type': 'Service',
       serviceType: 'Medical and Aesthetic Treatments',
       provider: {
-        '@id': `${baseUrl}/#medicalclinic`
+        '@id': `${site.url}/#medicalclinic`
       },
       areaServed: {
         '@type': 'City',
@@ -304,9 +304,9 @@ export function generateStructuredData({
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    '@id': `${baseUrl}/#localbusiness`,
+    '@id': `${site.url}/#localbusiness`,
     name: translations.site_name,
-    image: `${baseUrl}/clinic-exterior.jpg`,
+    image: site.absoluteUrl('/clinic-exterior.jpg'),
     telephone: translations.site_phone,
     address: {
       '@type': 'PostalAddress',

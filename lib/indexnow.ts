@@ -1,5 +1,7 @@
 // IndexNow utility for notifying search engines about content updates
 
+import { site } from './site'
+
 export async function submitToIndexNow(urls: string | string[]) {
   const urlList = Array.isArray(urls) ? urls : [urls]
   
@@ -38,7 +40,6 @@ export async function submitCurrentPage() {
 
 // Helper to submit multiple pages
 export async function submitPages(paths: string[]) {
-  const baseUrl = 'https://reshape.clinic'
-  const urls = paths.map(path => `${baseUrl}${path}`)
+  const urls = paths.map(path => site.absoluteUrl(path))
   return submitToIndexNow(urls)
 }

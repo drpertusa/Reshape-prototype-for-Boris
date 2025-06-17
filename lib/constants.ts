@@ -5,6 +5,8 @@
 
 export const SITE_CONFIG = {
   name: "Reshape",
+  legalName: "Reshape Clinic",
+  brandName: "Reshape Medical Clinic",
   tagline: "Medical Excellence Through Precision",
   description: "Where science meets transformation. Medical precision, aesthetic excellence, and authentic transformation through evidence-based treatments.",
   domain: "reshape.clinic", // Update when deployed

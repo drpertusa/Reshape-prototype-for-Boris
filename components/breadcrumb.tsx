@@ -5,6 +5,7 @@ import { ChevronRight, Home } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useLocale } from "@/i18n/client"
 import { createLocalizedHref } from "@/i18n/navigation"
+import { site } from "@/lib/site"
 
 export interface BreadcrumbItem {
   name: string
@@ -44,7 +45,7 @@ export function Breadcrumb({
         {breadcrumbItems.map((item, index) => {
           const isLast = index === breadcrumbItems.length - 1
           const itemUrl = item.href 
-            ? `https://reshape.clinic${createLocalizedHref(item.href, locale)}`
+            ? site.absoluteUrl(item.href, locale)
             : undefined
           
           return (
@@ -115,7 +116,7 @@ export function BreadcrumbStatic({
       "@type": "ListItem",
       "position": index + 1,
       "name": item.name,
-      "item": item.href ? `https://reshape.clinic/${locale}${item.href}` : undefined
+      "item": item.href ? site.absoluteUrl(item.href, locale) : undefined
     }))
   }
   

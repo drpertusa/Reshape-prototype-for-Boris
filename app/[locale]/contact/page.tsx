@@ -1,36 +1,43 @@
 import { PageLayout } from "@/components/layout/page-layout"
 import { Section } from "@/components/layout/section"
 import { getTranslations } from "@/i18n/server"
-import { locales } from "@/i18n/config"
 import type { Metadata } from "next"
+import { generatePageMetadata } from "@/lib/seo-utils"
+import { generateStructuredData } from "@/lib/structured-data"
+import { JsonLd } from "@/components/seo/json-ld"
+import type { Locale } from "@/i18n/config"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   const translations = await getTranslations(locale)
-  const baseUrl = 'https://reshape.clinic'
   
-  // Generate alternate language links for SEO
-  const languages: Record<string, string> = {};
-  locales.forEach((loc) => {
-    languages[loc] = `/${loc}/contact`;
-  });
-  
-  return {
+  return generatePageMetadata({
     title: `${translations.contact_hero_title} - ${translations.site_name}`,
     description: translations.contact_meta_description || translations.contact_hero_subtitle,
-    alternates: {
-      canonical: `${baseUrl}/${locale}/contact`,
-      languages,
-    },
-  }
+    locale,
+    path: '/contact',
+    keywords: ['contact', 'appointment', 'consultation', 'medical clinic London'],
+  })
 }
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const t = await getTranslations(locale)
   
+  // Generate structured data for the contact page
+  const structuredData = generateStructuredData({
+    locale: locale as Locale,
+    translations: t,
+    page: 'contact',
+    breadcrumbs: [
+      { name: t.site_name, url: '/' },
+      { name: t.contact_hero_title, url: '/contact' }
+    ]
+  })
+  
   return (
     <PageLayout>
+      <JsonLd data={structuredData} />
 
       {/* Hero Section */}
       <Section className="pt-32 pb-12">

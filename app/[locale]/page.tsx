@@ -2,26 +2,20 @@ import { Button } from "@/components/ui/button"
 import { PageLayout } from "@/components/layout/page-layout"
 import { Section } from "@/components/layout/section"
 import { getTranslations } from "@/i18n/server"
-import { locales } from "@/i18n/config"
 import type { Metadata } from "next"
+import { generatePageMetadata } from "@/lib/seo-utils"
+import Link from "next/link"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   const translations = await getTranslations(locale)
   
-  // Generate alternate language links for SEO
-  const languages: Record<string, string> = {};
-  locales.forEach((loc) => {
-    languages[loc] = `/${loc}`;
-  });
-  
-  return {
+  return generatePageMetadata({
     title: `${translations.site_name} - ${translations.site_tagline}`,
     description: translations.site_description,
-    alternates: {
-      languages,
-    },
-  }
+    locale,
+    path: '',
+  })
 }
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
@@ -41,8 +35,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
             {t.home_hero_subtitle}
           </p>
-          <Button size="lg" className="font-medium">
-            {t.home_hero_cta}
+          <Button size="lg" className="font-medium" asChild>
+            <Link href={`/${locale}/contact`}>
+              {t.home_hero_cta}
+            </Link>
           </Button>
         </header>
       </Section>

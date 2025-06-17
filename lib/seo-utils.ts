@@ -2,6 +2,7 @@
 
 import { Metadata } from 'next'
 import { locales } from '@/i18n/config'
+import { site } from './site'
 
 interface GenerateMetadataProps {
   title: string
@@ -31,14 +32,8 @@ export function generatePageMetadata({
   publishedTime,
   modifiedTime
 }: GenerateMetadataProps): Metadata {
-  const baseUrl = 'https://reshape.clinic'
-  const url = `${baseUrl}/${locale}${path}`
-  
-  // Generate alternate language links
-  const languages: Record<string, string> = {}
-  locales.forEach((loc) => {
-    languages[loc] = `/${loc}${path}`
-  })
+  const url = site.getCanonicalUrl(path, locale)
+  const absoluteImageUrl = image.startsWith('http') ? image : site.absoluteUrl(image)
   
   // Base keywords plus page-specific ones
   const allKeywords = [
@@ -54,8 +49,8 @@ export function generatePageMetadata({
     title,
     description,
     keywords: allKeywords,
-    authors: author ? [{ name: author }] : [{ name: 'Reshape Clinic' }],
-    metadataBase: new URL(baseUrl),
+    authors: author ? [{ name: author }] : [{ name: site.config.legalName }],
+    metadataBase: new URL(site.url),
     
     openGraph: {
       title,
@@ -64,10 +59,10 @@ export function generatePageMetadata({
       locale,
       alternateLocale: locales.filter(l => l !== locale),
       url,
-      siteName: 'Reshape Clinic',
+      siteName: site.config.legalName,
       images: [
         {
-          url: image,
+          url: absoluteImageUrl,
           width: 1200,
           height: 630,
           alt: title,
@@ -81,12 +76,11 @@ export function generatePageMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: [image],
+      images: [absoluteImageUrl],
     },
     
     alternates: {
       canonical: url,
-      languages,
     },
     
     robots: noindex ? {
@@ -129,8 +123,6 @@ export function generateBreadcrumbSchema(
   items: Array<{ name: string; url: string }>,
   locale: string
 ) {
-  const baseUrl = 'https://reshape.clinic'
-  
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -138,7 +130,7 @@ export function generateBreadcrumbSchema(
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: `${baseUrl}/${locale}${item.url}`
+      item: site.absoluteUrl(item.url, locale)
     }))
   }
 }
@@ -163,14 +155,12 @@ export function generateArticleSchema({
   locale: string
   path: string
 }) {
-  const baseUrl = 'https://reshape.clinic'
-  
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
     description,
-    image: image || `${baseUrl}/og-image.png`,
+    image: image ? site.absoluteUrl(image) : site.absoluteUrl('/og-image.png'),
     datePublished: publishDate,
     dateModified: updateDate || publishDate,
     author: {
@@ -179,20 +169,20 @@ export function generateArticleSchema({
       ...(author.title && { jobTitle: author.title }),
       worksFor: {
         '@type': 'Organization',
-        name: 'Reshape Clinic'
+        name: site.config.legalName
       }
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Reshape Clinic',
+      name: site.config.legalName,
       logo: {
         '@type': 'ImageObject',
-        url: `${baseUrl}/logo.png`
+        url: site.absoluteUrl('/logo.png')
       }
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${baseUrl}/${locale}${path}`
+      '@id': site.absoluteUrl(path, locale)
     }
   }
 }

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { defaultLocale, isValidLocale, LOCALE_COOKIE, locales } from './i18n/config';
+import { stripMarketingParams } from './lib/site';
 
 // Get locale from cookie or headers (not from URL)
 function getLocale(request: NextRequest): string {
@@ -48,6 +49,11 @@ export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const search = request.nextUrl.search;
   const hash = request.nextUrl.hash;
+  
+  // Check if URL has marketing parameters that need stripping
+  const originalUrl = request.url;
+  const cleanedUrl = stripMarketingParams(originalUrl);
+  const hasMarketingParams = originalUrl !== cleanedUrl;
   
   // Log AI crawler visits (non-blocking)
   const userAgent = request.headers.get('user-agent');
@@ -112,6 +118,21 @@ export function middleware(request: NextRequest) {
     const urlLocale = potentialLocale;
     const cookieLocale = request.cookies.get(LOCALE_COOKIE)?.value;
     
+    // Strip marketing parameters if present
+    if (hasMarketingParams) {
+      const cleanUrl = stripMarketingParams(request.url);
+      const finalUrl = new URL(cleanUrl);
+      const response = NextResponse.redirect(finalUrl);
+      response.headers.set('x-redirect-count', String(redirectCount + 1));
+      response.cookies.set(LOCALE_COOKIE, urlLocale, {
+        httpOnly: false,
+        sameSite: 'lax',
+        maxAge: 60 * 60 * 24 * 365,
+        path: '/',
+      });
+      return response;
+    }
+    
     // Always set cookie to match URL locale
     if (urlLocale !== cookieLocale) {
       const response = NextResponse.next();
@@ -130,7 +151,24 @@ export function middleware(request: NextRequest) {
   // No locale in pathname - redirect to locale-prefixed path
   const locale = getLocale(request);
   const pathWithoutLeadingSlash = normalizedPathname === '/' ? '' : normalizedPathname;
+  
+  // Create new URL with locale prefix
   const newUrl = new URL(`/${locale}${pathWithoutLeadingSlash}${search}${hash}`, request.url);
+  
+  // Strip marketing parameters if present
+  if (hasMarketingParams) {
+    const cleanUrl = stripMarketingParams(newUrl.toString());
+    const finalUrl = new URL(cleanUrl);
+    const response = NextResponse.redirect(finalUrl);
+    response.headers.set('x-redirect-count', String(redirectCount + 1));
+    response.cookies.set(LOCALE_COOKIE, locale, {
+      httpOnly: false,
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 365,
+      path: '/',
+    });
+    return response;
+  }
   
   const response = NextResponse.redirect(newUrl);
   
