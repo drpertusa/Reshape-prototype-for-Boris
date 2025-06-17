@@ -11,10 +11,14 @@ interface PrivacyPageProps {
 export async function generateMetadata({ params }: PrivacyPageProps): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations(locale)
+  const baseUrl = 'https://reshape.clinic'
   
   return {
     title: `${t.privacy_title} - ${t.site_name}`,
     description: t.privacy_description,
+    alternates: {
+      canonical: `${baseUrl}/${locale}/privacy`,
+    },
   }
 }
 

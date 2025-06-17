@@ -57,12 +57,23 @@ export function LanguageSwitcher() {
       onValueChange={handleLocaleChange}
       disabled={isChanging || isPending}
     >
-      <SelectTrigger className="w-[140px]">
+      <SelectTrigger 
+        className="w-[140px]" 
+        aria-label="Select language"
+        aria-describedby="language-description"
+      >
         <SelectValue />
       </SelectTrigger>
+      <span id="language-description" className="sr-only">
+        Choose your preferred language for the website
+      </span>
       <SelectContent>
         {locales.map((loc) => (
-          <SelectItem key={loc} value={loc}>
+          <SelectItem 
+            key={loc} 
+            value={loc}
+            lang={loc}
+          >
             {LOCALE_NAMES[loc]}
           </SelectItem>
         ))}

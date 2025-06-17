@@ -11,10 +11,14 @@ interface TermsPageProps {
 export async function generateMetadata({ params }: TermsPageProps): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations(locale)
+  const baseUrl = 'https://reshape.clinic'
   
   return {
     title: `${t.terms_title} - ${t.site_name}`,
     description: t.terms_description,
+    alternates: {
+      canonical: `${baseUrl}/${locale}/terms`,
+    },
   }
 }
 

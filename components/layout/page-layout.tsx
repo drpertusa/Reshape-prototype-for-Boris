@@ -9,7 +9,7 @@ export function PageLayout({ children }: PageLayoutProps) {
   return (
     <>
       <Navigation />
-      <main className="flex-grow">
+      <main id="main-content" className="flex-grow">
         {children}
       </main>
       <Footer />

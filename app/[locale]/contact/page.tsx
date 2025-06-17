@@ -7,6 +7,7 @@ import type { Metadata } from "next"
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   const translations = await getTranslations(locale)
+  const baseUrl = 'https://reshape.clinic'
   
   // Generate alternate language links for SEO
   const languages: Record<string, string> = {};
@@ -18,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: `${translations.contact_hero_title} - ${translations.site_name}`,
     description: translations.contact_hero_subtitle,
     alternates: {
+      canonical: `${baseUrl}/${locale}/contact`,
       languages,
     },
   }
