@@ -3,6 +3,7 @@ import type { NextRequest } from 'next/server';
 
 import { defaultLocale, isValidLocale, LOCALE_COOKIE, locales } from './i18n/config';
 import { stripMarketingParams } from './lib/site';
+import { updateSession } from './utils/supabase/middleware';
 
 // Get locale from cookie or headers (not from URL)
 function getLocale(request: NextRequest): string {
@@ -46,10 +47,13 @@ function isAICrawler(userAgent: string | null): boolean {
   return AI_CRAWLER_PATTERNS.some(pattern => pattern.test(userAgent));
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const search = request.nextUrl.search;
   const hash = request.nextUrl.hash;
+  
+  // Update Supabase auth session
+  const supabaseResponse = await updateSession(request);
   
   // Check if URL has marketing parameters that need stripping
   const originalUrl = request.url;
@@ -78,7 +82,7 @@ export function middleware(request: NextRequest) {
     pathname.includes('.') ||
     pathname.startsWith('/fonts')
   ) {
-    return NextResponse.next();
+    return supabaseResponse;
   }
   
   // Check for redirect loop protection
@@ -90,7 +94,7 @@ export function middleware(request: NextRequest) {
       url: request.url
     });
     // Break the loop by accepting the current URL
-    return NextResponse.next();
+    return supabaseResponse;
   }
 
   // Normalize pathname (remove trailing slash except for root and handle double slashes)
@@ -112,6 +116,10 @@ export function middleware(request: NextRequest) {
     const newUrl = new URL(`${cleanPath}${search}${hash}`, request.url);
     const response = NextResponse.redirect(newUrl);
     response.headers.set('x-redirect-count', String(redirectCount + 1));
+    // Copy Supabase cookies
+    supabaseResponse.cookies.getAll().forEach(cookie => {
+      response.cookies.set(cookie);
+    });
     return response;
   }
 
@@ -131,12 +139,16 @@ export function middleware(request: NextRequest) {
         maxAge: 60 * 60 * 24 * 365,
         path: '/',
       });
+      // Copy Supabase cookies
+      supabaseResponse.cookies.getAll().forEach(cookie => {
+        response.cookies.set(cookie);
+      });
       return response;
     }
     
     // Always set cookie to match URL locale
     if (urlLocale !== cookieLocale) {
-      const response = NextResponse.next();
+      const response = NextResponse.next(supabaseResponse);
       response.cookies.set(LOCALE_COOKIE, urlLocale, {
         httpOnly: false, // Allow client-side access
         sameSite: 'lax',
@@ -146,7 +158,7 @@ export function middleware(request: NextRequest) {
       return response;
     }
     
-    return NextResponse.next();
+    return supabaseResponse;
   }
 
   // No locale in pathname - redirect to locale-prefixed path
@@ -168,6 +180,10 @@ export function middleware(request: NextRequest) {
       maxAge: 60 * 60 * 24 * 365,
       path: '/',
     });
+    // Copy Supabase cookies
+    supabaseResponse.cookies.getAll().forEach(cookie => {
+      response.cookies.set(cookie);
+    });
     return response;
   }
   
@@ -182,6 +198,11 @@ export function middleware(request: NextRequest) {
     sameSite: 'lax',
     maxAge: 60 * 60 * 24 * 365, // 1 year
     path: '/',
+  });
+  
+  // Copy Supabase cookies
+  supabaseResponse.cookies.getAll().forEach(cookie => {
+    response.cookies.set(cookie);
   });
   
   return response;
