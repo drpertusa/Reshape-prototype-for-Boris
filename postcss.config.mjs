@@ -1,5 +1,5 @@
 /** @type {import('postcss-load-config').Config} */
-const config = {
+export default {
   plugins: {
     '@tailwindcss/postcss': {
       config: {
@@ -13,5 +13,3 @@ const config = {
     },
   },
 };
-
-export default config;
