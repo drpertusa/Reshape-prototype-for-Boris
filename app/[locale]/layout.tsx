@@ -11,7 +11,8 @@ import { WebVitals } from "@/components/web-vitals"
 import { I18nProvider } from "@/i18n/client"
 import { Locale, locales, getDirection } from "@/i18n/config"
 import { getTranslations } from "@/i18n/server"
-import { lavaChickenSerif, inter } from "@/lib/fonts"
+// Temporarily disable font imports to debug
+// import { lavaChickenSerif, inter } from "@/lib/fonts"
 import { generatePageMetadata } from "@/lib/seo-utils"
 import { generateStructuredData } from "@/lib/structured-data"
 
@@ -68,7 +69,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       lang={locale} 
       dir={direction}
       suppressHydrationWarning 
-      className={`${lavaChickenSerif.variable} ${inter.variable}`}
+      className=""
     >
       <head>
         <ResourceHints />
