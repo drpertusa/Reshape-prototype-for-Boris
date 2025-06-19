@@ -52,8 +52,20 @@ export async function middleware(request: NextRequest) {
   const search = request.nextUrl.search;
   const hash = request.nextUrl.hash;
   
-  // Update Supabase auth session
-  const supabaseResponse = await updateSession(request);
+  // Update Supabase auth session (with error handling)
+  let supabaseResponse: NextResponse;
+  try {
+    // Only attempt Supabase session update if environment variables are available
+    if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+      supabaseResponse = await updateSession(request);
+    } else {
+      // Fallback to basic NextResponse if Supabase is not configured
+      supabaseResponse = NextResponse.next({ request });
+    }
+  } catch (error) {
+    console.warn('Supabase session update failed, continuing without auth:', error);
+    supabaseResponse = NextResponse.next({ request });
+  }
   
   // Check if URL has marketing parameters that need stripping
   const originalUrl = request.url;
