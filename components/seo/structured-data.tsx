@@ -5,12 +5,12 @@ import { JsonLd } from './json-ld'
 
 interface StructuredDataProps {
   type: 'website' | 'organization' | 'article' | 'faq' | 'breadcrumb' | 'medical-clinic'
-  data?: any
+  data?: Record<string, unknown>
   locale?: string
 }
 
 export function StructuredData({ type, data, locale = 'en' }: StructuredDataProps) {
-  let schema: any
+  let schema: Record<string, unknown>
 
   switch (type) {
     case 'website':
@@ -76,17 +76,17 @@ export function StructuredData({ type, data, locale = 'en' }: StructuredDataProp
 
     case 'article':
       if (!data) throw new Error('Article data is required')
-      schema = generateArticleSchema(data)
+      schema = generateArticleSchema(data as Parameters<typeof generateArticleSchema>[0])
       break
 
     case 'faq':
       if (!data || !data.faqs) throw new Error('FAQ data is required')
-      schema = generateFAQSchema(data.faqs)
+      schema = generateFAQSchema(data.faqs as Array<{ question: string; answer: string }>)
       break
 
     case 'breadcrumb':
       if (!data || !data.items) throw new Error('Breadcrumb items are required')
-      schema = generateBreadcrumbSchema(data.items, locale)
+      schema = generateBreadcrumbSchema(data.items as Array<{ name: string; url: string }>, locale)
       break
 
     default:

@@ -17,6 +17,18 @@ npm run subset-fonts # Font optimization
 npx tsx scripts/create-admin.ts  # Create admin users programmatically
 ```
 
+## Initial Setup for New Projects
+
+When using this template for a new website:
+
+1. **Generate a unique IndexNow key** (32-character alphanumeric string)
+   - Get one at: https://www.bing.com/indexnow
+   - Or generate your own: `openssl rand -hex 16`
+   - Replace placeholder key in:
+     - `/app/api/indexnow/route.ts`
+     - Create file: `/public/[your-key].txt` containing just the key
+     - Delete: `/public/REPLACE-THIS-KEY-WITH-YOUR-OWN-32CHAR.txt`
+
 ## Technology Stack
 
 - **Next.js 15.3.3** - App Router with React 19 and Server Components

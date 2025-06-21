@@ -5,7 +5,9 @@ import { site } from '@/lib/site'
 // IndexNow implementation for faster indexing on Bing, Yandex, Seznam, etc.
 // This endpoint will be called whenever we publish or update content
 
-const INDEXNOW_KEY = process.env.INDEXNOW_KEY || 'your-indexnow-key-here'
+// IMPORTANT: Replace this with your own 32-character key for each new site
+// Generate at: https://www.bing.com/indexnow or use any 32-char alphanumeric string
+const INDEXNOW_KEY = process.env.INDEXNOW_KEY || 'REPLACE-THIS-KEY-WITH-YOUR-OWN-32CHAR'
 const INDEXNOW_ENDPOINTS = [
   'https://www.bing.com/indexnow',
   'https://yandex.com/indexnow',

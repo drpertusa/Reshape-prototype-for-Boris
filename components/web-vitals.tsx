@@ -4,6 +4,11 @@ import { useEffect } from 'react'
 
 import { onCLS, onFCP, onINP, onLCP, onTTFB } from 'web-vitals'
 
+// Network Information API type
+interface NetworkInformation {
+  effectiveType?: string;
+}
+
 interface WebVitalsData {
   name: string
   value: number
@@ -25,7 +30,7 @@ async function sendToAnalytics(metric: WebVitalsData) {
     url: window.location.href,
     timestamp: new Date().toISOString(),
     userAgent: navigator.userAgent,
-    connection: (navigator as Record<string, any>).connection?.effectiveType || 'unknown'
+    connection: 'connection' in navigator && navigator.connection ? ((navigator.connection as NetworkInformation).effectiveType || 'unknown') : 'unknown'
   }
   
   // Send to our analytics endpoint

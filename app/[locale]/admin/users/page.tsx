@@ -66,8 +66,8 @@ export default async function UsersPage({ params }: { params: Promise<{ locale: 
                           {new Date(user.created_at).toLocaleDateString()}
                         </td>
                         <td className="p-4 text-sm text-muted-foreground">
-                          {(user as any).last_sign_in_at
-                            ? new Date((user as any).last_sign_in_at).toLocaleDateString()
+                          {user.last_sign_in_at
+                            ? new Date(user.last_sign_in_at).toLocaleDateString()
                             : 'Never'}
                         </td>
                         <td className="p-4">
