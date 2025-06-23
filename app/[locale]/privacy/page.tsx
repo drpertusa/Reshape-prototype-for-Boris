@@ -33,9 +33,9 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
     <PageLayout>
       <Section className="pt-32 pb-20">
         <Container className="max-w-prose">
-          <div style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+          <div>
           {/* Title */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl mb-8 font-bold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl mb-8 font-bold">
             {t.privacy_title}
           </h1>
           
@@ -60,7 +60,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
             </p>
             
             {/* Section 1: Our Commitment */}
-            <h2 className="text-2xl mt-12 mb-4 font-semibold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+            <h2 className="text-2xl mt-12 mb-4 font-semibold">
               {t.privacy_commitment_title}
             </h2>
             <p className="mb-6">
@@ -68,7 +68,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
             </p>
             
             {/* Section 2: Information We Collect */}
-            <h2 className="text-2xl mt-12 mb-4 font-semibold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+            <h2 className="text-2xl mt-12 mb-4 font-semibold">
               {t.privacy_collect_title}
             </h2>
             <p className="mb-4">
@@ -81,7 +81,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
             </ul>
             
             {/* Device Information */}
-            <h2 className="text-2xl mt-12 mb-4 font-semibold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+            <h2 className="text-2xl mt-12 mb-4 font-semibold">
               {t.privacy_device_title}
             </h2>
             <p className="mb-6">
@@ -98,7 +98,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
             </p>
             
             {/* Section 3: How We Use Information */}
-            <h2 className="text-2xl mt-12 mb-4 font-semibold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+            <h2 className="text-2xl mt-12 mb-4 font-semibold">
               {t.privacy_use_title}
             </h2>
             <p className="mb-6">
@@ -106,7 +106,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
             </p>
             
             {/* Section 4: Medical Records */}
-            <h2 className="text-2xl mt-12 mb-4 font-semibold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+            <h2 className="text-2xl mt-12 mb-4 font-semibold">
               {t.privacy_medical_title}
             </h2>
             <p className="mb-6">
@@ -114,7 +114,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
             </p>
             
             {/* Section 5: Security */}
-            <h2 className="text-2xl mt-12 mb-4 font-semibold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+            <h2 className="text-2xl mt-12 mb-4 font-semibold">
               {t.privacy_security_title}
             </h2>
             <p className="mb-6">
@@ -122,7 +122,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
             </p>
             
             {/* Section 6: Your Rights */}
-            <h2 className="text-2xl mt-12 mb-4 font-semibold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+            <h2 className="text-2xl mt-12 mb-4 font-semibold">
               {t.privacy_rights_title}
             </h2>
             <p className="mb-4">
@@ -136,7 +136,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
             </ul>
             
             {/* Your Rights (GDPR) */}
-            <h2 className="text-2xl mt-12 mb-4 font-semibold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+            <h2 className="text-2xl mt-12 mb-4 font-semibold">
               {t.privacy_your_rights_title}
             </h2>
             <p className="mb-6">
@@ -144,7 +144,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
             </p>
             
             {/* Section 7: Cookies */}
-            <h2 className="text-2xl mt-12 mb-4 font-semibold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+            <h2 className="text-2xl mt-12 mb-4 font-semibold">
               {t.privacy_cookies_title}
             </h2>
             <p className="mb-6">
@@ -152,7 +152,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
             </p>
             
             {/* Section 8: Third Parties */}
-            <h2 className="text-2xl mt-12 mb-4 font-semibold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+            <h2 className="text-2xl mt-12 mb-4 font-semibold">
               {t.privacy_third_title}
             </h2>
             <p className="mb-6">
@@ -160,7 +160,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
             </p>
             
             {/* Section 9: International Transfers */}
-            <h2 className="text-2xl mt-12 mb-4 font-semibold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+            <h2 className="text-2xl mt-12 mb-4 font-semibold">
               {t.privacy_international_title}
             </h2>
             <p className="mb-6">
@@ -168,7 +168,7 @@ export default async function PrivacyPage({ params }: PrivacyPageProps) {
             </p>
             
             {/* Section 10: Changes */}
-            <h2 className="text-2xl mt-12 mb-4 font-semibold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+            <h2 className="text-2xl mt-12 mb-4 font-semibold">
               {t.privacy_changes_title}
             </h2>
             <p className="mb-6">

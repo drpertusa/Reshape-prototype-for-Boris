@@ -2,14 +2,17 @@
 
 import { useState, useEffect } from "react"
 
-const treatments = [
-  "EMSculpt NEO",
-  "EMFace", 
-  "Exion",
-  "EMSella"
-]
+import { useTranslations } from "@/i18n/client"
 
 export function AnimatedHeroText() {
+  const t = useTranslations()
+  
+  const treatments = [
+    t("treatment_emsculpt_neo"),
+    t("treatment_emface"), 
+    t("treatment_exion"),
+    t("treatment_emsella")
+  ]
   const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
@@ -52,7 +55,7 @@ export function AnimatedHeroText() {
         </span>
       ))}
       {/* Hidden text for SEO - all treatments included */}
-      <span className="sr-only">EMSculpt NEO, EMFace, Exion, EMSella</span>
+      <span className="sr-only">{treatments.join(", ")}</span>
     </span>
   )
 }

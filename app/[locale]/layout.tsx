@@ -5,6 +5,7 @@ import { notFound } from "next/navigation"
 import { ThemeProvider } from "next-themes"
 
 import { CookieConsent } from "@/components/cookie-consent"
+import { PromotionalBanner } from "@/components/promotional-banner"
 import { ResourceHints } from "@/components/resource-hints"
 import { AlternateLinks } from "@/components/seo/alternate-links"
 import { WebVitals } from "@/components/web-vitals"
@@ -73,9 +74,13 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       <head>
         <ResourceHints />
         <AlternateLinks pathname="" />
+        {/* Favicon */}
+        <link rel="icon" href="/logo-favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/logo-favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=block" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -87,6 +92,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         </a>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <I18nProvider locale={locale as Locale} translations={translations}>
+            <PromotionalBanner />
             <WebVitals />
             {children}
             <CookieConsent />

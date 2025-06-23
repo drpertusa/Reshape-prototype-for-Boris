@@ -85,6 +85,17 @@ export function generatePageMetadata({
       canonical: url,
     },
     
+    icons: {
+      icon: [
+        { url: '/logo-favicon.svg', type: 'image/svg+xml' },
+        { url: '/favicon.ico', sizes: '32x32' }
+      ],
+      apple: [
+        { url: '/logo-favicon.svg', type: 'image/svg+xml' }
+      ],
+      shortcut: '/logo-favicon.svg'
+    },
+    
     robots: noindex ? {
       index: false,
       follow: false,

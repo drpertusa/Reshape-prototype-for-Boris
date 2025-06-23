@@ -30,6 +30,57 @@ export const NAVIGATION_ITEMS = [
   { href: "/about", labelKey: "nav_about" },
 ] as const
 
+export const EMSCULPT_SUBMENU_ITEMS = [
+  { 
+    href: "/emsculpt-neo/look-good", 
+    titleKey: "emsculpt_look_good",
+    descriptionKey: "emsculpt_look_good_desc"
+  },
+  { 
+    href: "/emsculpt-neo/feel-good", 
+    titleKey: "emsculpt_feel_good",
+    descriptionKey: "emsculpt_feel_good_desc"
+  },
+  { 
+    href: "/emsculpt-neo/physiotherapist", 
+    titleKey: "emsculpt_physiotherapist",
+    descriptionKey: "emsculpt_physiotherapist_desc"
+  },
+  { 
+    href: "/emsculpt-neo/athletes", 
+    titleKey: "emsculpt_athletes",
+    descriptionKey: "emsculpt_athletes_desc"
+  },
+  { 
+    href: "/emsculpt-neo/elderly", 
+    titleKey: "emsculpt_elderly",
+    descriptionKey: "emsculpt_elderly_desc"
+  },
+] as const
+
+export const EMFACE_SUBMENU_ITEMS = [
+  { 
+    href: "/emface/forehead", 
+    titleKey: "emface_forehead",
+    descriptionKey: "emface_forehead_desc"
+  },
+  { 
+    href: "/emface/eyes", 
+    titleKey: "emface_eyes",
+    descriptionKey: "emface_eyes_desc"
+  },
+  { 
+    href: "/emface/cheeks", 
+    titleKey: "emface_cheeks",
+    descriptionKey: "emface_cheeks_desc"
+  },
+  { 
+    href: "/emface/jawline", 
+    titleKey: "emface_jawline",
+    descriptionKey: "emface_jawline_desc"
+  },
+] as const
+
 export const FOOTER_LINKS = [
   { href: "/privacy", labelKey: "nav_privacy" },
   { href: "/terms", labelKey: "nav_terms" },
