@@ -40,10 +40,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mt-6">
             {t.home_hero_subtitle}
           </p>
-          <Button size="lg" className="font-semibold mt-8 md:mt-12 px-8 py-4 text-base md:text-lg group rounded-md shadow-sm hover:shadow-md transition-all duration-200" asChild>
+          <Button asChild size="sm" className="font-semibold mt-8 md:mt-12 group">
             <Link href={`/${locale}/contact`}>
               Book Online
-              <span className="inline-block transition-transform group-hover:translate-x-1 ml-2 text-lg">→</span>
+              <span className="inline-block transition-transform group-hover:translate-x-1 ml-2">→</span>
             </Link>
           </Button>
         </header>

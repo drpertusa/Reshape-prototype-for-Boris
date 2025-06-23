@@ -80,18 +80,18 @@ export function Navigation() {
                     )}>
                       {t(item.labelKey)}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <div className="grid w-[400px] gap-3 p-4">
+                    <NavigationMenuContent className="data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto">
+                      <div className="grid w-[420px] gap-3 p-4">
                         {EMFACE_SUBMENU_ITEMS.map((subItem) => (
                           <Link 
                             key={subItem.href}
                             href={createLocalizedHref(subItem.href, locale)}
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            className="block select-none space-y-2 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           >
                             <div className="text-sm font-semibold leading-none">
                               {t(subItem.titleKey)}
                             </div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            <p className="line-clamp-3 text-sm leading-snug text-muted-foreground">
                               {t(subItem.descriptionKey)}
                             </p>
                           </Link>
