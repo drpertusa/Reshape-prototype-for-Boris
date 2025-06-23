@@ -60,11 +60,6 @@ export const EMSCULPT_SUBMENU_ITEMS = [
 
 export const EMFACE_SUBMENU_ITEMS = [
   { 
-    href: "/emface/forehead", 
-    titleKey: "emface_forehead",
-    descriptionKey: "emface_forehead_desc"
-  },
-  { 
     href: "/emface/eyes", 
     titleKey: "emface_eyes",
     descriptionKey: "emface_eyes_desc"
@@ -73,6 +68,11 @@ export const EMFACE_SUBMENU_ITEMS = [
     href: "/emface/cheeks", 
     titleKey: "emface_cheeks",
     descriptionKey: "emface_cheeks_desc"
+  },
+  { 
+    href: "/emface/forehead", 
+    titleKey: "emface_forehead",
+    descriptionKey: "emface_forehead_desc"
   },
   { 
     href: "/emface/jawline", 
