@@ -22,10 +22,12 @@ export const SITE_CONFIG = {
 } as const
 
 export const NAVIGATION_ITEMS = [
-  { href: "/", labelKey: "nav_home" },
-  { href: "/#services", labelKey: "nav_services" },
-  { href: "/#philosophy", labelKey: "nav_philosophy" },
-  { href: "/contact", labelKey: "nav_contact" },
+  { href: "/emsculpt-neo", labelKey: "nav_emsculpt_neo" },
+  { href: "/emface", labelKey: "nav_emface" },
+  { href: "/exion", labelKey: "nav_exion" },
+  { href: "/emsella", labelKey: "nav_emsella" },
+  { href: "/injectables", labelKey: "nav_injectables" },
+  { href: "/about", labelKey: "nav_about" },
 ] as const
 
 export const FOOTER_LINKS = [

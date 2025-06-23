@@ -5,11 +5,11 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
-import { Drawer, DrawerContent } from '@/components/ui/drawer'
-import { useTranslations } from '@/i18n/client'
+import { useLocale, useTranslations } from '@/i18n/client'
 
 export function CookieConsent() {
   const t = useTranslations()
+  const locale = useLocale()
   const [show, setShow] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -49,20 +49,22 @@ export function CookieConsent() {
   if (!show) return null
 
   return (
-    <Drawer open={show} onOpenChange={setShow}>
-      <DrawerContent className="h-auto border-0">
-        <div className="mx-auto w-full max-w-prose p-6 sm:p-8">
-          <p className="text-base leading-relaxed mb-6">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg">
+      <div className="w-full p-4 sm:p-6">
+        <div className="mx-auto max-w-7xl flex items-center gap-4">
+          {/* Text */}
+          <p className="text-sm sm:text-base flex-1">
             {t("cookie_consent_text")}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-3">
+          {/* Buttons */}
+          <div className="flex gap-3 flex-shrink-0">
             <Button
               variant="default"
               size="sm"
               onClick={() => handleConsent('essential')}
               disabled={isLoading}
-              className="flex-1"
+              className="whitespace-nowrap"
             >
               {t("cookie_consent_accept")}
             </Button>
@@ -71,15 +73,37 @@ export function CookieConsent() {
               variant="ghost"
               size="sm"
               asChild
-              className="flex-1"
+              className="whitespace-nowrap"
             >
-              <Link href="/privacy#cookies">
+              <Link href={`/${locale}/privacy#cookies`} target="_blank" rel="noopener noreferrer">
                 {t("cookie_consent_privacy")}
               </Link>
             </Button>
           </div>
+
+          {/* Larger X button on far right */}
+          <button
+            onClick={() => handleConsent('essential')}
+            disabled={isLoading}
+            className="p-2 hover:bg-black/5 rounded-full transition-colors flex-shrink-0"
+            aria-label="Accept essential cookies"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
         </div>
-      </DrawerContent>
-    </Drawer>
+      </div>
+    </div>
   )
 }

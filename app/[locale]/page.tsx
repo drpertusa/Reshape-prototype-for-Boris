@@ -2,6 +2,7 @@ import Link from "next/link"
 
 import { Activity, Stethoscope, UserCheck } from "lucide-react"
 
+import { AnimatedHeroText } from "@/components/animated-hero-text"
 import { PageLayout } from "@/components/layout/page-layout"
 import { Section } from "@/components/layout/section"
 import { Button } from "@/components/ui/button"
@@ -27,14 +28,14 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const t = await getTranslations(locale)
   return (
     <PageLayout>
-
+      <div style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
       {/* Hero Section */}
       <Section className="pt-[15vh] md:pt-[18vh] pb-20" containerSize="lg">
         <header className="text-center">
-          <h1 className="font-display text-[clamp(2.5rem,6vw+1rem,4rem)] tracking-tight">
-            {t.home_hero_title}
+          <h1 className="text-[clamp(2.5rem,6vw+1rem,4rem)] tracking-tight font-bold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+            London&apos;s leading clinic for
             <br />
-            <span>{t.home_hero_title_accent}</span>
+            <AnimatedHeroText />
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mt-6">
             {t.home_hero_subtitle}
@@ -51,7 +52,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* The Reshape Difference Section */}
       <section id="philosophy" aria-label="The Reshape Difference">
         <Section>
-          <h2 className="font-display text-3xl text-center mb-12">{t.philosophy_title}</h2>
+          <h2 className="text-3xl text-center mb-12 font-semibold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>{t.philosophy_title}</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <article className="text-center">
               <div className="mb-4 flex justify-center">
@@ -81,7 +82,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* Services Section */}
       <section id="services" aria-label="Our Services">
         <Section gutter="md" variant="muted">
-          <h2 className="font-display text-3xl text-center mb-12">{t.services_title}</h2>
+          <h2 className="text-3xl text-center mb-12 font-semibold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>{t.services_title}</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
             <article className="bg-white dark:bg-black p-6 hover:shadow-sm transition-shadow duration-250" role="listitem">
               <h3 className="font-semibold text-xl mb-2">{t.services_exion_title}</h3>
@@ -127,7 +128,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <section aria-label="Call to Action">
         <Section className="border-t" containerSize="sm">
           <div className="text-center">
-            <h2 className="font-display text-3xl mb-4">{t.cta_title}</h2>
+            <h2 className="text-3xl mb-4 font-semibold" style={{ fontFamily: "'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>{t.cta_title}</h2>
             <p className="text-muted-foreground mb-8">
               {t.cta_subtitle}
             </p>
@@ -138,7 +139,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </div>
         </Section>
       </section>
-
+      </div>
     </PageLayout>
   )
 }

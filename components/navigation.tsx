@@ -9,13 +9,13 @@ import { Menu } from "lucide-react"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { Container } from "@/components/layout/container"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { 
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { useTranslations, useLocale } from "@/i18n/client"
@@ -31,11 +31,11 @@ export function Navigation() {
   const locale = useLocale()
 
   return (
-    <nav className="fixed top-0 w-screen bg-background bg-opacity-80 backdrop-blur-md z-50 border-b">
+    <nav className="fixed top-0 w-screen bg-background bg-opacity-80 backdrop-blur-md z-50">
       <Container className="h-16 flex items-center justify-between">
         {/* Logo - Always left */}
-        <Link href={createLocalizedHref("/", locale)} className="font-display text-2xl">
-          {t("site_name")}
+        <Link href={createLocalizedHref("/", locale)} className="flex items-center">
+          <img src="/logo-wordmark-cropped.svg" alt="Reshape" className="h-9 w-auto" />
         </Link>
 
         {/* Desktop Navigation with NavigationMenu */}
@@ -44,8 +44,17 @@ export function Navigation() {
             {NAVIGATION_ITEMS.map((item) => (
               <NavigationMenuItem key={item.href}>
                 <Link href={createLocalizedHref(item.href, locale)} legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    {t(item.labelKey)}
+                  <NavigationMenuLink className={cn(
+                    "group relative inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-teal-50 hover:text-teal-800 focus:bg-teal-50 focus:text-teal-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50",
+                    // Horizontal underline for active states using #1f5f5b
+                    pathname === item.href && "after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-6 after:h-0.5 after:bg-[#1f5f5b]"
+                  )}>
+                    <span className="flex items-center gap-2">
+                      {t(item.labelKey)}
+                      {(item.labelKey === "nav_exion" || item.labelKey === "nav_injectables") && (
+                        <Badge variant="black" className="text-xs">NEW</Badge>
+                      )}
+                    </span>
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
