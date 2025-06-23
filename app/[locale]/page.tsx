@@ -32,7 +32,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* Hero Section */}
       <Section className="pt-[20vh] md:pt-[22vh] pb-20" containerSize="lg">
         <header className="text-center">
-          <h1 className="text-[clamp(2.5rem,6vw+1rem,4rem)] tracking-tight font-bold">
+          <h1 className="text-[clamp(2.5rem,6vw+1rem,4rem)] tracking-tight font-extrabold">
             {t.home_hero_h1_prefix}
             <br />
             <AnimatedHeroText />
@@ -42,7 +42,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </p>
           <Button size="lg" className="font-medium mt-8 md:mt-12 group" asChild>
             <Link href={`/${locale}/contact`}>
-              {t.home_hero_cta}
+              Book Online
               <span className="inline-block transition-transform group-hover:translate-x-1 ml-2">→</span>
             </Link>
           </Button>
@@ -52,13 +52,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* The Reshape Difference Section */}
       <section id="philosophy" aria-label="The Reshape Difference">
         <Section>
-          <h2 className="text-3xl text-center mb-12 font-semibold">{t.philosophy_title}</h2>
+          <h2 className="text-3xl text-center mb-12 font-light">{t.philosophy_title}</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <article className="text-center">
               <div className="mb-4 flex justify-center">
                 <Stethoscope className="w-6 h-6" strokeWidth={1.5} />
               </div>
-              <h3 className="font-semibold mb-2">{t.philosophy_expertise_title}</h3>
+              <h3 className="font-medium mb-2">{t.philosophy_expertise_title}</h3>
               <p className="text-sm text-muted-foreground">{t.philosophy_expertise_desc}</p>
             </article>
             <article className="text-center">
@@ -72,7 +72,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               <div className="mb-4 flex justify-center">
                 <UserCheck className="w-6 h-6" strokeWidth={1.5} />
               </div>
-              <h3 className="font-semibold mb-2">{t.philosophy_care_title}</h3>
+              <h3 className="font-normal mb-2">{t.philosophy_care_title}</h3>
               <p className="text-sm text-muted-foreground">{t.philosophy_care_desc}</p>
             </article>
           </div>
@@ -82,10 +82,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* Services Section */}
       <section id="services" aria-label="Our Services">
         <Section gutter="md" variant="muted">
-          <h2 className="text-3xl text-center mb-12 font-semibold">{t.services_title}</h2>
+          <h2 className="text-3xl text-center mb-12 font-medium">{t.services_title}</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
             <article className="bg-white dark:bg-black p-6 hover:shadow-sm transition-shadow duration-250" role="listitem">
-              <h3 className="font-semibold text-xl mb-2">{t.services_exion_title}</h3>
+              <h3 className="font-bold text-xl mb-2">{t.services_exion_title}</h3>
               <p className="text-base mb-4">{t.services_exion_desc}</p>
               <p className="text-sm text-muted-foreground italic mb-4">{t.services_exion_stat}</p>
               <Link href={`/${locale}/exion`} className="text-sm font-medium inline-flex items-center group">
@@ -103,7 +103,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               </Link>
             </article>
             <article className="bg-white dark:bg-black p-6 hover:shadow-sm transition-shadow duration-250" role="listitem">
-              <h3 className="font-semibold text-xl mb-2">{t.services_emsculpt_title}</h3>
+              <h3 className="font-medium text-xl mb-2">{t.services_emsculpt_title}</h3>
               <p className="text-base mb-4">{t.services_emsculpt_desc}</p>
               <p className="text-sm text-muted-foreground italic mb-4">{t.services_emsculpt_stat}</p>
               <Link href={`/${locale}/emsculptneo`} className="text-sm font-medium inline-flex items-center group">
@@ -112,7 +112,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               </Link>
             </article>
             <article className="bg-white dark:bg-black p-6 hover:shadow-sm transition-shadow duration-250" role="listitem">
-              <h3 className="font-semibold text-xl mb-2">{t.services_emsella_title}</h3>
+              <h3 className="font-normal text-xl mb-2">{t.services_emsella_title}</h3>
               <p className="text-base mb-4">{t.services_emsella_desc}</p>
               <p className="text-sm text-muted-foreground italic mb-4">{t.services_emsella_stat}</p>
               <Link href={`/${locale}/emsella`} className="text-sm font-medium inline-flex items-center group">
@@ -124,21 +124,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </Section>
       </section>
 
-      {/* CTA Section */}
-      <section aria-label="Call to Action">
-        <Section className="border-t" containerSize="sm">
-          <div className="text-center">
-            <h2 className="text-3xl mb-4 font-semibold">{t.cta_title}</h2>
-            <p className="text-muted-foreground mb-8">
-              {t.cta_subtitle}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="outline">{t.cta_learn_more}</Button>
-              <Button>{t.cta_schedule}</Button>
-            </div>
-          </div>
-        </Section>
-      </section>
       </div>
     </PageLayout>
   )

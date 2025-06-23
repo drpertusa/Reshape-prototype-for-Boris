@@ -52,7 +52,7 @@ export function AuthorBio({
         
         {/* Author Details */}
         <div className="flex-grow">
-          <h3 className="text-xl font-semibold mb-1">
+          <h3 className="text-xl font-bold mb-1">
             <span itemProp="name">{name}</span>
             {qualification && (
               <span className="text-muted-foreground font-normal ml-2" itemProp="honorificSuffix">
@@ -71,7 +71,7 @@ export function AuthorBio({
           
           {expertise && expertise.length > 0 && (
             <div className="mb-4">
-              <h4 className="font-medium text-sm mb-2">Areas of Expertise:</h4>
+              <h4 className="font-semibold text-sm mb-2">Areas of Expertise:</h4>
               <div className="flex flex-wrap gap-2">
                 {expertise.map((area, index) => (
                   <span 
@@ -151,7 +151,7 @@ export function AuthorByline({
   return (
     <div className={cn("author-byline flex items-center gap-4 text-sm text-muted-foreground", className)}>
       <div itemScope itemType="https://schema.org/Person">
-        <span className="font-medium" itemProp="name">{name}</span>
+        <span className="font-semibold" itemProp="name">{name}</span>
         {title && (
           <>
             <span className="mx-1">·</span>

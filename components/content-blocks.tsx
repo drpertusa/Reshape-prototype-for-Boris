@@ -12,7 +12,7 @@ export function DefinitionBlock({ term, definition, className }: DefinitionBlock
   return (
     <div className={cn("definition-block", className)}>
       <dl>
-        <dt className="font-semibold text-lg mb-2">
+        <dt className="font-bold text-lg mb-2">
           What is {term}?
         </dt>
         <dd className="text-muted-foreground leading-relaxed">
@@ -33,7 +33,7 @@ interface QuickAnswerProps {
 export function QuickAnswer({ question, answer, className }: QuickAnswerProps) {
   return (
     <div className={cn("quick-answer bg-muted/30 p-6 rounded-lg", className)}>
-      <h3 className="font-medium mb-3">{question}</h3>
+      <h3 className="font-semibold mb-3">{question}</h3>
       <p className="text-muted-foreground">
         <strong>Quick Answer:</strong> {answer}
       </p>
@@ -59,7 +59,7 @@ export function StepByStep({ title, steps, className }: StepByStepProps) {
       itemScope 
       itemType="https://schema.org/HowTo"
     >
-      <h3 className="text-2xl font-display mb-6" itemProp="name">{title}</h3>
+      <h3 className="text-2xl font-display font-semibold mb-6" itemProp="name">{title}</h3>
       
       <ol className="space-y-4">
         {steps.map((step, index) => (
@@ -74,7 +74,7 @@ export function StepByStep({ title, steps, className }: StepByStepProps) {
               {index + 1}
             </span>
             <div className="flex-grow">
-              <h4 className="font-medium mb-1" itemProp="name">
+              <h4 className="font-semibold mb-1" itemProp="name">
                 {step.title}
               </h4>
               <p className="text-muted-foreground" itemProp="text">
@@ -113,7 +113,7 @@ export function ComparisonTable({
 }: ComparisonTableProps) {
   return (
     <div className={cn("comparison-table", className)}>
-      <h3 className="text-2xl font-display mb-6">{title}</h3>
+      <h3 className="text-2xl font-display font-medium mb-6">{title}</h3>
       
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
@@ -127,7 +127,7 @@ export function ComparisonTable({
           <tbody>
             {items.map((item, index) => (
               <tr key={index} className="border-b">
-                <td className="py-3 px-4 font-medium">{item.feature}</td>
+                <td className="py-3 px-4 font-semibold">{item.feature}</td>
                 <td className="py-3 px-4">
                   {typeof item.optionA === 'boolean' 
                     ? (item.optionA ? '✓' : '✗')
@@ -159,7 +159,7 @@ interface KeyPointsProps {
 export function KeyPoints({ title = "Key Takeaways", points, className }: KeyPointsProps) {
   return (
     <div className={cn("key-points bg-primary/5 p-6 rounded-lg", className)}>
-      <h3 className="font-semibold text-lg mb-4">{title}</h3>
+      <h3 className="font-bold text-lg mb-4">{title}</h3>
       <ul className="space-y-2">
         {points.map((point, index) => (
           <li key={index} className="flex items-start gap-2">
@@ -193,7 +193,7 @@ export function ExpertQuote({ quote, author, title, credentials, className }: Ex
       </p>
       <footer>
         <cite itemProp="author" itemScope itemType="https://schema.org/Person">
-          <span className="font-semibold" itemProp="name">{author}</span>
+          <span className="font-bold" itemProp="name">{author}</span>
           {title && (
             <span className="text-muted-foreground">
               , <span itemProp="jobTitle">{title}</span>

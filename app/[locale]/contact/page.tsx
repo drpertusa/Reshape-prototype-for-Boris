@@ -42,7 +42,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
       {/* Hero Section */}
       <Section className="pt-32 pb-12">
-        <h1 className="font-display text-4xl md:text-6xl mb-4">
+        <h1 className="font-display text-4xl md:text-6xl font-extrabold mb-4">
           {t.contact_hero_title}
         </h1>
         <p className="text-xl text-muted-foreground">
@@ -54,7 +54,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       <Section className="pb-20 pt-0" containerSize="sm">
         <div className="space-y-8">
           <div>
-            <h3 className="font-semibold mb-2">{t.contact_visit_title}</h3>
+            <h3 className="font-medium mb-2">{t.contact_visit_title}</h3>
             <p className="text-muted-foreground">
               {t.address_street}<br />
               {t.address_city} {t.address_zip}<br />
@@ -72,7 +72,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           </div>
 
           <div>
-            <h3 className="font-semibold mb-2">{t.contact_email_title}</h3>
+            <h3 className="font-normal mb-2">{t.contact_email_title}</h3>
             <p className="text-muted-foreground">
               <a href={`mailto:${t.site_email}`} className="hover:text-foreground transition-colors">
                 {t.site_email}

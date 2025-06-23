@@ -47,7 +47,7 @@ export function SemanticArticle({
         itemType={`https://schema.org/${schemaType}`}
       >
         <header className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-display mb-4" itemProp="headline">
+          <h1 className="text-4xl md:text-5xl font-display font-extrabold mb-4" itemProp="headline">
             {title}
           </h1>
           
@@ -111,7 +111,7 @@ export function SemanticSection({
     >
       {title && (
         <header className="mb-6">
-          <h2 className="text-3xl md:text-4xl font-display mb-2">
+          <h2 className="text-3xl md:text-4xl font-display font-semibold mb-2">
             {title}
           </h2>
           {subtitle && (
@@ -153,7 +153,7 @@ export function ServiceList({ services, className }: ServiceListProps) {
           itemProp="itemListElement"
           itemType="https://schema.org/Service"
         >
-          <h3 className="text-xl font-semibold mb-2" itemProp="name">
+          <h3 className="text-xl font-medium mb-2" itemProp="name">
             {service.name}
           </h3>
           <p className="text-muted-foreground mb-4" itemProp="description">
@@ -163,13 +163,13 @@ export function ServiceList({ services, className }: ServiceListProps) {
           <dl className="space-y-1 text-sm">
             {service.price && (
               <div className="flex justify-between">
-                <dt className="font-medium">Price:</dt>
+                <dt className="font-semibold">Price:</dt>
                 <dd itemProp="price">{service.price}</dd>
               </div>
             )}
             {service.duration && (
               <div className="flex justify-between">
-                <dt className="font-medium">Duration:</dt>
+                <dt className="font-semibold">Duration:</dt>
                 <dd>{service.duration}</dd>
               </div>
             )}
@@ -206,7 +206,7 @@ export function NavList({ title, items, className }: NavListProps) {
       className={cn("nav-list", className)}
       aria-label={title}
     >
-      <h3 className="font-semibold mb-3">{title}</h3>
+      <h3 className="font-bold mb-3">{title}</h3>
       <ul className="space-y-2">
         {items.map((item, index) => (
           <li key={index}>

@@ -16,10 +16,10 @@ export default function NotFound() {
         <Container className="text-center">
           <div className="mx-auto max-w-2xl">
             {/* 404 Status */}
-            <h1 className="text-6xl md:text-8xl font-display mb-4">404</h1>
+            <h1 className="text-6xl md:text-8xl font-display font-extrabold mb-4">404</h1>
             
             {/* Error Message */}
-            <h2 className="text-2xl md:text-3xl font-display mb-4">
+            <h2 className="text-2xl md:text-3xl font-display font-bold mb-4">
               Page Not Found
             </h2>
             
@@ -57,7 +57,7 @@ export default function NotFound() {
           
           {/* SEO-friendly content */}
           <div className="mt-16 text-left max-w-2xl mx-auto">
-            <h3 className="font-semibold mb-4">Popular Pages</h3>
+            <h3 className="font-medium mb-4">Popular Pages</h3>
             <nav aria-label="Popular pages">
               <ul className="space-y-2 text-sm">
                 <li>

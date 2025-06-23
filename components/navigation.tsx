@@ -47,7 +47,7 @@ export function Navigation() {
                   // EMSculpt Neo with dropdown
                   <>
                     <NavigationMenuTrigger className={cn(
-                      "group relative inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-teal-50 hover:text-teal-800 focus:bg-teal-50 focus:text-teal-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50",
+                      "group relative inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-semibold transition-colors hover:bg-teal-50 hover:text-teal-800 focus:bg-teal-50 focus:text-teal-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50",
                       pathname.startsWith(item.href) && "after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-6 after:h-0.5 after:bg-[#1f5f5b]"
                     )}>
                       {t(item.labelKey)}
@@ -60,7 +60,7 @@ export function Navigation() {
                             href={createLocalizedHref(subItem.href, locale)}
                             className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           >
-                            <div className="text-sm font-medium leading-none">
+                            <div className="text-sm font-semibold leading-none">
                               {t(subItem.titleKey)}
                             </div>
                             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
@@ -75,7 +75,7 @@ export function Navigation() {
                   // EMFace with dropdown
                   <>
                     <NavigationMenuTrigger className={cn(
-                      "group relative inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-teal-50 hover:text-teal-800 focus:bg-teal-50 focus:text-teal-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50",
+                      "group relative inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-semibold transition-colors hover:bg-teal-50 hover:text-teal-800 focus:bg-teal-50 focus:text-teal-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50",
                       pathname.startsWith(item.href) && "after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-6 after:h-0.5 after:bg-[#1f5f5b]"
                     )}>
                       {t(item.labelKey)}
@@ -88,7 +88,7 @@ export function Navigation() {
                             href={createLocalizedHref(subItem.href, locale)}
                             className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           >
-                            <div className="text-sm font-medium leading-none">
+                            <div className="text-sm font-semibold leading-none">
                               {t(subItem.titleKey)}
                             </div>
                             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
@@ -103,7 +103,7 @@ export function Navigation() {
                   // Regular navigation items
                   <Link href={createLocalizedHref(item.href, locale)} legacyBehavior passHref>
                     <NavigationMenuLink className={cn(
-                      "group relative inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-teal-50 hover:text-teal-800 focus:bg-teal-50 focus:text-teal-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50",
+                      "group relative inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-semibold transition-colors hover:bg-teal-50 hover:text-teal-800 focus:bg-teal-50 focus:text-teal-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50",
                       // Horizontal underline for active states using #1f5f5b
                       pathname === item.href && "after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-6 after:h-0.5 after:bg-[#1f5f5b]"
                     )}>
@@ -123,7 +123,7 @@ export function Navigation() {
 
         {/* Desktop Book Consultation CTA - Right */}
         <div className="hidden md:flex items-center gap-2">
-          <Button asChild size="sm" className="font-medium">
+          <Button asChild size="sm" className="font-semibold">
             <Link href={createLocalizedHref("/contact", locale)}>
               {t("nav_book_consultation")}
             </Link>
@@ -143,7 +143,7 @@ export function Navigation() {
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px]">
             <SheetHeader>
-              <SheetTitle className="font-display text-xl">{t("nav_menu")}</SheetTitle>
+              <SheetTitle className="font-display text-xl font-semibold">{t("nav_menu")}</SheetTitle>
             </SheetHeader>
             <nav className="flex flex-col space-y-1 mt-8">
               {NAVIGATION_ITEMS.map((item) => (
@@ -152,7 +152,7 @@ export function Navigation() {
                   href={createLocalizedHref(item.href, locale)}
                   onClick={() => setIsOpen(false)}
                   className={cn(
-                    "block px-4 py-3 text-lg font-medium transition-colors hover:text-primary",
+                    "block px-4 py-3 text-lg font-semibold transition-colors hover:text-primary",
                     pathname === item.href
                       ? "text-foreground bg-muted"
                       : "text-muted-foreground"
@@ -165,7 +165,7 @@ export function Navigation() {
             
             {/* Mobile Book Consultation CTA - Bottom of sheet */}
             <div className="absolute bottom-8 left-6 right-6 flex items-center justify-center">
-              <Button asChild size="sm" className="font-medium w-full">
+              <Button asChild size="sm" className="font-semibold w-full">
                 <Link href={createLocalizedHref("/contact", locale)} onClick={() => setIsOpen(false)}>
                   {t("nav_book_consultation")}
                 </Link>

@@ -653,7 +653,7 @@ Track final production URLs and their corresponding development routes:
 - **Styling**: Maintains consistent 400px width and hover states matching EMSculpt Neo
 - **Active states**: EMFace shows underline when on any subpage using `pathname.startsWith()`
 **Result**: ✅ Professional EMFace dropdown with 4 comprehensive facial treatment categories
-**Updated Site**: [Deployment in progress]
+**Updated Site**: https://reshape-working-ay0f991yi-alberto-e69d8928.vercel.app
 
 #### Implementation Details
 ```typescript

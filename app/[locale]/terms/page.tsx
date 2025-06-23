@@ -34,7 +34,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
       <Section className="pt-32 pb-20">
         <Container className="max-w-prose">
           {/* Title */}
-          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl mb-8">
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold mb-8">
             {t.terms_title}
           </h1>
           
@@ -50,7 +50,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* Who We Are */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-medium">
               {t.terms_who_title}
             </h2>
             <p className="mb-6">
@@ -58,7 +58,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* Section 1: Our Promise */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-semibold">
               {t.terms_promise_title}
             </h2>
             <p className="mb-6">
@@ -66,7 +66,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* Section 2: Your Visit */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-light">
               {t.terms_visit_title}
             </h2>
             <p className="mb-6">
@@ -74,7 +74,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* Appointments */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-bold">
               {t.terms_appointments_title}
             </h2>
             <p className="mb-6">
@@ -82,7 +82,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* Cancellations */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-medium">
               {t.terms_cancellation_title}
             </h2>
             <p className="mb-6">
@@ -90,7 +90,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* Refunds */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-semibold">
               {t.terms_refunds_title}
             </h2>
             <p className="mb-6">
@@ -98,7 +98,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* Section 3: Medical Excellence */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-light">
               {t.terms_excellence_title}
             </h2>
             <p className="mb-6">
@@ -106,7 +106,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* Section 4: Privacy & Confidentiality */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-bold">
               {t.terms_privacy_title}
             </h2>
             <p className="mb-6">
@@ -114,7 +114,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* Section 5: Investment in Your Health */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-medium">
               {t.terms_investment_title}
             </h2>
             <p className="mb-6">
@@ -122,7 +122,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* General Terms */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-medium">
               {t.terms_general_title}
             </h2>
             <p className="mb-6">
@@ -130,7 +130,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* Children & Pets */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-medium">
               {t.terms_children_title}
             </h2>
             <p className="mb-6">
@@ -138,7 +138,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* Section 6: Intellectual Property */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-medium">
               {t.terms_intellectual_title}
             </h2>
             <p className="mb-6">
@@ -146,7 +146,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* Section 7: Limitation of Liability */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-medium">
               {t.terms_liability_title}
             </h2>
             <p className="mb-6">
@@ -154,7 +154,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* Complaints */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-medium">
               {t.terms_complaints_title}
             </h2>
             <p className="mb-6">
@@ -162,7 +162,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* Section 8: Changes */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-medium">
               {t.terms_changes_title}
             </h2>
             <p className="mb-6">
@@ -170,7 +170,7 @@ export default async function TermsPage({ params }: TermsPageProps) {
             </p>
             
             {/* Governing Law */}
-            <h2 className="font-display text-2xl mt-12 mb-4">
+            <h2 className="font-display text-2xl mt-12 mb-4 font-medium">
               {t.terms_laws_title}
             </h2>
             <p className="mb-6">

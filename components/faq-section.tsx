@@ -53,7 +53,7 @@ export function FAQSection({
   return (
     <section className={cn("faq-section", className)} itemScope itemType="https://schema.org/FAQPage">
       {title && (
-        <h2 className="text-3xl md:text-4xl font-display mb-4">{title}</h2>
+        <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">{title}</h2>
       )}
       {description && (
         <p className="text-lg text-muted-foreground mb-8 max-w-3xl">{description}</p>
@@ -63,7 +63,7 @@ export function FAQSection({
         {Object.entries(groupedItems).map(([category, categoryItems]) => (
           <div key={category}>
             {showCategories && category !== 'All' && (
-              <h3 className="text-xl font-semibold mb-4">{category}</h3>
+              <h3 className="text-xl font-medium mb-4">{category}</h3>
             )}
             
             <div className="space-y-4">
@@ -81,7 +81,7 @@ export function FAQSection({
                     aria-expanded={openItems.has(item.originalIndex)}
                     aria-controls={`faq-answer-${item.originalIndex}`}
                   >
-                    <h3 className="font-medium pr-4" itemProp="name">
+                    <h3 className="font-semibold pr-4" itemProp="name">
                       {item.question}
                     </h3>
                     <ChevronDown
@@ -126,7 +126,7 @@ export function FAQSectionStatic({ items, title, description, className }: FAQSe
   return (
     <section className={cn("faq-section", className)} itemScope itemType="https://schema.org/FAQPage">
       {title && (
-        <h2 className="text-3xl md:text-4xl font-display mb-4">{title}</h2>
+        <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">{title}</h2>
       )}
       {description && (
         <p className="text-lg text-muted-foreground mb-8 max-w-3xl">{description}</p>
@@ -140,7 +140,7 @@ export function FAQSectionStatic({ items, title, description, className }: FAQSe
             itemProp="mainEntity"
             itemType="https://schema.org/Question"
           >
-            <dt className="font-medium text-lg mb-2" itemProp="name">
+            <dt className="font-semibold text-lg mb-2" itemProp="name">
               {item.question}
             </dt>
             <dd
