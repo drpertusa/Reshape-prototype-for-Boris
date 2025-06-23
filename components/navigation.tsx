@@ -121,11 +121,12 @@ export function Navigation() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        {/* Desktop Book Consultation CTA - Right */}
+        {/* Desktop Book Online CTA - Right */}
         <div className="hidden md:flex items-center gap-2">
-          <Button asChild size="sm" className="font-semibold">
+          <Button asChild size="sm" className="font-semibold group">
             <Link href={createLocalizedHref("/contact", locale)}>
-              {t("nav_book_consultation")}
+              Book Online
+              <span className="inline-block transition-transform group-hover:translate-x-1 ml-2">→</span>
             </Link>
           </Button>
         </div>
@@ -163,11 +164,12 @@ export function Navigation() {
               ))}
             </nav>
             
-            {/* Mobile Book Consultation CTA - Bottom of sheet */}
+            {/* Mobile Book Online CTA - Bottom of sheet */}
             <div className="absolute bottom-8 left-6 right-6 flex items-center justify-center">
-              <Button asChild size="sm" className="font-semibold w-full">
+              <Button asChild size="sm" className="font-semibold w-full group">
                 <Link href={createLocalizedHref("/contact", locale)} onClick={() => setIsOpen(false)}>
-                  {t("nav_book_consultation")}
+                  Book Online
+                  <span className="inline-block transition-transform group-hover:translate-x-1 ml-2">→</span>
                 </Link>
               </Button>
             </div>
