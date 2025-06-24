@@ -23,7 +23,6 @@ export const SITE_CONFIG = {
 
 export const NAVIGATION_ITEMS = [
   { href: "/emsculpt-neo", labelKey: "nav_emsculpt_neo" },
-  { href: "/emface", labelKey: "nav_emface" },
   { href: "/exion", labelKey: "nav_exion" },
   { href: "/emsella", labelKey: "nav_emsella" },
   { href: "/injectables", labelKey: "nav_injectables" },
