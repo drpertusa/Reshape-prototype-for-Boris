@@ -152,7 +152,7 @@ export function Navigation() {
 
         {/* Desktop Book Online CTA - Right */}
         <div className="hidden md:flex items-center gap-2">
-          <Button asChild size="sm" className="font-semibold group">
+          <Button asChild size="sm" className="font-semibold group px-3.5">
             <Link href={createLocalizedHref("/contact", locale)}>
               Book Online
               <span className="inline-block transition-transform group-hover:translate-x-1 ml-2">→</span>

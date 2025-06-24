@@ -15,7 +15,7 @@ export function Footer() {
   const locale = useLocale()
   
   return (
-    <footer className="py-8 border-t">
+    <footer className="py-8">
       <Container className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
         <div className="flex flex-col md:flex-row items-center gap-4">
           <p>{t("site_copyright", { year: getCurrentYear(), name: t("site_name") })}</p>
