@@ -226,3 +226,11 @@
   }
   */
 }
+
+@media (min-width: 768px) {
+  .align-left-dropdown {
+    left: 0 !important;
+    right: auto !important;
+    margin-left: 0 !important;
+  }
+}
