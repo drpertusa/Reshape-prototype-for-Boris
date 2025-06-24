@@ -20,7 +20,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { useTranslations, useLocale } from "@/i18n/client"
 import { createLocalizedHref, usePathname } from "@/i18n/navigation"
-import { NAVIGATION_ITEMS, EMSCULPT_SUBMENU_ITEMS, EMFACE_SUBMENU_ITEMS } from "@/lib/constants"
+import { NAVIGATION_ITEMS, EMSCULPT_SUBMENU_ITEMS } from "@/lib/constants"
 import { applyScrollbarPadding } from "@/lib/scrollbar-gutter-fallback"
 import { cn } from "@/lib/utils"
 
