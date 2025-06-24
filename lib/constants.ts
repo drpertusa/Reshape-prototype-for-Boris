@@ -25,8 +25,8 @@ export const NAVIGATION_ITEMS = [
   { href: "/emsculpt-neo", labelKey: "nav_emsculpt_neo" },
   { href: "/exion", labelKey: "nav_exion" },
   { href: "/emface", labelKey: "nav_emface" },
-  { href: "/emsella", labelKey: "nav_emsella" },
   { href: "/injectables", labelKey: "nav_injectables" },
+  { href: "/emsella", labelKey: "nav_emsella" },
   { href: "/about", labelKey: "nav_about" },
 ] as const
 
