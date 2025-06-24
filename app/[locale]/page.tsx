@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { Activity, Stethoscope, UserCheck } from "lucide-react"
 
 import { AnimatedHeroText } from "@/components/animated-hero-text"
