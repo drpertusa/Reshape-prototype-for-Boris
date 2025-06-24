@@ -87,7 +87,7 @@ const NavigationMenuViewport = React.forwardRef<
   return (
     <div
       className={cn(
-        "absolute left-0 top-full flex justify-center md:w-auto",
+        "absolute left-0 top-full flex justify-center md:justify-start md:w-auto",
         className
       )}
       data-radix-navigation-menu-viewport
