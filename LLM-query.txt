@@ -1,176 +1,121 @@
-# CRITICAL ISSUES SUMMARY - Next.js Navigation Problems
+# DEPLOYMENT FAILURE ANALYSIS - TypeScript Error
 
-## URGENT PROBLEMS (Dec 24, 2025)
+## CRITICAL BUILD FAILURE
 
-### 1. NAVIGATION MENU ORDER IS NOT CHANGING
-**Problem**: Despite multiple attempts to reorder navigation items, the menu order remains unchanged on the live site.
+**Status**: ❌ Deployment Failed  
+**Error Type**: TypeScript Compilation Error  
+**Root Cause**: Invalid props passed to NavigationMenuContent component
 
-**Expected Order**: EMSculpt Neo → Exion → EMFace → **Injectables** → EMSella → About
-**Current Order**: EMSculpt Neo → Exion → EMFace → EMSella → **Injectables** → About
+## EXACT ERROR MESSAGE
 
-**Changes Made But Not Working**:
-- Modified `/lib/constants.ts` NAVIGATION_ITEMS array
-- Committed and pushed to multiple git remotes (origin, boris)
-- Forced multiple redeployments
-- Changes are present in the source code but NOT reflecting on live site
+```
+Type error: Type '{ children: Element; align: string; sideOffset: number; className: string; "data-align": string; }' is not assignable to type 'IntrinsicAttributes & Omit<NavigationMenuContentProps & RefAttributes<HTMLDivElement>, "ref"> & RefAttributes<...>'.
+Property 'align' does not exist on type 'IntrinsicAttributes & Omit<NavigationMenuContentProps & RefAttributes<HTMLDivElement>, "ref"> & RefAttributes<...>'.
 
-### 2. EMFACE DROPDOWN STILL MISALIGNED
-**Problem**: EMFace dropdown appears centered instead of left-aligned under the "EMFace" menu item.
+File: ./components/navigation.tsx:83:44
+Line 83: <NavigationMenuContent align="start" sideOffset={6} className="md:left-0" data-align="left">
+```
 
-**Visual Evidence**: Dropdown shows centered on page with content: Eyes, Cheeks, Forehead, Jawline-Submentum sections.
+## TECHNICAL ANALYSIS
 
-## TECHNICAL ENVIRONMENT
+### Problem Description
+The `NavigationMenuContent` component from shadcn/ui does NOT accept `align` and `sideOffset` props. These are Radix UI primitive props that are not exposed through the shadcn/ui wrapper component.
 
-**Framework**: Next.js 15.3.3 + Tailwind CSS 4.1.x + Radix UI + shadcn/ui  
-**Live Site**: https://playground-m8q0n97sn-alberto-e69d8928.vercel.app  
-**Repository**: Multiple remotes - deployment may be connected to wrong remote
-
-## CURRENT SOURCE CODE
-
-### Navigation Constants (`/lib/constants.ts`)
+### Code That Failed
 ```typescript
+// components/navigation.tsx line 83
+<NavigationMenuContent align="start" sideOffset={6} className="md:left-0" data-align="left">
+```
+
+### Why This Happened
+During the attempted fix for EMFace dropdown alignment, the command tried to add Radix UI props (`align="start"` and `sideOffset={6}`) directly to the shadcn/ui `NavigationMenuContent` component, but these props are not part of the component's interface.
+
+## CURRENT REPOSITORY STATUS
+
+**Repository**: https://github.com/drpertusa/playground  
+**Failed Deployments**:
+- https://playground-rn8b1kxjl-alberto-e69d8928.vercel.app (Build Error)
+- https://playground-hw0s0wam1-alberto-e69d8928.vercel.app (Build Error)
+
+**Git Status**: All changes committed but deployments failing due to TypeScript error
+
+## SHADCN/UI NAVIGATION MENU COMPONENT STRUCTURE
+
+### Available Props for NavigationMenuContent
+Based on the shadcn/ui implementation, `NavigationMenuContent` only accepts:
+- `className?: string`
+- `children?: React.ReactNode`
+- Standard HTML div props
+
+### NOT Available (Radix Primitive Props)
+- `align` - Not exposed in shadcn wrapper
+- `sideOffset` - Not exposed in shadcn wrapper
+- `side` - Not exposed in shadcn wrapper
+- `alignOffset` - Not exposed in shadcn wrapper
+
+## CURRENT CODE STATE
+
+### Navigation Order (✅ FIXED)
+```typescript
+// lib/constants.ts - CORRECT ORDER NOW
 export const NAVIGATION_ITEMS = [
   { href: "/emsculpt-neo", labelKey: "nav_emsculpt_neo" },
   { href: "/exion", labelKey: "nav_exion" },
   { href: "/emface", labelKey: "nav_emface" },
-  { href: "/injectables", labelKey: "nav_injectables" }, // SHOULD BE HERE
-  { href: "/emsella", labelKey: "nav_emsella" },        // SHOULD BE AFTER INJECTABLES
+  { href: "/injectables", labelKey: "nav_injectables" }, // MOVED HERE
+  { href: "/emsella", labelKey: "nav_emsella" },         // MOVED AFTER
   { href: "/about", labelKey: "nav_about" },
 ] as const
 ```
 
-### Navigation Component (`/components/navigation.tsx`)
+### Dropdown Alignment (❌ PARTIALLY FIXED, BREAKING BUILD)
 ```typescript
-// Line 44 - Maps over NAVIGATION_ITEMS correctly
-{NAVIGATION_ITEMS.map((item) => (
-  <NavigationMenuItem key={item.href}>
-    {item.labelKey === "nav_emsculpt_neo" ? (
-      // EMSculpt Neo with dropdown
-    ) : item.labelKey === "nav_emface" ? (
-      // EMFace with dropdown - PROBLEMATIC SECTION
-      <>
-        <NavigationMenuTrigger>
-          {t(item.labelKey)}
-        </NavigationMenuTrigger>
-        <NavigationMenuContent align="start" sideOffset={6} className="md:left-0" data-align="left">
-          <div className="grid w-[400px] gap-3 p-4">
-            {EMFACE_SUBMENU_ITEMS.map((subItem) => (
-              // Menu items here
-            ))}
-          </div>
-        </NavigationMenuContent>
-      </>
-    ) : (
-      // Regular menu items
-    )}
-  </NavigationMenuItem>
-))}
+// components/ui/navigation-menu.tsx - WORKING FIX
+className={cn(
+  "absolute left-0 top-full flex justify-center md:justify-start md:w-auto",
+  className
+)}
+
+// components/navigation.tsx - BROKEN CODE CAUSING BUILD FAILURE
+<NavigationMenuContent align="start" sideOffset={6} className="md:left-0" data-align="left">
 ```
 
-### Navigation Menu UI (`/components/ui/navigation-menu.tsx`)
-```typescript
-const NavigationMenuViewport = React.forwardRef<
-  React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
->(({ className, ...props }, ref) => {
-  return (
-    <div
-      className={cn(
-        "absolute left-0 top-full flex justify-center md:w-auto", // CENTERING ISSUE
-        className
-      )}
-      data-radix-navigation-menu-viewport
-    >
-      <NavigationMenuPrimitive.Viewport
-        className={cn(
-          "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
-          className
-        )}
-        ref={ref}
-        {...props}
-      />
-    </div>
-  )
-})
-```
+## SOLUTION REQUIRED
 
-### CSS Fixes Attempted (`/app/globals.css`)
+### Immediate Fix Needed
+1. **Remove invalid props** from NavigationMenuContent:
+   ```typescript
+   // CHANGE FROM:
+   <NavigationMenuContent align="start" sideOffset={6} className="md:left-0" data-align="left">
+   
+   // CHANGE TO:
+   <NavigationMenuContent className="md:left-0" data-align="left">
+   ```
+
+2. **Alternative alignment approach**: Use CSS-only solution since Radix props aren't available through shadcn wrapper
+
+### Working CSS Fix Already Implemented
+The fix in `components/ui/navigation-menu.tsx` should work:
 ```css
-/* Navigation Menu Fixes */
-@layer components {
-  /* Fix EMFace dropdown alignment - Force left alignment when EMFace is open */
-  @media (min-width: 768px) {
-    /* Target the viewport wrapper when left-aligned content is open */
-    [data-radix-navigation-menu-viewport] {
-      justify-content: flex-start !important;
-      left: 0 !important;
-      transform: none !important;
-    }
-    
-    /* Ensure the content itself also aligns left */
-    [data-align="left"] {
-      left: 0 !important;
-      right: auto !important;
-    }
-    
-    /* Additional targeting for the specific EMFace dropdown case */
-    [data-radix-navigation-menu-viewport]:has([data-align="left"]) {
-      justify-content: flex-start !important;
-      left: 0 !important;
-      transform: none !important;
-    }
-  }
-}
+className="absolute left-0 top-full flex justify-center md:justify-start md:w-auto"
 ```
 
-## GIT REPOSITORY STATUS
+## COMMANDS TO FIX
 
-**Current Branch**: main  
-**Remote Repositories**:
-- origin: https://github.com/drpertusa/reshape-clinic-website.git
-- boris: https://github.com/drpertusa/Reshape-prototype-for-Boris.git
-- reshape: https://github.com/drpertusa/reshape-clinic-website.git
-- upstream: https://github.com/drpertusa/reshape-prototype-01.git
+```bash
+# Remove invalid props to fix build
+sed -i 's/align="start" sideOffset={6} //g' components/navigation.tsx
 
-**Issue**: Unclear which remote is connected to the live deployment. Changes pushed to multiple remotes but not appearing.
+# Commit and deploy
+git add -A && git commit -m "Remove invalid NavigationMenuContent props" && git push
+vercel --prod --yes
+```
 
-## FAILED ATTEMPTS
+## VERIFICATION STEPS AFTER FIX
 
-### Navigation Order:
-1. ✅ Modified `NAVIGATION_ITEMS` in `/lib/constants.ts`
-2. ✅ Committed changes: "Reorder navigation: move Injectables before EMSella"
-3. ✅ Pushed to origin and boris remotes
-4. ✅ Forced multiple redeployments
-5. ❌ **RESULT**: No changes visible on live site
+1. ✅ **Build should succeed** - No TypeScript errors
+2. ✅ **Navigation order** - Injectables before EMSella  
+3. ✅ **EMFace dropdown** - Left-aligned on desktop (≥768px)
+4. ✅ **Other dropdowns** - EMSculpt Neo remains centered
 
-### EMFace Dropdown:
-1. ✅ Added `align="start"` and `sideOffset={6}` to NavigationMenuContent
-2. ✅ Modified CSS with multiple targeting approaches
-3. ✅ Updated NavigationMenuViewport component
-4. ✅ Added `data-align="left"` attribute
-5. ❌ **RESULT**: Dropdown still centered
-
-## QUESTIONS FOR INVESTIGATION
-
-1. **Which git remote is actually connected to the live deployment?**
-2. **Is there a build cache or deployment pipeline issue preventing updates?**
-3. **Is the Radix UI NavigationMenu overriding our CSS with inline styles?**
-4. **Are there multiple navigation components or the changes aren't being built correctly?**
-5. **Is there client-side caching preventing navigation updates?**
-
-## REQUEST FOR SOLUTION
-
-Please investigate and provide:
-
-1. **Navigation Order Fix**: Why the NAVIGATION_ITEMS changes aren't appearing and how to make the menu order change from "EMFace → EMSella → Injectables" to "EMFace → Injectables → EMSella"
-
-2. **EMFace Dropdown Alignment**: A robust solution to left-align the EMFace dropdown under its trigger without affecting other dropdowns
-
-3. **Deployment Diagnosis**: Help identify why changes aren't reaching the live site despite successful commits and pushes
-
-**Constraints**: 
-- Must work with existing Radix UI + Next.js setup
-- Cannot break other dropdowns (EMSculpt Neo should remain centered)
-- Must be responsive and work on desktop (≥768px)
-
-**Priority**: URGENT - These are blocking issues for the live site.
+**Priority**: CRITICAL - Build is completely broken, preventing any deployment.
