@@ -45,17 +45,17 @@
     }
   }
 
-  /* Fix EMFace dropdown alignment (desktop)
-     When a content panel declares data-align="left" and is open, the sibling
-     viewport that Radix appends **after** that content panel should hug the left
-     edge instead of the centred default.  The general-sibling selector (~) lets
-     us target just that viewport instance, leaving all other dropdowns
-     unaffected. */
-  @media (min-width: 768px) {
-    [data-align="left"][data-state="open"] ~ [data-radix-navigation-menu-viewport] {
-      left: 0 !important;              /* anchor to the left edge */
-      transform: none !important;      /* prevent translateX centering */
-      justify-content: flex-start !important; /* flex-box alignment */
+  /*
+    Correctly align the EMFace dropdown to the left on desktop.
+    This rule finds the navigation menu's root element but ONLY when it contains
+    an open content panel that is marked with data-align="left". It then
+    targets the viewport's wrapper div within that root and forces it to
+    align its content to the start (left), overriding the default centering.
+    This is highly specific and will not affect other dropdowns.
+  */
+  [data-radix-orientation]:has([data-align="left"][data-state="open"]) > [data-radix-navigation-menu-viewport] {
+    @media (min-width: 768px) {
+      justify-content: flex-start;
     }
   }
 }
