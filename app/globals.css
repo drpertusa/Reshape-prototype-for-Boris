@@ -26,6 +26,17 @@
   --color-overlay: hsl(var(--overlay));
 }
 
+/* Navigation Menu Fixes */
+@layer components {
+  /* Fix EMFace dropdown alignment */
+  [data-radix-navigation-menu-viewport] {
+    @media (min-width: 768px) {
+      left: auto !important;
+      transform: translateX(0) !important;
+    }
+  }
+}
+
 @layer base {
   html {
     /* Removed automatic scrollbar-gutter reservation.  We now handle classic scrollbars dynamically in JS to avoid a permanent gutter. */
