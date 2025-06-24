@@ -62,28 +62,26 @@ export function PromotionalBanner() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ease-in-out ${
         isAnimating ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'
       }`}
-      style={{ backgroundColor: '#E6D5F6' }}
+      style={{ backgroundColor: '#DCC9E8' }}
     >
-      <div className="relative max-w-7xl mx-auto">
-        <div className="flex items-center justify-center px-12 py-4">
+      <div className="relative w-full">
+        <div className="flex items-center justify-center px-4 sm:px-6 py-2.5">
           <div className="text-center">
-            <p className="text-sm font-medium flex items-center justify-center gap-2 flex-wrap text-gray-800">
-              <Badge className="bg-yellow-400 text-black font-bold px-3 py-1 shadow-sm">1</Badge>
+            <p className="text-[13px] font-normal flex items-center justify-center gap-1.5 flex-wrap" style={{ color: '#1A1A1A' }}>
+              <Badge className="bg-[#FFD700] text-black font-semibold text-[11px] px-2 py-0.5 h-5 rounded-full">1</Badge>
               <span>Free Session for every</span>
-              <Badge className="bg-[#9B72CF] text-white font-semibold px-3 py-1 shadow-sm">5</Badge>
+              <Badge className="bg-[#8B6AA7] text-white font-semibold text-[11px] px-2 py-0.5 h-5 rounded-full">5</Badge>
               <span>booked. On all machines.</span>
-              <Badge className="bg-[#7B5AA6] text-white font-bold px-3 py-1 shadow-sm">Forever!</Badge>
+              <Badge className="bg-[#6B4A85] text-white font-semibold text-[11px] px-2 py-0.5 h-5 rounded-full">Forever!</Badge>
             </p>
           </div>
-          <Button
-            variant="ghost"
-            size="sm"
+          <button
             onClick={handleDismiss}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-600 hover:text-gray-800 hover:bg-purple-200/50 p-2 h-8 w-8 rounded-full transition-colors"
+            className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-[#1A1A1A] hover:opacity-70 transition-opacity p-1"
             aria-label="Close banner"
           >
-            <X className="h-4 w-4" />
-          </Button>
+            <X className="h-3.5 w-3.5" strokeWidth={2.5} />
+          </button>
         </div>
       </div>
     </div>
