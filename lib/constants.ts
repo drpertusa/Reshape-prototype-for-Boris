@@ -58,6 +58,29 @@ export const EMSCULPT_SUBMENU_ITEMS = [
   },
 ] as const
 
+export const EMFACE_SUBMENU_ITEMS = [
+  { 
+    href: "/emface/eyes", 
+    titleKey: "emface_eyes",
+    descriptionKey: "emface_eyes_desc"
+  },
+  { 
+    href: "/emface/cheeks", 
+    titleKey: "emface_cheeks",
+    descriptionKey: "emface_cheeks_desc"
+  },
+  { 
+    href: "/emface/forehead", 
+    titleKey: "emface_forehead",
+    descriptionKey: "emface_forehead_desc"
+  },
+  { 
+    href: "/emface/jawline", 
+    titleKey: "emface_jawline",
+    descriptionKey: "emface_jawline_desc"
+  },
+] as const
+
 export const FOOTER_LINKS = [
   { href: "/privacy", labelKey: "nav_privacy" },
   { href: "/terms", labelKey: "nav_terms" },

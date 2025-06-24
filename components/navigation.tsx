@@ -20,7 +20,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { useTranslations, useLocale } from "@/i18n/client"
 import { createLocalizedHref, usePathname } from "@/i18n/navigation"
-import { NAVIGATION_ITEMS, EMSCULPT_SUBMENU_ITEMS } from "@/lib/constants"
+import { NAVIGATION_ITEMS, EMSCULPT_SUBMENU_ITEMS, EMFACE_SUBMENU_ITEMS } from "@/lib/constants"
 import { applyScrollbarPadding } from "@/lib/scrollbar-gutter-fallback"
 import { cn } from "@/lib/utils"
 
@@ -55,6 +55,34 @@ export function Navigation() {
                     <NavigationMenuContent>
                       <div className="grid w-[400px] gap-3 p-4">
                         {EMSCULPT_SUBMENU_ITEMS.map((subItem) => (
+                          <Link 
+                            key={subItem.href}
+                            href={createLocalizedHref(subItem.href, locale)}
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-semibold leading-none">
+                              {t(subItem.titleKey)}
+                            </div>
+                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                              {t(subItem.descriptionKey)}
+                            </p>
+                          </Link>
+                        ))}
+                      </div>
+                    </NavigationMenuContent>
+                  </>
+                ) : item.labelKey === "nav_emface" ? (
+                  // EMFace with dropdown
+                  <>
+                    <NavigationMenuTrigger className={cn(
+                      "group relative inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-semibold transition-colors hover:bg-teal-50 hover:text-teal-800 focus:bg-teal-50 focus:text-teal-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50",
+                      pathname.startsWith(item.href) && "after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-6 after:h-0.5 after:bg-[#1f5f5b]"
+                    )}>
+                      {t(item.labelKey)}
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <div className="grid w-[400px] gap-3 p-4">
+                        {EMFACE_SUBMENU_ITEMS.map((subItem) => (
                           <Link 
                             key={subItem.href}
                             href={createLocalizedHref(subItem.href, locale)}
