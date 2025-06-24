@@ -1,122 +1,176 @@
-# EMFace Dropdown Alignment Issue - Context for Solution
+# CRITICAL ISSUES SUMMARY - Next.js Navigation Problems
 
-## Problem Description
-The EMFace dropdown menu in a Next.js application is not properly aligned. When clicking on the "EMFace" navigation item, the dropdown appears centered instead of being left-aligned directly under the "EMFace" text. This issue has been attempted to be fixed multiple times without success.
+## URGENT PROBLEMS (Dec 24, 2025)
 
-## Visual Evidence
-Screenshot shows the EMFace dropdown menu appearing centered on the page rather than aligned under the EMFace navigation item. The dropdown contains four sections: Eyes, Cheeks, Forehead, and Jawline-Submentum, each with descriptive text.
+### 1. NAVIGATION MENU ORDER IS NOT CHANGING
+**Problem**: Despite multiple attempts to reorder navigation items, the menu order remains unchanged on the live site.
 
-## Technical Context
+**Expected Order**: EMSculpt Neo → Exion → EMFace → **Injectables** → EMSella → About
+**Current Order**: EMSculpt Neo → Exion → EMFace → EMSella → **Injectables** → About
 
-### Framework Information
-- Next.js 15.3.3
-- Tailwind CSS 4.1.x
-- Radix UI Navigation Menu (underlying primitive)
-- shadcn/ui components
+**Changes Made But Not Working**:
+- Modified `/lib/constants.ts` NAVIGATION_ITEMS array
+- Committed and pushed to multiple git remotes (origin, boris)
+- Forced multiple redeployments
+- Changes are present in the source code but NOT reflecting on live site
 
-### Live Site
-https://playground-lkfok1zxc-alberto-e69d8928.vercel.app
+### 2. EMFACE DROPDOWN STILL MISALIGNED
+**Problem**: EMFace dropdown appears centered instead of left-aligned under the "EMFace" menu item.
 
-### Key Files and Code
+**Visual Evidence**: Dropdown shows centered on page with content: Eyes, Cheeks, Forehead, Jawline-Submentum sections.
 
-#### 1. Navigation Component (/components/navigation.tsx)
-The EMFace dropdown implementation (lines 74-101):
-```tsx
-<NavigationMenuItem>
-  <NavigationMenuTrigger
-    className={cn(
-      "uppercase text-xs font-normal bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent",
-      pathname.includes("/emface") && 
-      "after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[#1f5f5b]"
-    )}
-  >
-    {t("emface")}
-  </NavigationMenuTrigger>
-  <NavigationMenuContent data-align="left">
-    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1">
-      {EMFACE_SUBMENU_ITEMS.map((item) => (
-        <li key={item.href}>
-          <NavigationMenuLink asChild>
-            <Link
-              href={createLocalizedHref(item.href, locale)}
-              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-            >
-              <div className="text-sm font-medium leading-none">
-                {t(item.titleKey)}
-              </div>
-              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                {t(item.descriptionKey)}
-              </p>
-            </Link>
-          </NavigationMenuLink>
-        </li>
-      ))}
-    </ul>
-  </NavigationMenuContent>
-</NavigationMenuItem>
+## TECHNICAL ENVIRONMENT
+
+**Framework**: Next.js 15.3.3 + Tailwind CSS 4.1.x + Radix UI + shadcn/ui  
+**Live Site**: https://playground-m8q0n97sn-alberto-e69d8928.vercel.app  
+**Repository**: Multiple remotes - deployment may be connected to wrong remote
+
+## CURRENT SOURCE CODE
+
+### Navigation Constants (`/lib/constants.ts`)
+```typescript
+export const NAVIGATION_ITEMS = [
+  { href: "/emsculpt-neo", labelKey: "nav_emsculpt_neo" },
+  { href: "/exion", labelKey: "nav_exion" },
+  { href: "/emface", labelKey: "nav_emface" },
+  { href: "/injectables", labelKey: "nav_injectables" }, // SHOULD BE HERE
+  { href: "/emsella", labelKey: "nav_emsella" },        // SHOULD BE AFTER INJECTABLES
+  { href: "/about", labelKey: "nav_about" },
+] as const
 ```
 
-#### 2. Navigation Menu UI Component (/components/ui/navigation-menu.tsx)
-Key viewport component that controls dropdown positioning:
-```tsx
+### Navigation Component (`/components/navigation.tsx`)
+```typescript
+// Line 44 - Maps over NAVIGATION_ITEMS correctly
+{NAVIGATION_ITEMS.map((item) => (
+  <NavigationMenuItem key={item.href}>
+    {item.labelKey === "nav_emsculpt_neo" ? (
+      // EMSculpt Neo with dropdown
+    ) : item.labelKey === "nav_emface" ? (
+      // EMFace with dropdown - PROBLEMATIC SECTION
+      <>
+        <NavigationMenuTrigger>
+          {t(item.labelKey)}
+        </NavigationMenuTrigger>
+        <NavigationMenuContent align="start" sideOffset={6} className="md:left-0" data-align="left">
+          <div className="grid w-[400px] gap-3 p-4">
+            {EMFACE_SUBMENU_ITEMS.map((subItem) => (
+              // Menu items here
+            ))}
+          </div>
+        </NavigationMenuContent>
+      </>
+    ) : (
+      // Regular menu items
+    )}
+  </NavigationMenuItem>
+))}
+```
+
+### Navigation Menu UI (`/components/ui/navigation-menu.tsx`)
+```typescript
 const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
->(({ className, ...props }, ref) => (
-  <div className={cn("absolute left-0 top-full flex justify-center")}>
-    <NavigationMenuPrimitive.Viewport
+>(({ className, ...props }, ref) => {
+  return (
+    <div
       className={cn(
-        "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
+        "absolute left-0 top-full flex justify-center md:w-auto", // CENTERING ISSUE
         className
       )}
-      ref={ref}
-      {...props}
-    />
-  </div>
-))
+      data-radix-navigation-menu-viewport
+    >
+      <NavigationMenuPrimitive.Viewport
+        className={cn(
+          "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    </div>
+  )
+})
 ```
 
-#### 3. Existing CSS Fix Attempt (app/globals.css, lines 29-47)
+### CSS Fixes Attempted (`/app/globals.css`)
 ```css
-/* Fix EMFace dropdown alignment - target viewport when EMFace content is open */
-[data-radix-navigation-menu-viewport]:has([data-align="left"]) {
+/* Navigation Menu Fixes */
+@layer components {
+  /* Fix EMFace dropdown alignment - Force left alignment when EMFace is open */
   @media (min-width: 768px) {
-    left: 0 !important;
-    transform: none !important;
-    justify-content: flex-start !important;
-  }
-}
-
-/* Ensure EMFace content aligns to left edge */
-[data-align="left"] {
-  @media (min-width: 768px) {
-    position: relative;
-    left: 0 !important;
-    transform: none !important;
+    /* Target the viewport wrapper when left-aligned content is open */
+    [data-radix-navigation-menu-viewport] {
+      justify-content: flex-start !important;
+      left: 0 !important;
+      transform: none !important;
+    }
+    
+    /* Ensure the content itself also aligns left */
+    [data-align="left"] {
+      left: 0 !important;
+      right: auto !important;
+    }
+    
+    /* Additional targeting for the specific EMFace dropdown case */
+    [data-radix-navigation-menu-viewport]:has([data-align="left"]) {
+      justify-content: flex-start !important;
+      left: 0 !important;
+      transform: none !important;
+    }
   }
 }
 ```
 
-## Previous Fix Attempts
-According to the handbook.md file, the proposed fix was:
-1. Edit `components/ui/navigation-menu.tsx`
-2. Add `md:justify-start` to the `NavigationMenuViewport` wrapper
+## GIT REPOSITORY STATUS
 
-However, this approach has been tried multiple times without success.
+**Current Branch**: main  
+**Remote Repositories**:
+- origin: https://github.com/drpertusa/reshape-clinic-website.git
+- boris: https://github.com/drpertusa/Reshape-prototype-for-Boris.git
+- reshape: https://github.com/drpertusa/reshape-clinic-website.git
+- upstream: https://github.com/drpertusa/reshape-prototype-01.git
 
-## Requirements for Solution
-1. The EMFace dropdown should align to the left edge, directly under the "EMFace" navigation text on desktop (≥768px)
-2. The solution should NOT break the EMSculpt Neo dropdown which should remain in its current position
-3. The fix should work with the existing Radix UI Navigation Menu implementation
-4. Mobile behavior should remain unchanged
-5. The dropdown content width (400px on mobile, 500px on desktop) should be maintained
+**Issue**: Unclear which remote is connected to the live deployment. Changes pushed to multiple remotes but not appearing.
 
-## Additional Context
-- The navigation uses Radix UI's NavigationMenu primitive
-- The viewport is absolutely positioned with `justify-center` by default
-- The EMFace dropdown has `data-align="left"` attribute
-- EMSculpt Neo dropdown does not have this attribute and should not be affected
-- The navigation bar is fixed position with backdrop blur
+## FAILED ATTEMPTS
 
-## Request
-Please provide a solution that properly aligns the EMFace dropdown to the left under its navigation trigger, while maintaining all other functionality and not affecting other dropdowns. The solution should be robust and work across different screen sizes and browsers.
+### Navigation Order:
+1. ✅ Modified `NAVIGATION_ITEMS` in `/lib/constants.ts`
+2. ✅ Committed changes: "Reorder navigation: move Injectables before EMSella"
+3. ✅ Pushed to origin and boris remotes
+4. ✅ Forced multiple redeployments
+5. ❌ **RESULT**: No changes visible on live site
+
+### EMFace Dropdown:
+1. ✅ Added `align="start"` and `sideOffset={6}` to NavigationMenuContent
+2. ✅ Modified CSS with multiple targeting approaches
+3. ✅ Updated NavigationMenuViewport component
+4. ✅ Added `data-align="left"` attribute
+5. ❌ **RESULT**: Dropdown still centered
+
+## QUESTIONS FOR INVESTIGATION
+
+1. **Which git remote is actually connected to the live deployment?**
+2. **Is there a build cache or deployment pipeline issue preventing updates?**
+3. **Is the Radix UI NavigationMenu overriding our CSS with inline styles?**
+4. **Are there multiple navigation components or the changes aren't being built correctly?**
+5. **Is there client-side caching preventing navigation updates?**
+
+## REQUEST FOR SOLUTION
+
+Please investigate and provide:
+
+1. **Navigation Order Fix**: Why the NAVIGATION_ITEMS changes aren't appearing and how to make the menu order change from "EMFace → EMSella → Injectables" to "EMFace → Injectables → EMSella"
+
+2. **EMFace Dropdown Alignment**: A robust solution to left-align the EMFace dropdown under its trigger without affecting other dropdowns
+
+3. **Deployment Diagnosis**: Help identify why changes aren't reaching the live site despite successful commits and pushes
+
+**Constraints**: 
+- Must work with existing Radix UI + Next.js setup
+- Cannot break other dropdowns (EMSculpt Neo should remain centered)
+- Must be responsive and work on desktop (≥768px)
+
+**Priority**: URGENT - These are blocking issues for the live site.

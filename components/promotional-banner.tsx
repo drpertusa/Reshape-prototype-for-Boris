@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
+
 import { X } from "lucide-react"
+
 import { Badge } from "@/components/ui/badge"
 
 export function PromotionalBanner() {
