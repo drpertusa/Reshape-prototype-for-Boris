@@ -44,6 +44,15 @@
   "nav_toggle_theme": "Toggle theme",
   "nav_book_consultation": "Book Consultation",
   
+  "about_clinic": "Reshape Clinic",
+  "about_clinic_desc": "Learn about our clinic, team, and approach to treatments",
+  "about_locations": "Locations",
+  "about_locations_desc": "Find our clinic locations and contact information",
+  "about_whatsapp": "WhatsApp us",
+  "about_whatsapp_desc": "Send us a message on WhatsApp for quick inquiries",
+  "about_call": "Call us",
+  "about_call_desc": "Speak directly with our team for bookings and questions",
+  
   "home_hero_title": "Where Science Reshapes",
   "home_hero_title_accent": "Confidence", 
   "home_hero_h1_prefix": "London's leading clinic for",

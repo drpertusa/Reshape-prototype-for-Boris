@@ -81,6 +81,31 @@ export const EMFACE_SUBMENU_ITEMS = [
   },
 ] as const
 
+export const ABOUT_SUBMENU_ITEMS = [
+  { 
+    href: "/about", 
+    titleKey: "about_clinic",
+    descriptionKey: "about_clinic_desc"
+  },
+  { 
+    href: "/about/locations", 
+    titleKey: "about_locations",
+    descriptionKey: "about_locations_desc"
+  },
+  { 
+    href: "https://wa.me/447123456789", 
+    titleKey: "about_whatsapp",
+    descriptionKey: "about_whatsapp_desc",
+    external: true
+  },
+  { 
+    href: "tel:+447123456789", 
+    titleKey: "about_call",
+    descriptionKey: "about_call_desc",
+    external: true
+  },
+] as const
+
 export const FOOTER_LINKS = [
   { href: "/privacy", labelKey: "nav_privacy" },
   { href: "/terms", labelKey: "nav_terms" },
