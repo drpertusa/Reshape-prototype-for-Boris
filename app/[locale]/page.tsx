@@ -30,7 +30,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     <PageLayout>
       <div>
       {/* Hero Section */}
-      <Section className="pt-[20vh] md:pt-[22vh] pb-20" containerSize="lg">
+      <Section className="pt-[12vh] md:pt-[13vh] pb-20" containerSize="lg">
         <header className="text-center">
           <h1 className="text-[clamp(2.5rem,6vw+1rem,4rem)] tracking-tight font-extrabold">
             {t.home_hero_h1_prefix}
