@@ -1,11 +1,8 @@
-import Link from "next/link"
-
 import { Activity, Stethoscope, UserCheck } from "lucide-react"
 
 import { AnimatedHeroText } from "@/components/animated-hero-text"
 import { PageLayout } from "@/components/layout/page-layout"
 import { Section } from "@/components/layout/section"
-import { Button } from "@/components/ui/button"
 import { getTranslations } from "@/i18n/server"
 import { generatePageMetadata } from "@/lib/seo-utils"
 
@@ -40,12 +37,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mt-6">
             {t.home_hero_subtitle}
           </p>
-          <Button asChild size="sm" className="font-semibold mt-8 md:mt-12 group">
-            <Link href={`/${locale}/contact`}>
-              Book Online
-              <span className="inline-block transition-transform group-hover:translate-x-1 ml-2">→</span>
-            </Link>
-          </Button>
         </header>
       </Section>
 
