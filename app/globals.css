@@ -28,33 +28,26 @@
 
 /* Navigation Menu Fixes */
 @layer components {
-  /* Fix EMFace dropdown alignment - target viewport when EMFace content is open */
-  [data-radix-navigation-menu-viewport]:has([data-align="left"]) {
-    @media (min-width: 768px) {
+  /* Fix EMFace dropdown alignment - Force left alignment when EMFace is open */
+  @media (min-width: 768px) {
+    /* Target the viewport wrapper when left-aligned content is open */
+    [data-radix-navigation-menu-viewport] {
+      justify-content: flex-start !important;
       left: 0 !important;
       transform: none !important;
-      justify-content: flex-start !important;
     }
-  }
-  
-  /* Alternative approach: target the content directly */
-  [data-align="left"] {
-    @media (min-width: 768px) {
+    
+    /* Ensure the content itself also aligns left */
+    [data-align="left"] {
       left: 0 !important;
       right: auto !important;
     }
-  }
-
-  /*
-    FORCE left-alignment for EMFace dropdown.
-    The Radix viewport positioning is aggressive. This rule uses !important
-    to override any inline transformations and forces the viewport's
-    flex container to align to the start (left) on desktop when a
-    left-aligned menu is open.
-  */
-  [data-radix-orientation]:has([data-align="left"][data-state="open"]) > [data-radix-navigation-menu-viewport] {
-    @media (min-width: 768px) {
+    
+    /* Additional targeting for the specific EMFace dropdown case */
+    [data-radix-navigation-menu-viewport]:has([data-align="left"]) {
       justify-content: flex-start !important;
+      left: 0 !important;
+      transform: none !important;
     }
   }
 }
