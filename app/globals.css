@@ -28,11 +28,34 @@
 
 /* Navigation Menu Fixes */
 @layer components {
-  /* Fix EMFace dropdown alignment */
-  [data-radix-navigation-menu-viewport] {
+  /* Fix EMFace dropdown alignment - target viewport when EMFace content is open */
+  [data-radix-navigation-menu-viewport]:has([data-align="left"]) {
     @media (min-width: 768px) {
-      left: auto !important;
-      transform: translateX(0) !important;
+      left: 0 !important;
+      transform: none !important;
+      justify-content: flex-start !important;
+    }
+  }
+  
+  /* Alternative approach: target the content directly */
+  [data-align="left"] {
+    @media (min-width: 768px) {
+      left: 0 !important;
+      right: auto !important;
+    }
+  }
+
+  /* Fix EMFace dropdown alignment (desktop)
+     When a content panel declares data-align="left" and is open, the sibling
+     viewport that Radix appends **after** that content panel should hug the left
+     edge instead of the centred default.  The general-sibling selector (~) lets
+     us target just that viewport instance, leaving all other dropdowns
+     unaffected. */
+  @media (min-width: 768px) {
+    [data-align="left"][data-state="open"] ~ [data-radix-navigation-menu-viewport] {
+      left: 0 !important;              /* anchor to the left edge */
+      transform: none !important;      /* prevent translateX centering */
+      justify-content: flex-start !important; /* flex-box alignment */
     }
   }
 }

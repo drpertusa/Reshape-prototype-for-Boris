@@ -1,0 +1,122 @@
+# EMFace Dropdown Alignment Issue - Context for Solution
+
+## Problem Description
+The EMFace dropdown menu in a Next.js application is not properly aligned. When clicking on the "EMFace" navigation item, the dropdown appears centered instead of being left-aligned directly under the "EMFace" text. This issue has been attempted to be fixed multiple times without success.
+
+## Visual Evidence
+Screenshot shows the EMFace dropdown menu appearing centered on the page rather than aligned under the EMFace navigation item. The dropdown contains four sections: Eyes, Cheeks, Forehead, and Jawline-Submentum, each with descriptive text.
+
+## Technical Context
+
+### Framework Information
+- Next.js 15.3.3
+- Tailwind CSS 4.1.x
+- Radix UI Navigation Menu (underlying primitive)
+- shadcn/ui components
+
+### Live Site
+https://playground-lkfok1zxc-alberto-e69d8928.vercel.app
+
+### Key Files and Code
+
+#### 1. Navigation Component (/components/navigation.tsx)
+The EMFace dropdown implementation (lines 74-101):
+```tsx
+<NavigationMenuItem>
+  <NavigationMenuTrigger
+    className={cn(
+      "uppercase text-xs font-normal bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent",
+      pathname.includes("/emface") && 
+      "after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[#1f5f5b]"
+    )}
+  >
+    {t("emface")}
+  </NavigationMenuTrigger>
+  <NavigationMenuContent data-align="left">
+    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1">
+      {EMFACE_SUBMENU_ITEMS.map((item) => (
+        <li key={item.href}>
+          <NavigationMenuLink asChild>
+            <Link
+              href={createLocalizedHref(item.href, locale)}
+              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+            >
+              <div className="text-sm font-medium leading-none">
+                {t(item.titleKey)}
+              </div>
+              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                {t(item.descriptionKey)}
+              </p>
+            </Link>
+          </NavigationMenuLink>
+        </li>
+      ))}
+    </ul>
+  </NavigationMenuContent>
+</NavigationMenuItem>
+```
+
+#### 2. Navigation Menu UI Component (/components/ui/navigation-menu.tsx)
+Key viewport component that controls dropdown positioning:
+```tsx
+const NavigationMenuViewport = React.forwardRef<
+  React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
+>(({ className, ...props }, ref) => (
+  <div className={cn("absolute left-0 top-full flex justify-center")}>
+    <NavigationMenuPrimitive.Viewport
+      className={cn(
+        "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
+        className
+      )}
+      ref={ref}
+      {...props}
+    />
+  </div>
+))
+```
+
+#### 3. Existing CSS Fix Attempt (app/globals.css, lines 29-47)
+```css
+/* Fix EMFace dropdown alignment - target viewport when EMFace content is open */
+[data-radix-navigation-menu-viewport]:has([data-align="left"]) {
+  @media (min-width: 768px) {
+    left: 0 !important;
+    transform: none !important;
+    justify-content: flex-start !important;
+  }
+}
+
+/* Ensure EMFace content aligns to left edge */
+[data-align="left"] {
+  @media (min-width: 768px) {
+    position: relative;
+    left: 0 !important;
+    transform: none !important;
+  }
+}
+```
+
+## Previous Fix Attempts
+According to the handbook.md file, the proposed fix was:
+1. Edit `components/ui/navigation-menu.tsx`
+2. Add `md:justify-start` to the `NavigationMenuViewport` wrapper
+
+However, this approach has been tried multiple times without success.
+
+## Requirements for Solution
+1. The EMFace dropdown should align to the left edge, directly under the "EMFace" navigation text on desktop (≥768px)
+2. The solution should NOT break the EMSculpt Neo dropdown which should remain in its current position
+3. The fix should work with the existing Radix UI Navigation Menu implementation
+4. Mobile behavior should remain unchanged
+5. The dropdown content width (400px on mobile, 500px on desktop) should be maintained
+
+## Additional Context
+- The navigation uses Radix UI's NavigationMenu primitive
+- The viewport is absolutely positioned with `justify-center` by default
+- The EMFace dropdown has `data-align="left"` attribute
+- EMSculpt Neo dropdown does not have this attribute and should not be affected
+- The navigation bar is fixed position with backdrop blur
+
+## Request
+Please provide a solution that properly aligns the EMFace dropdown to the left under its navigation trigger, while maintaining all other functionality and not affecting other dropdowns. The solution should be robust and work across different screen sizes and browsers.

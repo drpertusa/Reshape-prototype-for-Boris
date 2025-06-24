@@ -10,7 +10,7 @@ _Last updated 24 Jun 2025_
 
 | Item                        | Value / Link |
 | --------------------------- | ------------ |
-| **Live site**               | https://reshape-working-iavx2bals-alberto-e69d8928.vercel.app |
+| **Live site**               | https://playground-lkfok1zxc-alberto-e69d8928.vercel.app |
 | **Framework versions**      | Next.js 15.3.3 · Tailwind 4.1.x · shadcn/ui (11 components) |
 | **Latest completed tasks**  | Single CTA, nav text update, promo‑banner auto‑dismiss, EMFace dropdown (content OK) |
 | **Open issue**              | **Left‑align EMFace dropdown** (currently centred) |
@@ -30,3 +30,25 @@ The EMFace dropdown is centred. We want it to start directly under the “EMFace
    <NavigationMenuViewport
      className={cn(viewportClassName, "md:justify-start")}
    />
+
+---
+
+## 9 · Development Workflow
+
+**Important**: Always show the deployment URL after making changes so the user can check the live updates.
+
+---
+
+## 10 · Deployment Environment Variables
+
+**Critical for deployment**: The following environment variables must be set in Vercel to prevent MIDDLEWARE_INVOCATION_FAILED errors:
+
+| Variable                    | Purpose | Example Value |
+| --------------------------- | ------- | ------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`  | Supabase project URL | `https://your-project.supabase.co` |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous key | `your-anon-key-here` |
+| `NEXT_PUBLIC_BASE_URL`      | Application base URL | `https://playground-[hash].vercel.app` |
+
+**How to add**: Use `vercel env add VARIABLE_NAME production` for each variable.
+
+**Note**: These variables are now configured for the current deployment. If you see MIDDLEWARE_INVOCATION_FAILED errors, check that these environment variables are properly set in your Vercel project settings.
