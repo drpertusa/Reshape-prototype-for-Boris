@@ -81,7 +81,7 @@ export function Navigation() {
                       {t(item.labelKey)}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="grid w-[400px] gap-3 p-4">
+                      <div className="grid w-[400px] gap-3 p-4 md:-translate-x-[150px]">
                         {EMFACE_SUBMENU_ITEMS.map((subItem) => (
                           <Link 
                             key={subItem.href}
